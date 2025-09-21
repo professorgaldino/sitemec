@@ -1,130 +1,64 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF‑8"/>
-  <meta name="viewport" content="width=device‑width, initial-scale=1.0"/>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Estudo ENEM - Mecânica</title>
   <style>
-    /* === Reset e fontes limpas === */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #eef2f7;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .container {
-      width: 320px;
-      background: white;
-      padding: 40px;
-      border-radius: 16px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-      text-align: center;
-    }
-
-    /* === Logo arredondado === */
-    #login img {
-      width: 120px;
-      height: 120px;
-      object-fit: cover;
-      border-radius: 50%;
-      margin-bottom: 24px;
-      border: 4px solid #003366;
-    }
-
-    h1 {
-      margin-bottom: 24px;
-      color: #003366;
-      font-size: 1.6rem;
-    }
-
-    input {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 16px;
-      font-size: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-    }
-
-    button {
-      width: 100%;
-      padding: 14px;
-      font-size: 1rem;
-      border: none;
-      border-radius: 8px;
-      background: #003366;
-      color: white;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    button:hover {
-      background: #0055aa;
-    }
-
-    #mensagem {
-      margin-top: 16px;
-      font-size: 0.9rem;
-      color: #cc0000;
-    }
-
-    .hidden { display: none; }
-
-    .disciplina-box { margin-bottom: 24px; text-align: left; }
-
-    .alternativas button {
-      display: block;
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 12px;
-      text-align: left;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      background: #f7f9fc;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .alternativas button:hover { background: #e2e6eb; }
-    .correta { background: #d4edda !important; border-color: #8cd19d; }
-    .incorreta { background: #f8d7da !important; border-color: #e29b9b; }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:Inter, sans-serif;background:#eef2f7;height:100vh;display:flex;align-items:center;justify-content:center}
+    .container{width:360px;background:#fff;padding:32px;border-radius:12px;box-shadow:0 6px 24px rgba(0,0,0,.08);text-align:center}
+    #login img{width:120px;height:120px;border-radius:50%;object-fit:cover;margin-bottom:18px;border:4px solid #003366}
+    h1{color:#003366;margin-bottom:16px;font-size:1.4rem}
+    input,select{width:100%;padding:10px;margin-bottom:12px;border:1px solid #ccc;border-radius:8px;font-size:1rem}
+    button{width:100%;padding:12px;border:none;border-radius:8px;background:#003366;color:#fff;cursor:pointer}
+    .hidden{display:none}
+    .alternativas button{display:block;width:100%;padding:10px;margin-bottom:10px;text-align:left;border:1px solid #ccc;border-radius:8px;background:#f7f9fc}
+    .correta{background:#d4edda!important;border-color:#8cd19d}
+    .incorreta{background:#f8d7da!important;border-color:#e29b9b}
+    #mensagem{margin-top:8px;color:#cc0000;font-size:.9rem}
+    .small{font-size:.85rem;color:#666;text-align:left;margin-top:8px}
   </style>
 </head>
 <body>
 
 <div class="container" id="login">
-  <!-- Logo arredondado -->
   <img src="logomecanica.png" alt="Logo Mecânica">
-
   <h1>Login</h1>
-  <input type="text" id="usuario" placeholder="Usuário" />
-  <input type="password" id="senha" placeholder="Senha" />
+  <input type="text" id="usuario" placeholder="Usuário">
+  <input type="password" id="senha" placeholder="Senha">
   <button onclick="fazerLogin()">Entrar</button>
   <p id="mensagem"></p>
 </div>
 
 <div class="container hidden" id="app">
   <h1>Questões ENEM</h1>
-  <div class="disciplina-box">
-    <label for="disciplina">Disciplina:</label>
-    <select id="disciplina">
-      <option value="Matemática">Matemática</option>
-      <option value="Português">Linguagens</option>
-      <option value="Biologia">Biologia</option>
-      <option value="Química">Química</option>
-      <option value="Física">Física</option>
-      <option value="História">História</option>
-      <option value="Geografia">Geografia</option>
-      <option value="Filosofia">Filosofia</option>
-      <option value="Sociologia">Sociologia</option>
+
+  <div class="small">
+    <label for="ano">Ano:</label>
+    <select id="ano">
+      <option value="2023">2023</option>
+      <option value="2022">2022</option>
+      <option value="2021">2021</option>
+      <option value="2020">2020</option>
     </select>
   </div>
-  <button onclick="carregarQuestao()">Próxima Questão</button>
-  <div id="questao">
-    <p style="color:#666;">Selecione a disciplina e clique em "Próxima Questão".</p>
+
+  <div class="small" style="margin-top:10px">
+    <label for="disciplina">Área:</label>
+    <select id="disciplina">
+      <!-- value = valor usado pela API (discipline) -->
+      <option value="matematica">Matemática e suas Tecnologias</option>
+      <option value="ciencias-natureza">Ciências da Natureza e suas Tecnologias</option>
+      <option value="ciencias-humanas">Ciências Humanas e suas Tecnologias</option>
+      <option value="linguagens">Linguagens, Códigos e suas Tecnologias</option>
+    </select>
+  </div>
+
+  <button style="margin-top:12px" onclick="carregarQuestao()">Próxima Questão</button>
+
+  <div id="questao" style="margin-top:12px;text-align:left">
+    <p style="color:#666">Selecione área/ano e clique em "Próxima Questão".</p>
   </div>
 </div>
 
@@ -132,58 +66,105 @@
   const usuarioValido = 'admin';
   const senhaValida = 'admin123';
 
-  function fazerLogin() {
+  function fazerLogin(){
     const user = document.getElementById('usuario').value;
     const senha = document.getElementById('senha').value;
     const msg = document.getElementById('mensagem');
-    if (user === usuarioValido && senha === senhaValida) {
+    if(user === usuarioValido && senha === senhaValida){
       document.getElementById('login').classList.add('hidden');
       document.getElementById('app').classList.remove('hidden');
       msg.textContent = '';
     } else {
-      msg.textContent = "Usuário ou senha inválidos.";
+      msg.textContent = 'Usuário ou senha inválidos.';
     }
   }
 
-  async function carregarQuestao() {
+  async function carregarQuestao(){
     const disciplina = document.getElementById('disciplina').value;
+    const ano = document.getElementById('ano').value;
     const container = document.getElementById('questao');
     container.innerHTML = '<p><strong>Carregando questão...</strong></p>';
 
     try {
-      const resp = await fetch('https://api.enem.dev/v1/exams/2023/questions?limit=100');
-      if (!resp.ok) throw new Error(resp.status);
-      const data = await resp.json();
-      const questoes = data.questions.filter(q => q.discipline === disciplina);
+      const url = `https://api.enem.dev/v1/exams/${ano}/questions?limit=200`;
+      console.log('GET', url);
+      const resp = await fetch(url);
 
-      if (questoes.length === 0) {
-        container.innerHTML = `<p>Nenhuma questão disponível para ${disciplina}.</p>`;
+      if(!resp.ok){
+        const body = await resp.text().catch(()=> '');
+        throw new Error(`HTTP ${resp.status} ${resp.statusText} — ${body}`);
+      }
+
+      const data = await resp.json();
+      const all = data.questions || [];
+      // filtra pela propriedade 'discipline' retornada pela API
+      const questoes = all.filter(q => q.discipline === disciplina);
+
+      if(questoes.length === 0){
+        container.innerHTML = `<p>Nenhuma questão encontrada para a área selecionada (ano ${ano}).</p>
+          <p class="small">Tente outro ano ou verifique o console para ver os dados brutos.</p>`;
+        console.log('Dados brutos (amostra):', all.slice(0,6));
         return;
       }
 
       const q = questoes[Math.floor(Math.random() * questoes.length)];
-      const altHTML = q.alternatives.map(a =>
-        `<button onclick="verificarResposta(this,'${q.correctAlternative}')">${a.letter}) ${a.text}</button>`
+
+      // montar alternativas sem usar onclick inline (para evitar problemas de escape)
+      const altHTML = (q.alternatives || []).map(a =>
+        `<button data-letter="${a.letter}">${a.letter}) ${a.text || ''}</button>`
       ).join('');
 
       container.innerHTML = `
-        <p><strong>${q.title}</strong></p>
+        ${q.title ? `<p><strong>${q.title}</strong></p>` : ''}
         ${q.context ? `<p>${q.context}</p>` : ''}
+        ${q.alternativesIntroduction ? `<p><em>${q.alternativesIntroduction}</em></p>` : ''}
         <div class="alternativas">${altHTML}</div>
-        <p style="color: #888;"><em>${q.discipline} — Ano: ${q.year}</em></p>
+        <p style="color:#888"><em>${q.discipline} — Ano: ${q.year}</em></p>
       `;
-    } catch (error) {
-      console.error(error);
-      container.innerHTML = '<p>Erro ao carregar questão. Tente novamente.</p>';
+
+      // escutar cliques e verificar resposta
+      document.querySelectorAll('.alternativas button').forEach(b=>{
+        b.addEventListener('click', ()=> verificarResposta(b, q.correctAlternative));
+      });
+
+      // mostrar imagens se houver
+      if(q.files && q.files.length){
+        q.files.forEach(src => {
+          const img = document.createElement('img');
+          img.src = src;
+          img.style.maxWidth = '100%';
+          img.style.display = 'block';
+          img.style.marginTop = '8px';
+          container.appendChild(img);
+        });
+      }
+
+    } catch (err) {
+      console.error('Erro ao carregar questão:', err);
+      const msg = String(err.message || err);
+      const isLikelyCORS = msg.includes('Failed to fetch') || msg.includes('NetworkError') || msg.includes('TypeError');
+
+      container.innerHTML = `<p><strong>Erro ao carregar questão:</strong> ${msg}</p>
+        <p class="small">Possíveis causas:</p>
+        <ul class="small">
+          <li>Bloqueio CORS no navegador (requisição é bloqueada antes de chegar ao servidor).</li>
+          <li>Limite de requisições (HTTP 429) — a API limita requisições não-cacheadas. </li>
+          <li>Problema temporário no servidor (HTTP 5xx).</li>
+        </ul>
+        <p class="small">Abra o console (F12 → Console/Network) para ver o status e o corpo da resposta.</p>`;
+
+      if(isLikelyCORS){
+        container.innerHTML += `<p class="small"><strong>Se for CORS:</strong> em desenvolvimento você pode usar um proxy temporário ou criar um pequeno proxy no seu servidor para contornar. Veja sugestões abaixo.</p>`;
+      }
     }
   }
 
-  function verificarResposta(btn, correta) {
-    document.querySelectorAll('.alternativas button').forEach(b => {
+  function verificarResposta(btn, correta){
+    document.querySelectorAll('.alternativas button').forEach(b=>{
       b.disabled = true;
-      if (b.textContent.trim().startsWith(correta)) b.classList.add('correta');
+      if(b.dataset.letter === correta) b.classList.add('correta');
     });
-    if (!btn.textContent.trim().startsWith(correta)) btn.classList.add('incorreta');
+    if(btn.dataset.letter !== correta) btn.classList.add('incorreta');
   }
 </script>
 
