@@ -1,153 +1,113 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Estudo ENEM - Mecânica</title>
+  <title>Questões ENEM - Professor Galdino</title>
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #eef2f7;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    body { font-family: Arial, sans-serif; background: #f5f5f5; margin: 0; padding: 20px; }
+    h1 { color: #222; text-align: center; }
+    .card {
+      background: white; border-radius: 10px; padding: 20px; margin: 20px auto;
+      max-width: 800px; box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-    .container {
-      width: 360px;
-      background: white;
-      padding: 40px;
-      border-radius: 16px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-      text-align: center;
-    }
-    #login img {
-      width: 120px;
-      height: 120px;
-      object-fit: cover;
-      border-radius: 50%;
-      margin-bottom: 24px;
-      border: 4px solid #003366;
-    }
-    h1 { margin-bottom: 24px; color: #003366; font-size: 1.6rem; }
-    input {
-      width: 100%; padding: 12px; margin-bottom: 16px;
-      font-size: 1rem; border: 1px solid #ccc; border-radius: 8px;
+    select, button {
+      padding: 10px; margin: 5px; border-radius: 5px; border: 1px solid #ccc;
     }
     button {
-      width: 100%; padding: 14px; font-size: 1rem;
-      border: none; border-radius: 8px; background: #003366; color: white;
-      cursor: pointer; transition: background 0.3s;
+      background: #007bff; color: white; border: none; cursor: pointer;
     }
-    button:hover { background: #0055aa; }
-    #mensagem { margin-top: 16px; font-size: 0.9rem; color: #cc0000; }
-    .hidden { display: none; }
-    .disciplina-box { margin-bottom: 24px; text-align: left; }
-    .alternativas button {
-      display: block; width: 100%; padding: 12px; margin-bottom: 12px;
-      text-align: left; border-radius: 8px; border: 1px solid #ccc;
-      background: #f7f9fc; font-size: 1rem; cursor: pointer;
-      transition: background 0.2s;
-    }
-    .alternativas button:hover { background: #e2e6eb; }
-    .correta { background: #d4edda !important; border-color: #8cd19d; }
-    .incorreta { background: #f8d7da !important; border-color: #e29b9b; }
-    #dica { color: #cc6600; margin-top: 10px; font-style: italic; }
+    button:hover { background: #0056b3; }
+    img { max-width: 100%; margin: 10px 0; }
+    .error { color: red; }
   </style>
 </head>
 <body>
+  <h1>Questões ENEM – Uma por vez</h1>
 
-<div class="container" id="login">
-  <img src="img/logomecanica.png" alt="Logo Mecânica">
-  <h1>Login</h1>
-  <input type="text" id="usuario" placeholder="Usuário">
-  <input type="password" id="senha" placeholder="Senha">
-  <button onclick="fazerLogin()">Entrar</button>
-  <p id="mensagem"></p>
-</div>
+  <div class="card">
+    <label>Selecione o ano:</label>
+    <select id="ano">
+      <option value="2023">2023</option>
+      <option value="2022">2022</option>
+      <option value="2021">2021</option>
+      <option value="2020">2020</option>
+    </select>
 
-<div class="container hidden" id="app">
-  <h1>Questões ENEM</h1>
-  <div class="disciplina-box">
-    <label for="disciplina">Disciplina:</label>
+    <label>Disciplina:</label>
     <select id="disciplina">
       <option value="matematica">Matemática</option>
-      <option value="linguagens">Linguagens</option>
       <option value="ciencias-natureza">Ciências da Natureza</option>
       <option value="ciencias-humanas">Ciências Humanas</option>
+      <option value="linguagens">Linguagens</option>
     </select>
+
+    <button id="carregar">Carregar Questão</button>
   </div>
-  <button onclick="carregarQuestao()">Próxima Questão</button>
-  <div id="questao">
-    <p style="color:#666;">Selecione a disciplina e clique em "Próxima Questão".</p>
-  </div>
-</div>
 
-<script>
-const usuarioValido = 'admin';
-const senhaValida = 'admin123';
-let questaoAtual = null;
+  <div id="questao" class="card"></div>
 
-function fazerLogin() {
-  const user = document.getElementById('usuario').value;
-  const senha = document.getElementById('senha').value;
-  const msg = document.getElementById('mensagem');
+  <script>
+    const questaoDiv = document.getElementById("questao");
+    const btnCarregar = document.getElementById("carregar");
 
-  if(user === usuarioValido && senha === senhaValida){
-    document.getElementById('login').classList.add('hidden');
-    document.getElementById('app').classList.remove('hidden');
-    msg.textContent = '';
-  } else {
-    msg.textContent = "Usuário ou senha inválidos.";
-  }
-}
+    let questoesCarregadas = new Set();
 
-async function carregarQuestao(){
-  const disciplina = document.getElementById('disciplina').value;
-  const container = document.getElementById('questao');
-  container.innerHTML = '<p><strong>Carregando questão...</strong></p>';
+    async function carregarQuestao() {
+      const ano = document.getElementById("ano").value;
+      const disciplina = document.getElementById("disciplina").value;
 
-  try{
-    const resp = await fetch(`json/${disciplina}.json`);
-    if(!resp.ok) throw new Error('Erro ao carregar JSON');
-    const questoes = await resp.json();
-    if(questoes.length === 0){
-      container.innerHTML = `<p>Nenhuma questão disponível para ${disciplina}.</p>`;
-      return;
+      try {
+        questaoDiv.innerHTML = "<p>Carregando questão...</p>";
+
+        // API ENEM via proxy (evita erro de CORS)
+        const url = `https://api.allorigins.win/get?url=${encodeURIComponent(`https://api.enem.dev/v1/questions?year=${ano}&discipline=${disciplina}`)}`;
+
+        const resposta = await fetch(url);
+        const data = await resposta.json();
+        const json = JSON.parse(data.contents);
+
+        if (!json.questions || json.questions.length === 0) {
+          questaoDiv.innerHTML = "<p class='error'>Nenhuma questão encontrada para essa disciplina/ano.</p>";
+          return;
+        }
+
+        // Filtra questão ainda não exibida
+        const questoesDisponiveis = json.questions.filter(q => !questoesCarregadas.has(q.index));
+
+        if (questoesDisponiveis.length === 0) {
+          questaoDiv.innerHTML = "<p class='error'>Você já viu todas as questões dessa disciplina!</p>";
+          return;
+        }
+
+        // Escolhe questão aleatória nova
+        const questao = questoesDisponiveis[Math.floor(Math.random() * questoesDisponiveis.length)];
+        questoesCarregadas.add(questao.index);
+
+        // Renderiza
+        let html = `
+          <h2>${questao.title}</h2>
+          <p><strong>${questao.discipline.toUpperCase()} – ENEM ${questao.year}</strong></p>
+          <p>${questao.context ? questao.context.replace(/\n/g, '<br>') : ""}</p>
+          ${questao.files && questao.files.length > 0 ? `<img src="${questao.files[0]}" alt="Imagem da questão">` : ""}
+          <p><strong>${questao.alternativesIntroduction || ""}</strong></p>
+        `;
+
+        questao.alternatives.forEach(alt => {
+          html += `<p>${alt.letter}) ${alt.text}</p>`;
+        });
+
+        html += `<p><strong>Resposta correta:</strong> ${questao.correctAlternative}</p>`;
+
+        questaoDiv.innerHTML = html;
+
+      } catch (erro) {
+        console.error(erro);
+        questaoDiv.innerHTML = "<p class='error'>Erro ao buscar questão. Verifique a conexão ou tente novamente.</p>";
+      }
     }
 
-    questaoAtual = questoes[Math.floor(Math.random()*questoes.length)];
-
-    const altHTML = questaoAtual.alternatives.map(a =>
-      `<button onclick="verificarResposta(this,'${questaoAtual.correctAlternative}')">${a.letter}) ${a.text}</button>`
-    ).join('');
-
-    container.innerHTML = `
-      <p><strong>${questaoAtual.title}</strong></p>
-      <div class="alternativas">${altHTML}</div>
-      <p id="dica"></p>
-    `;
-  } catch(err){
-    console.error(err);
-    container.innerHTML = '<p>Erro ao carregar questão.</p>';
-  }
-}
-
-function verificarResposta(btn, correta){
-  document.querySelectorAll('.alternativas button').forEach(b=>{
-    b.disabled = true;
-    if(b.textContent.trim().startsWith(correta)) b.classList.add('correta');
-  });
-  const dicaEl = document.getElementById('dica');
-  if(!btn.textContent.trim().startsWith(correta)){
-    btn.classList.add('incorreta');
-    dicaEl.textContent = questaoAtual.hint;
-  } else {
-    dicaEl.textContent = '';
-  }
-}
-</script>
-
+    btnCarregar.addEventListener("click", carregarQuestao);
+  </script>
 </body>
 </html>
