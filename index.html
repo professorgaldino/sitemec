@@ -22,6 +22,10 @@
   #loginDiv button:hover { background-color: #0056b3; }
   #loginMsg { color: red; margin-top: 10px; font-weight: bold; }
 
+  /* MENU GUIAS */
+  #menuGuias { display:none; margin:20px 0; width:100%; text-align:center; }
+  #menuGuias select { padding:12px 20px; border-radius:12px; border:1px solid #ccc; font-size:1rem; }
+
   /* ÁREAS DE ESTUDO */
   #areaDiv { display: none; width: 100%; text-align: center; }
   .cards { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 30px; }
@@ -60,6 +64,22 @@
     <p id="loginMsg"></p>
   </div>
 
+  <!-- MENU GUIAS -->
+  <div id="menuGuias">
+    <select id="selectGuias" onchange="abrirGuia(this.value)">
+      <option value="">Escolha um Guia de Estudos</option>
+      <option value="gmat.html">Matemática</option>
+      <option value="gfis.html">Física</option>
+      <option value="gqui.html">Química</option>
+      <option value="gbio.html">Biologia</option>
+      <option value="ghist.html">História</option>
+      <option value="ggeo.html">Geografia</option>
+      <option value="gport.html">Português</option>
+      <option value="ging.html">Inglês</option>
+      <option value="gatu.html">Atualidades</option>
+    </select>
+  </div>
+
   <!-- ÁREA DE ESTUDO -->
   <div id="areaDiv">
     <h2>Escolha a Área de Estudo</h2>
@@ -69,24 +89,12 @@
       <div class="card" onclick="carregarDisciplina('quimica.json')"><h3>Química</h3></div>
       <div class="card" onclick="carregarDisciplina('biologia.json')"><h3>Biologia</h3></div>
       <div class="card" onclick="carregarDisciplina('historia.json')"><h3>História</h3></div>
-      <div class="card" onclick="carregarDisciplina('geografia')"><h3>Geografia</h3></div>
+      <div class="card" onclick="carregarDisciplina('geografia.json')"><h3>Geografia</h3></div>
       <div class="card" onclick="carregarDisciplina('portugues.json')"><h3>Português</h3></div>
       <div class="card" onclick="carregarDisciplina('ingles.json')"><h3>Inglês</h3></div>
       <div class="card" onclick="carregarDisciplina('atualidades.json')"><h3>Atualidades</h3></div>
     </div>
   </div>
-
-  <div id="menuDiv" style="display:none; background:#f0f2f5; padding:10px; text-align:center;">
-  <button onclick="window.location.href='guia_matematica.html'">Guia de Matemática</button>
-  <button onclick="window.location.href='guia_fisica.html'">Guia de Física</button>
-  <button onclick="window.location.href='guia_quimica.html'">Guia de Química</button>
-  <button onclick="window.location.href='guia_biologia.html'">Guia de Biologia</button>
-  <button onclick="window.location.href='guia_historia.html'">Guia de História</button>
-  <button onclick="window.location.href='guia_geografia.html'">Guia de Geografia</button>
-  <button onclick="window.location.href='guia_portugues.html'">Guia de Português</button>
-  <button onclick="window.location.href='guia_ingles.html'">Guia de Inglês</button>
-  <button onclick="window.location.href='guia_atualidades.html'">Guia de Atualidades</button>
-</div>
 
   <!-- QUESTÕES -->
   <div id="questaoDiv">
@@ -120,8 +128,17 @@ function login() {
   if(valido) {
     document.getElementById('loginDiv').style.display = 'none';
     document.getElementById('areaDiv').style.display = 'block';
+    document.getElementById('menuGuias').style.display = 'block'; // Mostrar menu após login
   } else {
     document.getElementById('loginMsg').innerText = 'Usuário ou senha incorretos!';
+  }
+}
+
+// ABRIR GUIA
+function abrirGuia(link) {
+  if(link) {
+    window.open(link, "_blank");
+    document.getElementById('selectGuias').value = "";
   }
 }
 
@@ -181,8 +198,3 @@ function verificarResposta(btn, resposta) {
 
 </body>
 </html>
-
-
-
-
-
