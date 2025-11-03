@@ -26,12 +26,11 @@
   <h1>Questões ENEM – Uma por vez</h1>
 
   <div class="card">
-    <label>Selecione o ano:</label>
+    <label>Ano:</label>
     <select id="ano">
       <option value="2023">2023</option>
       <option value="2022">2022</option>
       <option value="2021">2021</option>
-      <option value="2020">2020</option>
     </select>
 
     <label>Disciplina:</label>
@@ -50,61 +49,62 @@
   <script>
     const questaoDiv = document.getElementById("questao");
     const btnCarregar = document.getElementById("carregar");
-
     let questoesCarregadas = new Set();
 
     async function carregarQuestao() {
       const ano = document.getElementById("ano").value;
       const disciplina = document.getElementById("disciplina").value;
 
-      try {
-        questaoDiv.innerHTML = "<p>Carregando questão...</p>";
+      questaoDiv.innerHTML = "<p>Carregando questão...</p>";
 
-        // API ENEM via proxy (evita erro de CORS)
-        const url = `https://api.allorigins.win/get?url=${encodeURIComponent(`https://api.enem.dev/v1/questions?year=${ano}&discipline=${disciplina}`)}`;
+      // URLs proxy (tentará ambas)
+      const urlReal = `https://api.enem.dev/v1/questions?year=${ano}&discipline=${disciplina}`;
+      const proxies = [
+        `https://api.allorigins.win/raw?url=${encodeURIComponent(urlReal)}`,
+        `https://corsproxy.io/?${encodeURIComponent(urlReal)}`
+      ];
 
-        const resposta = await fetch(url);
-        const data = await resposta.json();
-        const json = JSON.parse(data.contents);
+      let data = null;
 
-        if (!json.questions || json.questions.length === 0) {
-          questaoDiv.innerHTML = "<p class='error'>Nenhuma questão encontrada para essa disciplina/ano.</p>";
-          return;
+      for (const proxyUrl of proxies) {
+        try {
+          const resp = await fetch(proxyUrl);
+          if (!resp.ok) continue;
+          data = await resp.json();
+          break;
+        } catch (e) {
+          console.warn(`Falhou com proxy: ${proxyUrl}`);
         }
-
-        // Filtra questão ainda não exibida
-        const questoesDisponiveis = json.questions.filter(q => !questoesCarregadas.has(q.index));
-
-        if (questoesDisponiveis.length === 0) {
-          questaoDiv.innerHTML = "<p class='error'>Você já viu todas as questões dessa disciplina!</p>";
-          return;
-        }
-
-        // Escolhe questão aleatória nova
-        const questao = questoesDisponiveis[Math.floor(Math.random() * questoesDisponiveis.length)];
-        questoesCarregadas.add(questao.index);
-
-        // Renderiza
-        let html = `
-          <h2>${questao.title}</h2>
-          <p><strong>${questao.discipline.toUpperCase()} – ENEM ${questao.year}</strong></p>
-          <p>${questao.context ? questao.context.replace(/\n/g, '<br>') : ""}</p>
-          ${questao.files && questao.files.length > 0 ? `<img src="${questao.files[0]}" alt="Imagem da questão">` : ""}
-          <p><strong>${questao.alternativesIntroduction || ""}</strong></p>
-        `;
-
-        questao.alternatives.forEach(alt => {
-          html += `<p>${alt.letter}) ${alt.text}</p>`;
-        });
-
-        html += `<p><strong>Resposta correta:</strong> ${questao.correctAlternative}</p>`;
-
-        questaoDiv.innerHTML = html;
-
-      } catch (erro) {
-        console.error(erro);
-        questaoDiv.innerHTML = "<p class='error'>Erro ao buscar questão. Verifique a conexão ou tente novamente.</p>";
       }
+
+      if (!data || !data.questions) {
+        questaoDiv.innerHTML = "<p class='error'>Erro ao buscar questão. Verifique a conexão ou tente novamente.</p>";
+        return;
+      }
+
+      const questoesDisponiveis = data.questions.filter(q => !questoesCarregadas.has(q.index));
+      if (questoesDisponiveis.length === 0) {
+        questaoDiv.innerHTML = "<p class='error'>Você já viu todas as questões dessa disciplina!</p>";
+        return;
+      }
+
+      const questao = questoesDisponiveis[Math.floor(Math.random() * questoesDisponiveis.length)];
+      questoesCarregadas.add(questao.index);
+
+      let html = `
+        <h2>${questao.title}</h2>
+        <p><strong>${questao.discipline.toUpperCase()} – ENEM ${questao.year}</strong></p>
+        <p>${questao.context ? questao.context.replace(/\n/g, '<br>') : ""}</p>
+        ${questao.files && questao.files.length > 0 ? `<img src="${questao.files[0]}" alt="Imagem da questão">` : ""}
+        <p><strong>${questao.alternativesIntroduction || ""}</strong></p>
+      `;
+
+      questao.alternatives.forEach(alt => {
+        html += `<p>${alt.letter}) ${alt.text}</p>`;
+      });
+
+      html += `<p><strong>Resposta correta:</strong> ${questao.correctAlternative}</p>`;
+      questaoDiv.innerHTML = html;
     }
 
     btnCarregar.addEventListener("click", carregarQuestao);
