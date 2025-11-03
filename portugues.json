@@ -1,0 +1,242 @@
+[
+  {
+    "numero": 1,
+    "enunciado": "Leia o texto:\n\n\"A leitura é uma porta aberta para o mundo. Quem lê enxerga mais longe, compreende melhor o outro e entende a si mesmo.\"\n\nCom base no texto, é correto afirmar que:",
+    "alternativas": {
+      "A": "A leitura serve apenas para adquirir conhecimento técnico.",
+      "B": "Ler amplia a visão de mundo e a compreensão humana.",
+      "C": "A leitura é uma atividade solitária e sem propósito.",
+      "D": "O texto critica quem não gosta de ler."
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 2,
+    "enunciado": "Leia o trecho:\n\n\"O tempo é o maior escultor. É ele quem molda as paisagens, as pessoas e as histórias.\"\n\nO autor utiliza o termo 'escultor' como:",
+    "alternativas": {
+      "A": "Uma metáfora para o tempo, que transforma tudo.",
+      "B": "Um elogio aos artistas plásticos.",
+      "C": "Uma comparação literal com o trabalho humano.",
+      "D": "Um símbolo de imutabilidade."
+    },
+    "correta": "A",
+    "imagem": ""
+  },
+  {
+    "numero": 3,
+    "enunciado": "Leia o texto:\n\n\"O vento soprava forte naquela manhã, levando consigo as folhas secas e os pensamentos soltos de quem caminhava pela praça.\"\n\nA linguagem usada no texto é:",
+    "alternativas": {
+      "A": "Objetiva e técnica.",
+      "B": "Poética e subjetiva.",
+      "C": "Científica e formal.",
+      "D": "Publicitária e apelativa."
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 4,
+    "enunciado": "Leia o texto:\n\n\"A tecnologia nos aproxima de quem está longe, mas muitas vezes nos distancia de quem está perto.\"\n\nO texto apresenta uma ideia de:",
+    "alternativas": {
+      "A": "Contradição e reflexão sobre o uso da tecnologia.",
+      "B": "Elogio ao avanço científico.",
+      "C": "Humor sobre redes sociais.",
+      "D": "Crítica ao trabalho remoto."
+    },
+    "correta": "A",
+    "imagem": ""
+  },
+  {
+    "numero": 5,
+    "enunciado": "Leia o fragmento:\n\n\"Tudo vale a pena se a alma não é pequena.\" (Fernando Pessoa)\n\nO poeta sugere que:",
+    "alternativas": {
+      "A": "O esforço é inútil quando há grandes desafios.",
+      "B": "Vale a pena lutar quando há grandeza interior.",
+      "C": "As dificuldades impedem o sucesso.",
+      "D": "O tamanho físico é mais importante que o emocional."
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 6,
+    "enunciado": "Leia o texto:\n\n\"O cão olhou para o dono com olhos de quem pede perdão, embora não tivesse feito nada de errado.\"\n\nO trecho utiliza qual recurso de linguagem?",
+    "alternativas": {
+      "A": "Antítese",
+      "B": "Personificação",
+      "C": "Hipérbole",
+      "D": "Ironia"
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 7,
+    "enunciado": "Leia o texto:\n\n\"Os jovens de hoje vivem conectados, mas ainda buscam sentido em suas relações reais.\"\n\nA ideia central do texto é:",
+    "alternativas": {
+      "A": "Os jovens rejeitam totalmente a tecnologia.",
+      "B": "A conexão digital não substitui o vínculo humano.",
+      "C": "As relações virtuais são mais autênticas.",
+      "D": "Os jovens vivem isolados socialmente."
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 8,
+    "enunciado": "Leia o trecho:\n\n\"Depois de tanto estudar, finalmente compreendi que aprender é muito mais sobre errar do que sobre acertar.\"\n\nO autor expressa uma reflexão sobre:",
+    "alternativas": {
+      "A": "O valor do erro no processo de aprendizagem.",
+      "B": "A inutilidade dos estudos tradicionais.",
+      "C": "A necessidade de competir com os outros.",
+      "D": "A importância das provas e notas."
+    },
+    "correta": "A",
+    "imagem": ""
+  },
+  {
+    "numero": 9,
+    "enunciado": "Leia o texto:\n\n\"Havia na cidade um silêncio pesado, como se até o vento tivesse medo de soprar.\"\n\nNesse trecho, há o uso de:",
+    "alternativas": {
+      "A": "Comparação",
+      "B": "Ironia",
+      "C": "Metonímia",
+      "D": "Eufemismo"
+    },
+    "correta": "A",
+    "imagem": ""
+  },
+  {
+    "numero": 10,
+    "enunciado": "Leia o texto:\n\n\"Durante a pandemia, aprendi que o essencial não cabe nas vitrines, mas no coração.\"\n\nO termo 'essencial' no contexto significa:",
+    "alternativas": {
+      "A": "O que é caro.",
+      "B": "O que é supérfluo.",
+      "C": "O que é verdadeiro e importante.",
+      "D": "O que está à venda."
+    },
+    "correta": "C",
+    "imagem": ""
+  },
+  {
+    "numero": 11,
+    "enunciado": "Leia o texto:\n\n\"Era uma casa muito engraçada, não tinha teto, não tinha nada.\"\n\nO tom do texto é:",
+    "alternativas": {
+      "A": "Cômico e lúdico.",
+      "B": "Trágico e pessimista.",
+      "C": "Científico e objetivo.",
+      "D": "Romântico e melancólico."
+    },
+    "correta": "A",
+    "imagem": ""
+  },
+  {
+    "numero": 12,
+    "enunciado": "Leia o fragmento:\n\n\"Chove lá fora, e aqui dentro o coração se encharca de saudade.\"\n\nO autor utiliza qual figura de linguagem?",
+    "alternativas": {
+      "A": "Metáfora",
+      "B": "Hipérbole",
+      "C": "Comparação",
+      "D": "Paradoxo"
+    },
+    "correta": "A",
+    "imagem": ""
+  },
+  {
+    "numero": 13,
+    "enunciado": "Leia o texto:\n\n\"A gentileza é o idioma que o surdo pode ouvir e o cego pode ver.\" (Mark Twain)\n\nA frase apresenta o uso de:",
+    "alternativas": {
+      "A": "Ironia",
+      "B": "Metáfora",
+      "C": "Eufemismo",
+      "D": "Hipérbole"
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 14,
+    "enunciado": "Leia o trecho:\n\n\"Maria estudava, trabalhava e ainda encontrava tempo para ajudar os vizinhos.\"\n\nO texto revela que Maria é uma pessoa:",
+    "alternativas": {
+      "A": "Preguiçosa",
+      "B": "Solidária e esforçada",
+      "C": "Distante dos outros",
+      "D": "Agressiva"
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 15,
+    "enunciado": "Leia o texto:\n\n\"A natureza não precisa de nós. Nós é que precisamos dela.\"\n\nO trecho apresenta uma:",
+    "alternativas": {
+      "A": "Antítese",
+      "B": "Comparação",
+      "C": "Metonímia",
+      "D": "Personificação"
+    },
+    "correta": "A",
+    "imagem": ""
+  },
+  {
+    "numero": 16,
+    "enunciado": "Leia o texto:\n\n\"A vida é feita de escolhas. Cada decisão constrói um caminho.\"\n\nO texto sugere que:",
+    "alternativas": {
+      "A": "O destino independe das ações humanas.",
+      "B": "As decisões moldam o futuro.",
+      "C": "As pessoas não têm liberdade para escolher.",
+      "D": "O acaso domina todas as situações."
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 17,
+    "enunciado": "Leia o trecho:\n\n\"Quando o último sino tocou, soube que algo importante havia terminado.\"\n\nO som do sino tem um valor simbólico de:",
+    "alternativas": {
+      "A": "Começo",
+      "B": "Medo",
+      "C": "Fim ou despedida",
+      "D": "Alegria"
+    },
+    "correta": "C",
+    "imagem": ""
+  },
+  {
+    "numero": 18,
+    "enunciado": "Leia o texto:\n\n\"Ele prometeu mudar, mas suas atitudes continuavam as mesmas.\"\n\nO texto expressa uma ideia de:",
+    "alternativas": {
+      "A": "Coerência",
+      "B": "Contradição",
+      "C": "Ironia humorística",
+      "D": "Esperança"
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 19,
+    "enunciado": "Leia o texto:\n\n\"As palavras têm poder: podem ferir ou curar.\"\n\nO autor pretende destacar:",
+    "alternativas": {
+      "A": "A força e o impacto da linguagem.",
+      "B": "A neutralidade das palavras.",
+      "C": "A falta de importância da fala.",
+      "D": "A relação entre medicina e linguagem."
+    },
+    "correta": "A",
+    "imagem": ""
+  },
+  {
+    "numero": 20,
+    "enunciado": "Leia o trecho:\n\n\"No meio do caminho tinha uma pedra, tinha uma pedra no meio do caminho.\" (Carlos Drummond de Andrade)\n\nA repetição no poema tem a função de:",
+    "alternativas": {
+      "A": "Criar humor e leveza.",
+      "B": "Reforçar a ideia de obstáculo e insistência.",
+      "C": "Descrever uma paisagem real.",
+      "D": "Enfatizar o cansaço do poeta."
+    },
+    "correta": "B",
+    "imagem": ""
+  }
+]
