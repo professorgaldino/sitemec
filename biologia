@@ -1,0 +1,242 @@
+[
+  {
+    "numero": 1,
+    "enunciado": "Qual é a unidade básica da vida?",
+    "alternativas": {
+      "A": "Tecido",
+      "B": "Célula",
+      "C": "Órgão",
+      "D": "Organismo"
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 2,
+    "enunciado": "Qual organela é responsável pela produção de energia na célula?",
+    "alternativas": {
+      "A": "Mitocôndria",
+      "B": "Cloroplasto",
+      "C": "Complexo Golgiense",
+      "D": "Ribossomo"
+    },
+    "correta": "A",
+    "imagem": ""
+  },
+  {
+    "numero": 3,
+    "enunciado": "O DNA está localizado principalmente em qual parte da célula eucarionte?",
+    "alternativas": {
+      "A": "Citoplasma",
+      "B": "Mitocôndria",
+      "C": "Núcleo",
+      "D": "Membrana plasmática"
+    },
+    "correta": "C",
+    "imagem": ""
+  },
+  {
+    "numero": 4,
+    "enunciado": "Qual é a principal função dos ribossomos?",
+    "alternativas": {
+      "A": "Armazenar água",
+      "B": "Produzir proteínas",
+      "C": "Realizar respiração celular",
+      "D": "Produzir energia"
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 5,
+    "enunciado": "Qual é o principal pigmento responsável pela fotossíntese?",
+    "alternativas": {
+      "A": "Melanina",
+      "B": "Clorofila",
+      "C": "Hemoglobina",
+      "D": "Caroteno"
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 6,
+    "enunciado": "Qual estrutura controla a entrada e saída de substâncias na célula?",
+    "alternativas": {
+      "A": "Núcleo",
+      "B": "Citoplasma",
+      "C": "Membrana plasmática",
+      "D": "Mitocôndria"
+    },
+    "correta": "C",
+    "imagem": ""
+  },
+  {
+    "numero": 7,
+    "enunciado": "Qual dos seguintes seres vivos é um produtor?",
+    "alternativas": {
+      "A": "Lobo",
+      "B": "Cogumelo",
+      "C": "Capim",
+      "D": "Bactéria decompositora"
+    },
+    "correta": "C",
+    "imagem": ""
+  },
+  {
+    "numero": 8,
+    "enunciado": "O que caracteriza os seres autotróficos?",
+    "alternativas": {
+      "A": "Alimentam-se de outros seres",
+      "B": "Produzem o próprio alimento",
+      "C": "Vivem apenas em ambientes aquáticos",
+      "D": "São sempre unicelulares"
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 9,
+    "enunciado": "Qual é a molécula responsável pelo transporte de oxigênio no sangue?",
+    "alternativas": {
+      "A": "Insulina",
+      "B": "Hemoglobina",
+      "C": "Glicose",
+      "D": "Adrenalina"
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 10,
+    "enunciado": "O coração humano possui quantas cavidades?",
+    "alternativas": {
+      "A": "2",
+      "B": "3",
+      "C": "4",
+      "D": "5"
+    },
+    "correta": "C",
+    "imagem": ""
+  },
+  {
+    "numero": 11,
+    "enunciado": "Em qual local do corpo ocorre a troca gasosa no sistema respiratório?",
+    "alternativas": {
+      "A": "Brônquios",
+      "B": "Traqueia",
+      "C": "Alvéolos pulmonares",
+      "D": "Laringe"
+    },
+    "correta": "C",
+    "imagem": ""
+  },
+  {
+    "numero": 12,
+    "enunciado": "Qual vitamina é essencial para a coagulação do sangue?",
+    "alternativas": {
+      "A": "Vitamina A",
+      "B": "Vitamina D",
+      "C": "Vitamina K",
+      "D": "Vitamina C"
+    },
+    "correta": "C",
+    "imagem": ""
+  },
+  {
+    "numero": 13,
+    "enunciado": "Qual sistema do corpo humano é responsável pela coordenação das atividades corporais?",
+    "alternativas": {
+      "A": "Respiratório",
+      "B": "Digestório",
+      "C": "Nervoso",
+      "D": "Endócrino"
+    },
+    "correta": "C",
+    "imagem": ""
+  },
+  {
+    "numero": 14,
+    "enunciado": "Qual é o principal produto da fotossíntese?",
+    "alternativas": {
+      "A": "Glicose",
+      "B": "Oxigênio",
+      "C": "Água",
+      "D": "Dióxido de carbono"
+    },
+    "correta": "A",
+    "imagem": ""
+  },
+  {
+    "numero": 15,
+    "enunciado": "O que é o ecossistema?",
+    "alternativas": {
+      "A": "Conjunto de indivíduos de uma mesma espécie",
+      "B": "Conjunto de seres vivos e o ambiente onde vivem",
+      "C": "Conjunto de cadeias alimentares isoladas",
+      "D": "Apenas o ambiente físico de um local"
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 16,
+    "enunciado": "Os fungos se alimentam de que forma?",
+    "alternativas": {
+      "A": "Por fotossíntese",
+      "B": "Por absorção de matéria orgânica",
+      "C": "Por ingestão de outros seres vivos",
+      "D": "Por respiração anaeróbica"
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 17,
+    "enunciado": "Qual estrutura é responsável pela reprodução nas plantas com flores?",
+    "alternativas": {
+      "A": "Folha",
+      "B": "Caule",
+      "C": "Flor",
+      "D": "Raiz"
+    },
+    "correta": "C",
+    "imagem": ""
+  },
+  {
+    "numero": 18,
+    "enunciado": "A teoria celular afirma que:",
+    "alternativas": {
+      "A": "A célula é a menor parte viva e forma todos os seres vivos",
+      "B": "A célula é encontrada apenas em animais",
+      "C": "As células são formadas espontaneamente",
+      "D": "A célula é responsável apenas pela reprodução"
+    },
+    "correta": "A",
+    "imagem": ""
+  },
+  {
+    "numero": 19,
+    "enunciado": "Qual é a função do sistema imunológico?",
+    "alternativas": {
+      "A": "Regular o metabolismo",
+      "B": "Proteger o corpo contra doenças e agentes infecciosos",
+      "C": "Produzir energia",
+      "D": "Regular a temperatura corporal"
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 20,
+    "enunciado": "A fotossíntese ocorre em qual organela?",
+    "alternativas": {
+      "A": "Mitocôndria",
+      "B": "Cloroplasto",
+      "C": "Lisossomo",
+      "D": "Núcleo"
+    },
+    "correta": "B",
+    "imagem": ""
+  }
+]
