@@ -68,5 +68,12 @@
     "alternativas": {"A": "12 cm", "B": "18 cm", "C": "24 cm", "D": "36 cm"},
     "resposta": "C",
     "imagem": ""
+  },
+  {
+    "id": 11,
+    "enunciado": "Um cilindro circular reto e um cone reto possuem a mesma altura h e o mesmo raio r da base. Uma semi-esfera é retirada do interior do cilindro e é acrescentada no topo do cone, gerando os sólidos S1 e S2 , conforme mostra a figura.",
+    "alternativas": {"A": "Vol (S1) = Vol (S2) se e somente se h = 2r", "B": "Vol (S1) = Vol (S2) se e somente se r = 2h", "C": "Vol (S1) = Vol (S2) para quaisquer valores de r e h.", "D": "Vol (S1) > Vol (S2) para quaisquer valores de r e h."},
+    "resposta": "A",
+    "imagem": "https://www.infoescola.com/wp-content/uploads/2010/05/exec9mtm.jpg"
   }
 ]
