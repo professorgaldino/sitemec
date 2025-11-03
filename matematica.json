@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "enunciado": "Qual o valor de x na equação 2x + 5 = 15?",
+    "alternativas": {
+      "A": "3",
+      "B": "4",
+      "C": "5",
+      "D": "6"
+    },
+    "resposta": "B",
+    "imagem": ""
+  },
+  {
+    "id": 2,
+    "enunciado": "Qual é a área de um círculo com raio 7 cm?",
+    "alternativas": {
+      "A": "154 cm²",
+      "B": "49 cm²",
+      "C": "44 cm²",
+      "D": "100 cm²"
+    },
+    "resposta": "A",
+    "imagem": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Circle_-_black_simple.svg/120px-Circle_-_black_simple.svg.png"
+  },
+  {
+    "id": 3,
+    "enunciado": "Resolva a expressão: 3² + 4²",
+    "alternativas": {
+      "A": "7",
+      "B": "12",
+      "C": "25",
+      "D": "24"
+    },
+    "resposta": "C",
+    "imagem": ""
+  },
+  {
+    "id": 4,
+    "enunciado": "Qual é o próximo número na sequência: 2, 4, 8, 16, ?",
+    "alternativas": {
+      "A": "18",
+      "B": "32",
+      "C": "24",
+      "D": "64"
+    },
+    "resposta": "B",
+    "imagem": ""
+  },
+  {
+    "id": 5,
+    "enunciado": "Qual é a fração equivalente a 0,75?",
+    "alternativas": {
+      "A": "3/4",
+      "B": "7/10",
+      "C": "1/2",
+      "D": "5/8"
+    },
+    "resposta": "A",
+    "imagem": ""
+  },
+  {
+    "id": 6,
+    "enunciado": "Se um triângulo tem lados de 3 cm, 4 cm e 5 cm, ele é:",
+    "alternativas": {
+      "A": "Equilátero",
+      "B": "Isósceles",
+      "C": "Escaleno e Retângulo",
+      "D": "Nenhuma das anteriores"
+    },
+    "resposta": "C",
+    "imagem": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Triangle.Equilateral.svg/120px-Triangle.Equilateral.svg.png"
+  },
+  {
+    "id": 7,
+    "enunciado": "Qual é a média de 5, 8 e 12?",
+    "alternativas": {
+      "A": "8",
+      "B": "9",
+      "C": "10",
+      "D": "12"
+    },
+    "resposta": "B",
+    "imagem": ""
+  },
+  {
+    "id": 8,
+    "enunciado": "Quantos graus tem um ângulo reto?",
+    "alternativas": {
+      "A": "45°",
+      "B": "90°",
+      "C": "180°",
+      "D": "360°"
+    },
+    "resposta": "B",
+    "imagem": ""
+  },
+  {
+    "id": 9,
+    "enunciado": "Qual é o valor de 7 × 8?",
+    "alternativas": {
+      "A": "54",
+      "B": "56",
+      "C": "58",
+      "D": "64"
+    },
+    "resposta": "B",
+    "imagem": ""
+  },
+  {
+    "id": 10,
+    "enunciado": "Qual é o perímetro de um quadrado com lado 6 cm?",
+    "alternativas": {
+      "A": "12 cm",
+      "B": "18 cm",
+      "C": "24 cm",
+      "D": "36 cm"
+    },
+    "resposta": "C",
+    "imagem": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Simple_square.svg/120px-Simple_square.svg.png"
+  }
+]
