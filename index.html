@@ -23,8 +23,25 @@
   #loginMsg { color: red; margin-top: 10px; font-weight: bold; }
 
   /* MENU GUIAS */
-  #menuGuias { display:none; margin:20px 0; width:100%; text-align:center; }
-  #menuGuias select { padding:12px 20px; border-radius:12px; border:1px solid #ccc; font-size:1rem; }
+  #menuGuias { display: none; margin: 20px 0; width: 100%; text-align: center; }
+  #menuGuias select {
+    padding: 14px 24px;
+    border-radius: 12px;
+    border: none;
+    font-size: 1.1rem;
+    background: linear-gradient(90deg, #007bff, #0056b3);
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  }
+  #menuGuias select:hover {
+    background: linear-gradient(90deg, #0056b3, #003366);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+  }
+  #menuGuias select:focus { outline: none; box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); }
 
   /* ÁREAS DE ESTUDO */
   #areaDiv { display: none; width: 100%; text-align: center; }
@@ -34,8 +51,8 @@
   .card h3 { margin-bottom: 10px; color: #003366; font-size: 1.2rem; }
 
   /* QUESTÕES */
-  #questaoDiv { display: none; margin-top: 30px; width: 100%; max-width: 800px; }
-  .questao-card { background: #fff; padding: 30px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+  #questaoDiv { display: none; margin-top: 30px; width: 100%; max-width: 800px; text-align: center; }
+  .questao-card { background: #fff; padding: 30px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-bottom: 20px; }
   .questao-card img { max-width: 100%; margin: 20px 0; border-radius: 12px; display: block; }
   .alternativas button { width: 100%; padding: 14px; margin: 8px 0; border: 1px solid #007bff; background: #fff; border-radius: 12px; font-size: 1rem; cursor: pointer; transition: all 0.3s; text-align: left; }
   .alternativas button:hover { background: #007bff; color: #fff; }
@@ -43,6 +60,20 @@
   .alternativas button.wrong { background: #dc3545; color: #fff; border-color: #dc3545; }
 
   .feedback { margin-top: 15px; font-weight: bold; font-size: 1.1rem; }
+
+  /* BOTÃO VOLTAR */
+  #voltarBtn {
+    margin-top: 15px;
+    padding: 12px 24px;
+    background-color: #ff5722;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  #voltarBtn:hover { background-color: #e64a19; transform: translateY(-2px); }
 
   footer { background-color: #003366; color: #fff; text-align: center; padding: 15px; margin-top: 50px; border-radius: 0 0 16px 16px; }
 </style>
@@ -68,15 +99,15 @@
   <div id="menuGuias">
     <select id="selectGuias" onchange="abrirGuia(this.value)">
       <option value="">Escolha um Guia de Estudos</option>
-      <option value="gmat.html">Matemática</option>
-      <option value="gfis.html">Física</option>
-      <option value="gqui.html">Química</option>
-      <option value="gbio.html">Biologia</option>
-      <option value="ghist.html">História</option>
-      <option value="ggeo.html">Geografia</option>
-      <option value="gport.html">Português</option>
-      <option value="ging.html">Inglês</option>
-      <option value="gatu.html">Atualidades</option>
+      <option value="guia_matematica.html">Matemática</option>
+      <option value="guia_fisica.html">Física</option>
+      <option value="guia_quimica.html">Química</option>
+      <option value="guia_biologia.html">Biologia</option>
+      <option value="guia_historia.html">História</option>
+      <option value="guia_geografia.html">Geografia</option>
+      <option value="guia_portugues.html">Português</option>
+      <option value="guia_ingles.html">Inglês</option>
+      <option value="guia_atualidades.html">Atualidades</option>
     </select>
   </div>
 
@@ -101,6 +132,7 @@
     <div class="questao-card" id="questao"></div>
     <div class="feedback" id="feedback"></div>
     <button onclick="mostrarQuestao()">Próxima Questão</button>
+    <button id="voltarBtn" onclick="voltarParaAreas()">Voltar para Áreas de Estudo</button>
   </div>
 </main>
 
@@ -157,6 +189,13 @@ function carregarDisciplina(file) {
     });
 }
 
+// VOLTAR PARA ÁREAS
+function voltarParaAreas() {
+  document.getElementById('questaoDiv').style.display = 'none';
+  document.getElementById('areaDiv').style.display = 'block';
+  questoes = [];
+}
+
 // MOSTRAR QUESTÃO ALEATÓRIA
 function mostrarQuestao() {
   if(!questoes.length) return;
@@ -196,4 +235,3 @@ function verificarResposta(btn, resposta) {
 
 </body>
 </html>
-
