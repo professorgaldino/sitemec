@@ -1,0 +1,242 @@
+[
+  {
+    "numero": 1,
+    "enunciado": "O período conhecido como 'Pré-História' é caracterizado por:",
+    "alternativas": {
+      "A": "O surgimento da escrita.",
+      "B": "O início das grandes navegações.",
+      "C": "O desenvolvimento das cidades antigas.",
+      "D": "A ausência de registros escritos."
+    },
+    "correta": "D",
+    "imagem": ""
+  },
+  {
+    "numero": 2,
+    "enunciado": "A Revolução Francesa, iniciada em 1789, teve como lema:",
+    "alternativas": {
+      "A": "Trabalho, Ordem e Progresso.",
+      "B": "Liberdade, Igualdade e Fraternidade.",
+      "C": "União, Fé e Coragem.",
+      "D": "Justiça, Honra e Pátria."
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 3,
+    "enunciado": "Cristóvão Colombo chegou à América em:",
+    "alternativas": {
+      "A": "1453",
+      "B": "1492",
+      "C": "1500",
+      "D": "1519"
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 4,
+    "enunciado": "A chegada dos portugueses ao Brasil ocorreu em:",
+    "alternativas": {
+      "A": "1498",
+      "B": "1500",
+      "C": "1502",
+      "D": "1520"
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 5,
+    "enunciado": "Durante o período colonial, o principal produto de exportação do Brasil foi:",
+    "alternativas": {
+      "A": "Café.",
+      "B": "Açúcar.",
+      "C": "Ouro.",
+      "D": "Algodão."
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 6,
+    "enunciado": "A Inconfidência Mineira, movimento de 1789, foi liderada por:",
+    "alternativas": {
+      "A": "Zumbi dos Palmares.",
+      "B": "Tiradentes.",
+      "C": "Dom Pedro I.",
+      "D": "José Bonifácio."
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 7,
+    "enunciado": "A independência do Brasil foi proclamada em:",
+    "alternativas": {
+      "A": "7 de setembro de 1822.",
+      "B": "12 de outubro de 1821.",
+      "C": "15 de novembro de 1889.",
+      "D": "25 de março de 1824."
+    },
+    "correta": "A",
+    "imagem": ""
+  },
+  {
+    "numero": 8,
+    "enunciado": "O primeiro imperador do Brasil foi:",
+    "alternativas": {
+      "A": "Dom João VI.",
+      "B": "Dom Pedro I.",
+      "C": "Dom Pedro II.",
+      "D": "Getúlio Vargas."
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 9,
+    "enunciado": "A escravidão no Brasil foi abolida oficialmente em:",
+    "alternativas": {
+      "A": "1822.",
+      "B": "1850.",
+      "C": "1888.",
+      "D": "1891."
+    },
+    "correta": "C",
+    "imagem": ""
+  },
+  {
+    "numero": 10,
+    "enunciado": "A República no Brasil foi proclamada em:",
+    "alternativas": {
+      "A": "1822.",
+      "B": "1889.",
+      "C": "1891.",
+      "D": "1900."
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 11,
+    "enunciado": "Getúlio Vargas governou o Brasil em dois períodos e ficou conhecido por:",
+    "alternativas": {
+      "A": "Criar leis trabalhistas e o salário mínimo.",
+      "B": "Abolir a escravidão.",
+      "C": "Proclamar a República.",
+      "D": "Fundar a Petrobras e a Embrapa."
+    },
+    "correta": "A",
+    "imagem": ""
+  },
+  {
+    "numero": 12,
+    "enunciado": "O golpe militar que instaurou a Ditadura no Brasil ocorreu em:",
+    "alternativas": {
+      "A": "1930.",
+      "B": "1945.",
+      "C": "1964.",
+      "D": "1985."
+    },
+    "correta": "C",
+    "imagem": ""
+  },
+  {
+    "numero": 13,
+    "enunciado": "O período da Ditadura Militar no Brasil terminou oficialmente com a eleição de:",
+    "alternativas": {
+      "A": "Tancredo Neves.",
+      "B": "Juscelino Kubitschek.",
+      "C": "Getúlio Vargas.",
+      "D": "João Goulart."
+    },
+    "correta": "A",
+    "imagem": ""
+  },
+  {
+    "numero": 14,
+    "enunciado": "A Segunda Guerra Mundial ocorreu entre os anos de:",
+    "alternativas": {
+      "A": "1914 e 1918.",
+      "B": "1939 e 1945.",
+      "C": "1950 e 1955.",
+      "D": "1960 e 1970."
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 15,
+    "enunciado": "O regime nazista foi liderado por:",
+    "alternativas": {
+      "A": "Adolf Hitler.",
+      "B": "Joseph Stalin.",
+      "C": "Benito Mussolini.",
+      "D": "Winston Churchill."
+    },
+    "correta": "A",
+    "imagem": ""
+  },
+  {
+    "numero": 16,
+    "enunciado": "A Guerra Fria foi um conflito ideológico entre:",
+    "alternativas": {
+      "A": "Estados Unidos e Alemanha.",
+      "B": "Estados Unidos e União Soviética.",
+      "C": "China e Japão.",
+      "D": "Inglaterra e França."
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 17,
+    "enunciado": "A Revolução Industrial começou na:",
+    "alternativas": {
+      "A": "Alemanha.",
+      "B": "Inglaterra.",
+      "C": "França.",
+      "D": "Itália."
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 18,
+    "enunciado": "O Iluminismo foi um movimento que defendia:",
+    "alternativas": {
+      "A": "O poder absoluto dos reis.",
+      "B": "A fé como única forma de conhecimento.",
+      "C": "A razão, a ciência e a liberdade.",
+      "D": "A escravidão e o mercantilismo."
+    },
+    "correta": "C",
+    "imagem": ""
+  },
+  {
+    "numero": 19,
+    "enunciado": "O Muro de Berlim foi símbolo da divisão:",
+    "alternativas": {
+      "A": "Entre Alemanha e França.",
+      "B": "Entre capitalismo e socialismo.",
+      "C": "Entre EUA e China.",
+      "D": "Entre Europa e África."
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 20,
+    "enunciado": "O descobrimento oficial do Brasil é atribuído a:",
+    "alternativas": {
+      "A": "Pero Vaz de Caminha.",
+      "B": "Pedro Álvares Cabral.",
+      "C": "Tomé de Souza.",
+      "D": "Dom João VI."
+    },
+    "correta": "B",
+    "imagem": ""
+  }
+]
