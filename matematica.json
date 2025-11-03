@@ -21,7 +21,79 @@
       "D": "100 cm²"
     },
     "resposta": "A",
-    "imagem": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Circle_-_black_simple.svg/120px-Circle_-_black_simple.svg.png"
+    "imagem": "https://br.images.search.yahoo.com/images/view;_ylt=AwrihRb2iwhp_hkLSfv16Qt.;_ylu=c2VjA3NyBHNsawNpbWcEb2lkAzNmODgyYTMwZmJjYjAwYzFlODdiZTc2MzU0MzFlMWYwBGdwb3MDMwRpdANiaW5n?back=https%3A%2F%2Fbr.images.search.yahoo.com%2Fsearch%2Fimages%3Fp%3Dquest%25C3%25A7oes%2Bde%2Bvolume%26type%3DE210BR91199G0-E210BR91199G0%26fr%3Dmcafee%26fr2%3Dpiv-web%26tab%3Dorganic%26ri%3D3&w=516&h=239&imgurl=www.infoescola.com%2Fwp-content%2Fuploads%2F2015%2F11%2Fquestaoenem147.jpg&rurl=https%3A%2F%2Fwww.infoescola.com%2Fmatematica%2Fvolume-de-solidos-geometricos%2Fexercicios%2F&size=16KB&p=quest%C3%A7oes+de+volume&oid=3f882a30fbcb00c1e87be7635431e1f0&fr2=piv-web&fr=mcafee&tt=Exerc%C3%ADcios+sobre+Volumes+de+S%C3%B3lidos+Geom%C3%A9tricos+-+Quest%C3%B5es+-+InfoEscola&b=0&ni=21&no=3&ts=&tab=organic&sigr=k26WdD6csDYo&sigb=nJv7mo0ORh2U&sigi=QvaI6Vgi2YJ4&sigt=n8eDgUmogP5k&.crumb=eAd2NvpCqNB&fr=mcafee&fr2=piv-web&type=E210BR91199G0-E210BR91199G0"
+  {
+    "id": 1,
+    "enunciado": "Qual o valor de x na equação 2x + 5 = 15?",
+    "alternativas": {"A": "3", "B": "5", "C": "4", "D": "6"},
+    "resposta": "C",
+    "imagem": ""
+  },
+  {
+    "id": 2,
+    "enunciado": "Qual é a área de um círculo com raio 7 cm?",
+    "alternativas": {"A": "154 cm²", "B": "49 cm²", "C": "44 cm²", "D": "100 cm²"},
+    "resposta": "A",
+    "imagem": "https://upload.wikimedia.org/wikipedia/commons/8/8c/Circle_-_simple.svg"
+  },
+  {
+    "id": 3,
+    "enunciado": "Resolva a expressão: 3² + 4²",
+    "alternativas": {"A": "7", "B": "12", "C": "25", "D": "24"},
+    "resposta": "C",
+    "imagem": ""
+  },
+  {
+    "id": 4,
+    "enunciado": "Qual é o próximo número na sequência: 2, 4, 8, 16, ?",
+    "alternativas": {"A": "18", "B": "32", "C": "24", "D": "64"},
+    "resposta": "B",
+    "imagem": ""
+  },
+  {
+    "id": 5,
+    "enunciado": "Qual é a fração equivalente a 0,75?",
+    "alternativas": {"A": "3/4", "B": "7/10", "C": "1/2", "D": "5/8"},
+    "resposta": "A",
+    "imagem": ""
+  },
+  {
+    "id": 6,
+    "enunciado": "Se um triângulo tem lados de 3 cm, 4 cm e 5 cm, ele é:",
+    "alternativas": {"A": "Equilátero", "B": "Isósceles", "C": "Escaleno e Retângulo", "D": "Nenhuma das anteriores"},
+    "resposta": "C",
+    "imagem": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Right_triangle_3-4-5.svg/200px-Right_triangle_3-4-5.svg.png"
+  },
+  {
+    "id": 7,
+    "enunciado": "Qual é a média de 5, 8 e 12?",
+    "alternativas": {"A": "8", "B": "9", "C": "10", "D": "12"},
+    "resposta": "B",
+    "imagem": ""
+  },
+  {
+    "id": 8,
+    "enunciado": "Quantos graus tem um ângulo reto?",
+    "alternativas": {"A": "45°", "B": "90°", "C": "180°", "D": "360°"},
+    "resposta": "B",
+    "imagem": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Right_angle.svg/200px-Right_angle.svg.png"
+  },
+  {
+    "id": 9,
+    "enunciado": "Qual é o valor de 7 × 8?",
+    "alternativas": {"A": "54", "B": "56", "C": "58", "D": "64"},
+    "resposta": "B",
+    "imagem": ""
+  },
+  {
+    "id": 10,
+    "enunciado": "Qual é o perímetro de um quadrado com lado 6 cm?",
+    "alternativas": {"A": "12 cm", "B": "18 cm", "C": "24 cm", "D": "36 cm"},
+    "resposta": "C",
+    "imagem": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Square_-_simple.svg/200px-Square_-_simple.svg.png"
+  }
+]
+"
   },
   {
     "id": 3,
