@@ -23,36 +23,8 @@
   #loginMsg { color: red; margin-top: 10px; font-weight: bold; }
 
   /* MENU GUIAS */
-  #menuGuias {
-    display: none;
-    margin: 20px 0;
-    width: 100%;
-    text-align: center;
-  }
-
-  #menuGuias select {
-    padding: 14px 24px;
-    border-radius: 12px;
-    border: none;
-    font-size: 1.1rem;
-    background: linear-gradient(90deg, #007bff, #0056b3);
-    color: #fff;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-  }
-
-  #menuGuias select:hover {
-    background: linear-gradient(90deg, #0056b3, #003366);
-    transform: translateY(-2px);
-    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
-  }
-
-  #menuGuias select:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
-  }
+  #menuGuias { display:none; margin:20px 0; width:100%; text-align:center; }
+  #menuGuias select { padding:12px 20px; border-radius:12px; border:1px solid #ccc; font-size:1rem; }
 
   /* ÁREAS DE ESTUDO */
   #areaDiv { display: none; width: 100%; text-align: center; }
@@ -96,15 +68,15 @@
   <div id="menuGuias">
     <select id="selectGuias" onchange="abrirGuia(this.value)">
       <option value="">Escolha um Guia de Estudos</option>
-      <option value="gmat.html">Matemática</option>
-      <option value="gfis.html">Física</option>
-      <option value="gqui.html">Química</option>
-      <option value="gbio.html">Biologia</option>
-      <option value="ghist.html">História</option>
-      <option value="ggeo.html">Geografia</option>
-      <option value="gport.html">Português</option>
-      <option value="ging.html">Inglês</option>
-      <option value="gatu.html">Atualidades</option>
+      <option value="guia_matematica.html">Matemática</option>
+      <option value="guia_fisica.html">Física</option>
+      <option value="guia_quimica.html">Química</option>
+      <option value="guia_biologia.html">Biologia</option>
+      <option value="guia_historia.html">História</option>
+      <option value="guia_geografia.html">Geografia</option>
+      <option value="guia_portugues.html">Português</option>
+      <option value="guia_ingles.html">Inglês</option>
+      <option value="guia_atualidades.html">Atualidades</option>
     </select>
   </div>
 
