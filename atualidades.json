@@ -1,0 +1,242 @@
+[
+  {
+    "numero": 1,
+    "enunciado": "Qual foi o principal impacto da pandemia de COVID-19 na economia mundial?",
+    "alternativas": {
+      "A": "Aumento global do emprego.",
+      "B": "Crescimento do comércio internacional sem restrições.",
+      "C": "Queda da atividade econômica e aumento do desemprego.",
+      "D": "Redução das desigualdades sociais."
+    },
+    "correta": "C",
+    "imagem": ""
+  },
+  {
+    "numero": 2,
+    "enunciado": "A crise climática global tem sido marcada por:",
+    "alternativas": {
+      "A": "Redução das temperaturas médias.",
+      "B": "Aumento da emissão de gases de efeito estufa e eventos climáticos extremos.",
+      "C": "Diminuição do nível do mar.",
+      "D": "Extinção de todas as espécies de peixes."
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 3,
+    "enunciado": "O Acordo de Paris, assinado em 2015, trata de:",
+    "alternativas": {
+      "A": "Redução da pobreza mundial.",
+      "B": "Promoção de guerras comerciais.",
+      "C": "Medidas de combate às mudanças climáticas.",
+      "D": "Regulamentação do comércio de armas."
+    },
+    "correta": "C",
+    "imagem": ""
+  },
+  {
+    "numero": 4,
+    "enunciado": "O Brexit se refere a:",
+    "alternativas": {
+      "A": "A entrada do Reino Unido na União Europeia.",
+      "B": "A saída do Reino Unido da União Europeia.",
+      "C": "A reforma econômica da União Europeia.",
+      "D": "Um novo tratado de comércio com os EUA."
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 5,
+    "enunciado": "A questão do desmatamento na Amazônia é preocupante porque:",
+    "alternativas": {
+      "A": "Aumenta a produção agrícola sustentável.",
+      "B": "Reduz a biodiversidade e contribui para as mudanças climáticas.",
+      "C": "Diminui a emissão de carbono.",
+      "D": "Impede a mineração ilegal."
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 6,
+    "enunciado": "A tecnologia 5G promete:",
+    "alternativas": {
+      "A": "Conexão mais lenta e limitada.",
+      "B": "Velocidade de internet maior e menor latência.",
+      "C": "Aumentar a emissão de gases de efeito estufa.",
+      "D": "Eliminar a necessidade de Wi-Fi doméstico."
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 7,
+    "enunciado": "O conflito entre Rússia e Ucrânia começou em 2022 e envolve:",
+    "alternativas": {
+      "A": "Questões territoriais e políticas.",
+      "B": "A disputa pelo controle da Amazonia.",
+      "C": "O domínio sobre o canal de Suez.",
+      "D": "A fusão de empresas tecnológicas."
+    },
+    "correta": "A",
+    "imagem": ""
+  },
+  {
+    "numero": 8,
+    "enunciado": "A globalização é caracterizada por:",
+    "alternativas": {
+      "A": "Isolamento cultural e econômico.",
+      "B": "Integração econômica, cultural e tecnológica entre países.",
+      "C": "Proibição de intercâmbio comercial.",
+      "D": "Aumento das barreiras alfandegárias."
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 9,
+    "enunciado": "O aquecimento global contribui para:",
+    "alternativas": {
+      "A": "Estabilidade climática.",
+      "B": "Aumento de furacões, secas e enchentes.",
+      "C": "Melhoria das colheitas em todo o mundo.",
+      "D": "Diminuição da temperatura global."
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 10,
+    "enunciado": "A inflação é:",
+    "alternativas": {
+      "A": "A queda dos preços de produtos e serviços.",
+      "B": "O aumento geral e contínuo dos preços de bens e serviços.",
+      "C": "A estabilidade econômica de um país.",
+      "D": "A redução da taxa de juros pelo governo."
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 11,
+    "enunciado": "O G20 é:",
+    "alternativas": {
+      "A": "Um grupo de países em desenvolvimento apenas.",
+      "B": "Uma organização internacional de proteção ambiental.",
+      "C": "Um fórum que reúne as maiores economias do mundo.",
+      "D": "Um tratado de livre comércio da América Latina."
+    },
+    "correta": "C",
+    "imagem": ""
+  },
+  {
+    "numero": 12,
+    "enunciado": "A ONU foi criada com o objetivo de:",
+    "alternativas": {
+      "A": "Promover guerras entre países.",
+      "B": "Manter a paz e a segurança internacional.",
+      "C": "Unificar moedas globais.",
+      "D": "Controlar empresas multinacionais."
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 13,
+    "enunciado": "A COP26 foi uma conferência focada em:",
+    "alternativas": {
+      "A": "Energia nuclear.",
+      "B": "Mudanças climáticas e metas de redução de emissões.",
+      "C": "Cibersegurança global.",
+      "D": "Comércio internacional."
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 14,
+    "enunciado": "A crise hídrica no Brasil é agravada por:",
+    "alternativas": {
+      "A": "O excesso de chuvas em todas as regiões.",
+      "B": "O desperdício de água, desmatamento e mudanças climáticas.",
+      "C": "A construção de muitas hidrelétricas.",
+      "D": "O aumento da população urbana sem impacto."
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 15,
+    "enunciado": "O agronegócio brasileiro é:",
+    "alternativas": {
+      "A": "Irrelevante para a economia do país.",
+      "B": "Um setor estratégico para exportação e geração de empregos.",
+      "C": "Totalmente automatizado sem mão de obra.",
+      "D": "Somente focado em produção de soja."
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 16,
+    "enunciado": "O termo 'fake news' refere-se a:",
+    "alternativas": {
+      "A": "Notícias falsas ou enganosas.",
+      "B": "Notícias produzidas por governos apenas.",
+      "C": "Jornalismo científico.",
+      "D": "Publicações em jornais acadêmicos."
+    },
+    "correta": "A",
+    "imagem": ""
+  },
+  {
+    "numero": 17,
+    "enunciado": "O avanço da inteligência artificial tem gerado debates sobre:",
+    "alternativas": {
+      "A": "Riscos éticos, empregos e privacidade.",
+      "B": "Aumento da fome no mundo.",
+      "C": "Redução do aquecimento global.",
+      "D": "Fim da globalização."
+    },
+    "correta": "A",
+    "imagem": ""
+  },
+  {
+    "numero": 18,
+    "enunciado": "A pandemia de COVID-19 evidenciou:",
+    "alternativas": {
+      "A": "A importância da saúde pública e da vacinação.",
+      "B": "Que a economia não é afetada por crises sanitárias.",
+      "C": "Que a tecnologia não influencia a sociedade.",
+      "D": "O aumento das guerras mundiais."
+    },
+    "correta": "A",
+    "imagem": ""
+  },
+  {
+    "numero": 19,
+    "enunciado": "A migração de pessoas é causada principalmente por:",
+    "alternativas": {
+      "A": "Conflitos, pobreza, desastres naturais e oportunidades econômicas.",
+      "B": "Somente turismo internacional.",
+      "C": "Investimentos financeiros.",
+      "D": "O crescimento da internet."
+    },
+    "correta": "A",
+    "imagem": ""
+  },
+  {
+    "numero": 20,
+    "enunciado": "O Objetivo de Desenvolvimento Sustentável (ODS) da ONU visa:",
+    "alternativas": {
+      "A": "Erradicar a fome, proteger o planeta e garantir paz e prosperidade.",
+      "B": "Fortalecer apenas países desenvolvidos.",
+      "C": "Reduzir a população mundial.",
+      "D": "Criar monopólios internacionais."
+    },
+    "correta": "A",
+    "imagem": ""
+  }
+]
