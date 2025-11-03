@@ -1,0 +1,242 @@
+[
+  {
+    "numero": 1,
+    "enunciado": "A Geografia é a ciência que estuda:",
+    "alternativas": {
+      "A": "A história das civilizações antigas.",
+      "B": "Os fenômenos naturais e humanos que ocorrem na Terra.",
+      "C": "Os cálculos matemáticos e físicos.",
+      "D": "As reações químicas dos elementos da natureza."
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 2,
+    "enunciado": "A linha do Equador divide o planeta em:",
+    "alternativas": {
+      "A": "Leste e Oeste.",
+      "B": "Norte e Sul.",
+      "C": "Oriente e Ocidente.",
+      "D": "Ártico e Antártico."
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 3,
+    "enunciado": "Os paralelos e meridianos são usados para:",
+    "alternativas": {
+      "A": "Determinar a altitude de um local.",
+      "B": "Marcar os fusos horários.",
+      "C": "Localizar pontos na superfície terrestre.",
+      "D": "Calcular a temperatura média de uma região."
+    },
+    "correta": "C",
+    "imagem": ""
+  },
+  {
+    "numero": 4,
+    "enunciado": "O movimento de rotação da Terra é responsável por:",
+    "alternativas": {
+      "A": "A sucessão dos dias e das noites.",
+      "B": "As estações do ano.",
+      "C": "As fases da Lua.",
+      "D": "Os eclipses solares."
+    },
+    "correta": "A",
+    "imagem": ""
+  },
+  {
+    "numero": 5,
+    "enunciado": "O movimento de translação da Terra é responsável por:",
+    "alternativas": {
+      "A": "A variação da temperatura diária.",
+      "B": "As marés altas e baixas.",
+      "C": "As estações do ano.",
+      "D": "O ciclo das chuvas."
+    },
+    "correta": "C",
+    "imagem": ""
+  },
+  {
+    "numero": 6,
+    "enunciado": "A camada da atmosfera mais próxima da superfície terrestre é chamada de:",
+    "alternativas": {
+      "A": "Estratosfera.",
+      "B": "Troposfera.",
+      "C": "Mesosfera.",
+      "D": "Termosfera."
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 7,
+    "enunciado": "O clima tropical caracteriza-se por:",
+    "alternativas": {
+      "A": "Temperaturas muito baixas o ano todo.",
+      "B": "Chuvas escassas e regulares.",
+      "C": "Duas estações bem definidas: uma seca e outra chuvosa.",
+      "D": "Invernos rigorosos e verões amenos."
+    },
+    "correta": "C",
+    "imagem": ""
+  },
+  {
+    "numero": 8,
+    "enunciado": "O desmatamento na Amazônia está principalmente relacionado a:",
+    "alternativas": {
+      "A": "A expansão urbana descontrolada.",
+      "B": "A atividade industrial pesada.",
+      "C": "A agropecuária e extração de madeira.",
+      "D": "O turismo ecológico."
+    },
+    "correta": "C",
+    "imagem": ""
+  },
+  {
+    "numero": 9,
+    "enunciado": "A principal consequência do aquecimento global é:",
+    "alternativas": {
+      "A": "A diminuição do nível dos oceanos.",
+      "B": "A formação de novas geleiras.",
+      "C": "O aumento da temperatura média do planeta.",
+      "D": "A redução da emissão de gases poluentes."
+    },
+    "correta": "C",
+    "imagem": ""
+  },
+  {
+    "numero": 10,
+    "enunciado": "Os países desenvolvidos se caracterizam por:",
+    "alternativas": {
+      "A": "Alta taxa de analfabetismo e baixa renda.",
+      "B": "Economia baseada na agricultura de subsistência.",
+      "C": "Alta industrialização e qualidade de vida.",
+      "D": "População predominantemente rural."
+    },
+    "correta": "C",
+    "imagem": ""
+  },
+  {
+    "numero": 11,
+    "enunciado": "A globalização é um processo que:",
+    "alternativas": {
+      "A": "Isola os países economicamente.",
+      "B": "Fortalece as economias locais sem interferências externas.",
+      "C": "Integra economias, culturas e tecnologias entre diferentes países.",
+      "D": "Impede o avanço da tecnologia."
+    },
+    "correta": "C",
+    "imagem": ""
+  },
+  {
+    "numero": 12,
+    "enunciado": "O Brasil é um país localizado predominantemente em qual hemisfério?",
+    "alternativas": {
+      "A": "Sul e Ocidental.",
+      "B": "Norte e Oriental.",
+      "C": "Leste e Setentrional.",
+      "D": "Oeste e Boreal."
+    },
+    "correta": "A",
+    "imagem": ""
+  },
+  {
+    "numero": 13,
+    "enunciado": "A região do Brasil com maior concentração de indústrias é:",
+    "alternativas": {
+      "A": "Centro-Oeste.",
+      "B": "Sul.",
+      "C": "Sudeste.",
+      "D": "Norte."
+    },
+    "correta": "C",
+    "imagem": ""
+  },
+  {
+    "numero": 14,
+    "enunciado": "O principal bioma brasileiro com vegetação rasteira e clima semiárido é:",
+    "alternativas": {
+      "A": "Cerrado.",
+      "B": "Caatinga.",
+      "C": "Mata Atlântica.",
+      "D": "Pantanal."
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 15,
+    "enunciado": "O processo de urbanização está ligado:",
+    "alternativas": {
+      "A": "Ao aumento da população rural.",
+      "B": "À migração das pessoas do campo para as cidades.",
+      "C": "À criação de novas áreas agrícolas.",
+      "D": "À diminuição da industrialização."
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 16,
+    "enunciado": "A principal fonte de energia renovável utilizada no Brasil é:",
+    "alternativas": {
+      "A": "Carvão mineral.",
+      "B": "Energia eólica.",
+      "C": "Energia hidráulica.",
+      "D": "Energia nuclear."
+    },
+    "correta": "C",
+    "imagem": ""
+  },
+  {
+    "numero": 17,
+    "enunciado": "O continente mais populoso do mundo é:",
+    "alternativas": {
+      "A": "América.",
+      "B": "África.",
+      "C": "Europa.",
+      "D": "Ásia."
+    },
+    "correta": "D",
+    "imagem": ""
+  },
+  {
+    "numero": 18,
+    "enunciado": "A sigla 'IDH' significa:",
+    "alternativas": {
+      "A": "Índice de Desenvolvimento Humano.",
+      "B": "Instituto de Dados Históricos.",
+      "C": "Indicador de Desastres Hídricos.",
+      "D": "Índice de Desmatamento Humano."
+    },
+    "correta": "A",
+    "imagem": ""
+  },
+  {
+    "numero": 19,
+    "enunciado": "Os terremotos são fenômenos naturais que ocorrem devido:",
+    "alternativas": {
+      "A": "À erosão dos solos.",
+      "B": "Ao movimento das placas tectônicas.",
+      "C": "À ação dos ventos fortes.",
+      "D": "À evaporação da água dos oceanos."
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 20,
+    "enunciado": "O principal gás responsável pelo efeito estufa é:",
+    "alternativas": {
+      "A": "Oxigênio (O2).",
+      "B": "Hidrogênio (H2).",
+      "C": "Dióxido de carbono (CO2).",
+      "D": "Nitrogênio (N2)."
+    },
+    "correta": "C",
+    "imagem": ""
+  }
+]
