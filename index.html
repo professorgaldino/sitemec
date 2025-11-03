@@ -9,36 +9,38 @@
   body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f5f7fa; color: #333; }
 
   /* CABEÇALHO */
-  header { background-color: #003366; color: #fff; padding: 15px 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
-  header img { height: 50px; }
-  header h1 { font-size: 1.5rem; margin-left: 15px; }
+  header { background-color: #003366; color: #fff; padding: 20px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+  header img { height: 120px; width: 120px; border-radius: 50%; border: 4px solid #fff; object-fit: cover; margin-bottom: 10px; }
+  header h1 { font-size: 2rem; }
 
-  /* CONTAINER CENTRAL */
-  main { max-width: 900px; margin: 50px auto; padding: 20px; display: flex; flex-direction: column; align-items: center; }
+  main { max-width: 900px; margin: 40px auto; padding: 0 20px; display: flex; flex-direction: column; align-items: center; }
 
   /* LOGIN */
-  #loginDiv { background: #fff; padding: 40px; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); width: 100%; max-width: 400px; text-align: center; }
-  #loginDiv input { width: 100%; padding: 14px; margin: 10px 0; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; }
-  #loginDiv button { width: 100%; padding: 14px; border: none; background-color: #007bff; color: white; border-radius: 8px; cursor: pointer; font-size: 1rem; transition: background 0.3s; margin-top: 10px; }
+  #loginDiv { background: #fff; padding: 50px 30px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); width: 100%; max-width: 400px; text-align: center; }
+  #loginDiv input { width: 100%; padding: 16px; margin: 12px 0; border: 1px solid #ccc; border-radius: 12px; font-size: 1rem; }
+  #loginDiv button { width: 100%; padding: 16px; border: none; background-color: #007bff; color: white; border-radius: 12px; cursor: pointer; font-size: 1.1rem; transition: background 0.3s; margin-top: 10px; }
   #loginDiv button:hover { background-color: #0056b3; }
   #loginMsg { color: red; margin-top: 10px; font-weight: bold; }
 
   /* ÁREAS DE ESTUDO */
   #areaDiv { display: none; width: 100%; text-align: center; }
-  .cards { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 20px; }
-  .card { background: #fff; padding: 25px; border-radius: 12px; width: 180px; text-align: center; box-shadow: 0 8px 20px rgba(0,0,0,0.1); transition: transform 0.3s; cursor: pointer; }
-  .card:hover { transform: translateY(-5px); box-shadow: 0 12px 25px rgba(0,0,0,0.2); }
-  .card h3 { margin-bottom: 10px; color: #003366; }
+  .cards { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 30px; }
+  .card { background: #fff; padding: 30px; border-radius: 16px; width: 200px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: transform 0.3s; cursor: pointer; }
+  .card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.2); }
+  .card h3 { margin-bottom: 10px; color: #003366; font-size: 1.2rem; }
 
   /* QUESTÕES */
-  #questaoDiv { display: none; margin-top: 20px; width: 100%; max-width: 700px; }
-  .questao-card { background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
-  .questao-card img { max-width: 100%; margin: 15px 0; border-radius: 8px; }
-  .questao-card button { padding: 12px 20px; margin-top: 15px; border: none; background-color: #28a745; color: white; border-radius: 6px; cursor: pointer; transition: background 0.3s; }
-  .questao-card button:hover { background-color: #1e7e34; }
+  #questaoDiv { display: none; margin-top: 30px; width: 100%; max-width: 800px; }
+  .questao-card { background: #fff; padding: 30px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+  .questao-card img { max-width: 100%; margin: 20px 0; border-radius: 12px; display: block; }
+  .alternativas button { width: 100%; padding: 14px; margin: 8px 0; border: 1px solid #007bff; background: #fff; border-radius: 12px; font-size: 1rem; cursor: pointer; transition: all 0.3s; text-align: left; }
+  .alternativas button:hover { background: #007bff; color: #fff; }
+  .alternativas button.correct { background: #28a745; color: #fff; border-color: #28a745; }
+  .alternativas button.wrong { background: #dc3545; color: #fff; border-color: #dc3545; }
 
-  /* RODAPÉ */
-  footer { background-color: #003366; color: #fff; text-align: center; padding: 15px; margin-top: 50px; border-radius: 0 0 12px 12px; }
+  .feedback { margin-top: 15px; font-weight: bold; font-size: 1.1rem; }
+
+  footer { background-color: #003366; color: #fff; text-align: center; padding: 15px; margin-top: 50px; border-radius: 0 0 16px 16px; }
 </style>
 </head>
 <body>
@@ -72,7 +74,8 @@
   <!-- QUESTÕES -->
   <div id="questaoDiv">
     <div class="questao-card" id="questao"></div>
-    <button onclick="mostrarQuestao()">Carregar Nova Questão</button>
+    <div class="feedback" id="feedback"></div>
+    <button onclick="mostrarQuestao()">Próxima Questão</button>
   </div>
 </main>
 
@@ -125,19 +128,37 @@ function carregarDisciplina(file) {
 // MOSTRAR QUESTÃO ALEATÓRIA
 function mostrarQuestao() {
   if(!questoes.length) return;
+  document.getElementById('feedback').innerText = '';
   let index;
   do {
     index = Math.floor(Math.random() * questoes.length);
   } while(index === ultimaIndex && questoes.length > 1);
   ultimaIndex = index;
   const q = questoes[index];
+
+  const alternativasHTML = Object.entries(q.alternativas).map(([k,v]) => 
+    `<button onclick="verificarResposta(this,'${q.resposta}')">${k}) ${v}</button>`
+  ).join('');
+
   document.getElementById('questao').innerHTML = `
     <strong>Questão ${q.id}:</strong> ${q.enunciado}<br>
     ${q.imagem ? `<img src="${q.imagem}" alt="imagem da questão">` : ''}
-    <strong>Alternativas:</strong><br>
-    ${Object.entries(q.alternativas).map(([k,v]) => `${k}) ${v}`).join('<br>')}<br>
-    <strong>Resposta:</strong> ${q.resposta}
+    <div class="alternativas">${alternativasHTML}</div>
   `;
+}
+
+// VERIFICAR RESPOSTA
+function verificarResposta(btn, resposta) {
+  const botoes = btn.parentElement.querySelectorAll('button');
+  botoes.forEach(b => b.disabled = true);
+
+  if(btn.innerText.startsWith(resposta)) {
+    btn.classList.add('correct');
+    document.getElementById('feedback').innerText = 'Correto! 🎉';
+  } else {
+    btn.classList.add('wrong');
+    document.getElementById('feedback').innerText = 'Errado 😢. Resposta correta: ' + resposta;
+  }
 }
 </script>
 
