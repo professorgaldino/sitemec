@@ -1,0 +1,242 @@
+[
+  {
+    "numero": 1,
+    "enunciado": "Read the text:\n\n\"Anna studies English every day because she wants to travel abroad next year.\"\n\nThe word 'abroad' means:",
+    "alternativas": {
+      "A": "at home",
+      "B": "to another country",
+      "C": "in her city",
+      "D": "at school"
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 2,
+    "enunciado": "Choose the correct option:\n\nHe ___ to school by bus every morning.",
+    "alternativas": {
+      "A": "go",
+      "B": "goes",
+      "C": "is go",
+      "D": "going"
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 3,
+    "enunciado": "Read the sentence:\n\n\"They didn't watch the movie last night.\"\n\nThe sentence is in the:",
+    "alternativas": {
+      "A": "Simple Present",
+      "B": "Present Continuous",
+      "C": "Simple Past",
+      "D": "Future"
+    },
+    "correta": "C",
+    "imagem": ""
+  },
+  {
+    "numero": 4,
+    "enunciado": "Complete the sentence:\n\nShe ___ playing the guitar when I arrived.",
+    "alternativas": {
+      "A": "was",
+      "B": "were",
+      "C": "is",
+      "D": "be"
+    },
+    "correta": "A",
+    "imagem": ""
+  },
+  {
+    "numero": 5,
+    "enunciado": "Read the text:\n\n\"In the future, people will use more renewable energy sources.\"\n\nThe word 'renewable' means:",
+    "alternativas": {
+      "A": "that cannot be replaced",
+      "B": "that can be used again",
+      "C": "that is very expensive",
+      "D": "that comes from fossils"
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 6,
+    "enunciado": "Choose the correct question:\n\n___ you like pizza?",
+    "alternativas": {
+      "A": "Do",
+      "B": "Does",
+      "C": "Did",
+      "D": "Is"
+    },
+    "correta": "A",
+    "imagem": ""
+  },
+  {
+    "numero": 7,
+    "enunciado": "Read the sentence:\n\n\"My brother is taller than me.\"\n\nThe word 'taller' expresses:",
+    "alternativas": {
+      "A": "comparison",
+      "B": "equality",
+      "C": "superiority of quantity",
+      "D": "plural form"
+    },
+    "correta": "A",
+    "imagem": ""
+  },
+  {
+    "numero": 8,
+    "enunciado": "Choose the correct option:\n\nThere ___ any milk in the fridge.",
+    "alternativas": {
+      "A": "isn't",
+      "B": "aren't",
+      "C": "don't",
+      "D": "hasn't"
+    },
+    "correta": "A",
+    "imagem": ""
+  },
+  {
+    "numero": 9,
+    "enunciado": "Read the sentence:\n\n\"I have studied English for three years.\"\n\nThe tense used is:",
+    "alternativas": {
+      "A": "Simple Past",
+      "B": "Present Perfect",
+      "C": "Future Simple",
+      "D": "Past Continuous"
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 10,
+    "enunciado": "Choose the correct preposition:\n\nWe are going ___ the park this afternoon.",
+    "alternativas": {
+      "A": "on",
+      "B": "in",
+      "C": "to",
+      "D": "at"
+    },
+    "correta": "C",
+    "imagem": ""
+  },
+  {
+    "numero": 11,
+    "enunciado": "Read the text:\n\n\"John can play the piano and sing very well.\"\n\nThe modal verb 'can' expresses:",
+    "alternativas": {
+      "A": "permission",
+      "B": "ability",
+      "C": "obligation",
+      "D": "necessity"
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 12,
+    "enunciado": "Choose the correct option:\n\nThere are ___ apples on the table.",
+    "alternativas": {
+      "A": "much",
+      "B": "a",
+      "C": "any",
+      "D": "some"
+    },
+    "correta": "D",
+    "imagem": ""
+  },
+  {
+    "numero": 13,
+    "enunciado": "Read the text:\n\n\"She usually gets up at 6 a.m., takes a shower, and goes to work.\"\n\nThe adverb 'usually' indicates:",
+    "alternativas": {
+      "A": "frequency",
+      "B": "place",
+      "C": "time",
+      "D": "manner"
+    },
+    "correta": "A",
+    "imagem": ""
+  },
+  {
+    "numero": 14,
+    "enunciado": "Complete the sentence:\n\nIf it rains, we ___ stay home.",
+    "alternativas": {
+      "A": "will",
+      "B": "would",
+      "C": "are",
+      "D": "can"
+    },
+    "correta": "A",
+    "imagem": ""
+  },
+  {
+    "numero": 15,
+    "enunciado": "Read the sentence:\n\n\"The book was written by a famous author.\"\n\nThe sentence is in the:",
+    "alternativas": {
+      "A": "Active voice",
+      "B": "Passive voice",
+      "C": "Imperative form",
+      "D": "Present continuous"
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 16,
+    "enunciado": "Choose the correct option:\n\nI have two brothers. ___ names are Lucas and Tom.",
+    "alternativas": {
+      "A": "His",
+      "B": "Her",
+      "C": "Their",
+      "D": "Our"
+    },
+    "correta": "C",
+    "imagem": ""
+  },
+  {
+    "numero": 17,
+    "enunciado": "Read the sentence:\n\n\"Let's go to the beach!\"\n\nThe word 'Let's' is a contraction of:",
+    "alternativas": {
+      "A": "Let is",
+      "B": "Let us",
+      "C": "Let are",
+      "D": "Let have"
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 18,
+    "enunciado": "Read the text:\n\n\"Mary didn’t eat breakfast because she was late for school.\"\n\nWhy didn’t Mary eat breakfast?",
+    "alternativas": {
+      "A": "She wasn’t hungry.",
+      "B": "She was late.",
+      "C": "She didn’t like breakfast.",
+      "D": "She had no food."
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 19,
+    "enunciado": "Complete the sentence:\n\nMy house is ___ than yours.",
+    "alternativas": {
+      "A": "big",
+      "B": "bigger",
+      "C": "more big",
+      "D": "the biggest"
+    },
+    "correta": "B",
+    "imagem": ""
+  },
+  {
+    "numero": 20,
+    "enunciado": "Read the text:\n\n\"Reading books helps improve vocabulary and imagination.\"\n\nThe main idea of the sentence is that:",
+    "alternativas": {
+      "A": "Books are boring.",
+      "B": "Reading develops important skills.",
+      "C": "Only children like to read.",
+      "D": "Imagination is not important."
+    },
+    "correta": "B",
+    "imagem": ""
+  }
+]
