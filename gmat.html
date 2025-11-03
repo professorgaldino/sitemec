@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia Completo de Matemática - Vestibulinho ETEC</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Roboto', sans-serif; margin:0; padding:0; background:#f0f2f5; color:#333; }
+  header { background:#1d3557; color:white; display:flex; align-items:center; padding:20px; gap:20px; }
+  header img { width:100px; height:100px; border-radius:50%; border:3px solid white; }
+  header h1 { font-size:1.8rem; margin:0; }
+  nav { background:#457b9d; display:flex; flex-wrap:wrap; gap:10px; padding:10px; justify-content:center; }
+  nav button { padding:10px 20px; border:none; border-radius:8px; cursor:pointer; background:#f1faee; font-weight:500; transition:0.3s; }
+  nav button:hover { background:#a8dadc; }
+  .container { max-width:1000px; margin:20px auto; padding:20px; background:white; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1); }
+  h2 { color:#1d3557; margin-top:0; }
+  .topic { display:none; margin-bottom:30px; }
+  .topic h3 { color:#1d3557; margin-top:20px; }
+  .concept { background:#f1faee; padding:15px; border-radius:8px; margin-bottom:20px; }
+  .example { background:#e0fbfc; padding:12px; border-radius:6px; margin-top:10px; }
+  .question { margin-bottom:25px; padding:15px; background:#a8dadc; border-radius:8px; }
+  .question img { max-width:100%; margin-top:10px; border-radius:8px; }
+  .alternatives button { display:block; margin:8px 0; padding:10px; width:100%; text-align:left; border:none; border-radius:6px; cursor:pointer; background:#fefae0; transition:0.3s; }
+  .alternatives button:hover { background:#ffd6a5; }
+  .correct { background:#2a9d8f; color:white; }
+  .wrong { background:#e63946; color:white; }
+  .guide { margin-top:10px; background:#f1faee; padding:10px; border-radius:6px; }
+  footer { text-align:center; padding:15px; background:#1d3557; color:white; margin-top:30px; }
+</style>
+</head>
+<body>
+
+<header>
+  <img src="logomecanica.png" alt="Logo Mecânica">
+  <h1>Guia Completo de Matemática - Vestibulinho ETEC</h1>
+</header>
+
+<nav>
+  <button onclick="showTopic('algebra')">Álgebra</button>
+  <button onclick="showTopic('geometria')">Geometria</button>
+  <button onclick="showTopic('funcoes')">Funções</button>
+  <button onclick="showTopic('probabilidade')">Probabilidade</button>
+  <button onclick="showTopic('logico')">Raciocínio Lógico</button>
+</nav>
+
+<div class="container" id="content">
+
+  <!-- Álgebra -->
+  <div id="algebra" class="topic">
+    <h2>Álgebra</h2>
+    <div class="concept">
+      <h3>Conceito</h3>
+      <p>Álgebra é a parte da matemática que estuda relações, equações e expressões envolvendo incógnitas. É fundamental para resolver problemas de diversas áreas.</p>
+      <h3>Fórmulas importantes</h3>
+      <ul>
+        <li>Equação do 1º grau: ax + b = c → x = (c-b)/a</li>
+        <li>Produtos Notáveis: (a+b)² = a² + 2ab + b², (a-b)² = a² - 2ab + b²</li>
+        <li>Fatoração: a² - b² = (a-b)(a+b)</li>
+      </ul>
+      <div class="example">
+        <p><b>Exemplo:</b> Resolver 3x + 7 = 19</p>
+        <p><b>Resolução:</b> 3x = 19 - 7 → 3x = 12 → x = 4</p>
+        <p><b>Dica:</b> Sempre isole a variável passo a passo, verificando cada operação.</p>
+      </div>
+    </div>
+
+    <div class="question">
+      <p><b>Questão 1:</b> Resolva a equação 2x + 5 = 15</p>
+      <div class="alternatives">
+        <button onclick="checkAnswer(this,'C')">A) 3</button>
+        <button onclick="checkAnswer(this,'C')">B) 4</button>
+        <button onclick="checkAnswer(this,'C')">C) 5</button>
+        <button onclick="checkAnswer(this,'C')">D) 6</button>
+      </div>
+      <div class="guide">
+        <p><b>Comentário:</b> Subtraia 5 dos dois lados: 2x = 10 → x = 5.</p>
+        <p><b>Como estudar:</b> Pratique equações do 1º grau isolando a variável, comece com valores pequenos e vá aumentando a dificuldade.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Geometria -->
+  <div id="geometria" class="topic">
+    <h2>Geometria</h2>
+    <div class="concept">
+      <h3>Conceito</h3>
+      <p>Estuda formas, figuras, medidas, ângulos, áreas e volumes. Fundamental para visualizar e calcular dimensões de objetos.</p>
+      <h3>Fórmulas importantes</h3>
+      <ul>
+        <li>Área do círculo: A = πr²</li>
+        <li>Perímetro do quadrado: P = 4 × lado</li>
+        <li>Volume do cubo: V = lado³</li>
+      </ul>
+      <div class="example">
+        <p><b>Exemplo:</b> Área de um círculo de raio 7cm</p>
+        <p><b>Resolução:</b> A = π × 7² ≈ 3,14 × 49 ≈ 153,86 cm²</p>
+        <p><b>Dica:</b> Memorize a fórmula e pratique com diferentes raios.</p>
+      </div>
+    </div>
+
+    <div class="question">
+      <p><b>Questão 1:</b> Qual é a área de um círculo com raio 7 cm?</p>
+      <div class="alternatives">
+        <button onclick="checkAnswer(this,'A')">A) 154 cm²</button>
+        <button onclick="checkAnswer(this,'A')">B) 49 cm²</button>
+        <button onclick="checkAnswer(this,'A')">C) 44 cm²</button>
+        <button onclick="checkAnswer(this,'A')">D) 100 cm²</button>
+      </div>
+      <div class="guide">
+        <p><b>Comentário:</b> A ≈ π × 7² = 153,86 cm² → alternativa correta A.</p>
+        <p><b>Como estudar:</b> Faça exercícios de áreas de círculos, triângulos e quadrados para fixar as fórmulas.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Funções -->
+  <div id="funcoes" class="topic">
+    <h2>Funções</h2>
+    <div class="concept">
+      <h3>Conceito</h3>
+      <p>Funções relacionam valores de entrada (x) a saídas (y). É importante saber interpretar gráficos e expressões algébricas.</p>
+      <div class="example">
+        <p><b>Exemplo:</b> f(x) = 2x + 3. Para x = 4 → f(4) = 2*4 + 3 = 11</p>
+        <p><b>Dica:</b> Pratique valores diferentes para x e veja como y muda.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Probabilidade e Estatística -->
+  <div id="probabilidade" class="topic">
+    <h2>Probabilidade e Estatística</h2>
+    <div class="concept">
+      <h3>Conceito</h3>
+      <p>Estude média, mediana, moda, gráficos, tabelas e probabilidade básica. Fundamental para interpretar dados.</p>
+      <div class="example">
+        <p><b>Exemplo:</b> Média de 4, 6, 8 → (4+6+8)/3 = 6</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Raciocínio Lógico -->
+  <div id="logico" class="topic">
+    <h2>Raciocínio Lógico</h2>
+    <div class="concept">
+      <h3>Conceito</h3>
+      <p>Resolver problemas usando lógica, relações e sequências. Importante para interpretar enunciados e deduzir respostas.</p>
+      <div class="example">
+        <p><b>Exemplo:</b> Se todos A são B e C é A, então C é B.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  Desenvolvido pelo Professor Galdino
+</footer>
+
+<script>
+function showTopic(topicId){
+  const topics = ['algebra','geometria','funcoes','probabilidade','logico'];
+  topics.forEach(id => document.getElementById(id).style.display = 'none');
+  document.getElementById(topicId).style.display = 'block';
+}
+
+function checkAnswer(button, correct){
+  const parent = button.parentNode;
+  Array.from(parent.children).forEach(btn => btn.disabled = true);
+  if(button.innerText.startsWith(correct)){
+    button.classList.add('correct');
+    alert("Resposta correta!");
+  } else {
+    button.classList.add('wrong');
+    alert("Resposta errada!");
+  }
+}
+</script>
+
+</body>
+</html>
