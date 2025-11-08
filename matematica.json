@@ -1,6 +1,6 @@
 [
   {
-    "numero": 1,
+    "id": 1,
     "enunciado": "Qual o valor de x na equação 2x + 5 = 15?",
     "alternativas": {
       "A": "3",
@@ -8,11 +8,11 @@
       "C": "5",
       "D": "6"
     },
-    "correta": "B",
+    "resposta": "B",
     "imagem": ""
   },
   {
-    "numero": 2,
+    "id": 2,
     "enunciado": "Qual é a área de um círculo com raio 7 cm? (use π ≈ 3,14)",
     "alternativas": {
       "A": "153,86 cm²",
@@ -20,11 +20,11 @@
       "C": "44 cm²",
       "D": "100 cm²"
     },
-    "correta": "A",
+    "resposta": "A",
     "imagem": ""
   },
   {
-    "numero": 3,
+    "id": 3,
     "enunciado": "Resolva a expressão: 3² + 4²",
     "alternativas": {
       "A": "7",
@@ -32,11 +32,11 @@
       "C": "25",
       "D": "24"
     },
-    "correta": "C",
+    "resposta": "C",
     "imagem": ""
   },
   {
-    "numero": 4,
+    "id": 4,
     "enunciado": "Qual é o próximo número na sequência: 2, 4, 8, 16, ?",
     "alternativas": {
       "A": "18",
@@ -44,11 +44,11 @@
       "C": "24",
       "D": "64"
     },
-    "correta": "B",
+    "resposta": "B",
     "imagem": ""
   },
   {
-    "numero": 5,
+    "id": 5,
     "enunciado": "Qual é a fração equivalente a 0,75?",
     "alternativas": {
       "A": "3/4",
@@ -56,11 +56,11 @@
       "C": "1/2",
       "D": "5/8"
     },
-    "correta": "A",
+    "resposta": "A",
     "imagem": ""
   },
   {
-    "numero": 6,
+    "id": 6,
     "enunciado": "Se um triângulo tem lados de 3 cm, 4 cm e 5 cm, ele é:",
     "alternativas": {
       "A": "Equilátero",
@@ -68,11 +68,11 @@
       "C": "Escaleno e Retângulo",
       "D": "Nenhuma das anteriores"
     },
-    "correta": "C",
+    "resposta": "C",
     "imagem": ""
   },
   {
-    "numero": 7,
+    "id": 7,
     "enunciado": "Qual é a média de 5, 8 e 12?",
     "alternativas": {
       "A": "8",
@@ -80,11 +80,11 @@
       "C": "10",
       "D": "12"
     },
-    "correta": "B",
+    "resposta": "B",
     "imagem": ""
   },
   {
-    "numero": 8,
+    "id": 8,
     "enunciado": "Quantos graus tem um ângulo reto?",
     "alternativas": {
       "A": "45°",
@@ -92,11 +92,11 @@
       "C": "180°",
       "D": "360°"
     },
-    "correta": "B",
+    "resposta": "B",
     "imagem": ""
   },
   {
-    "numero": 9,
+    "id": 9,
     "enunciado": "Qual é o valor de 7 × 8?",
     "alternativas": {
       "A": "54",
@@ -104,11 +104,11 @@
       "C": "58",
       "D": "64"
     },
-    "correta": "B",
+    "resposta": "B",
     "imagem": ""
   },
   {
-    "numero": 10,
+    "id": 10,
     "enunciado": "Qual é o perímetro de um quadrado com lado 6 cm?",
     "alternativas": {
       "A": "12 cm",
@@ -116,11 +116,11 @@
       "C": "24 cm",
       "D": "36 cm"
     },
-    "correta": "C",
+    "resposta": "C",
     "imagem": ""
   },
   {
-    "numero": 11,
+    "id": 11,
     "enunciado": "Qual é a área de um quadrado com lado 9 cm?",
     "alternativas": {
       "A": "18 cm²",
@@ -128,11 +128,11 @@
       "C": "81 cm²",
       "D": "72 cm²"
     },
-    "correta": "C",
+    "resposta": "C",
     "imagem": ""
   },
   {
-    "numero": 12,
+    "id": 12,
     "enunciado": "Se um carro percorre 60 km em 1 hora, qual é a sua velocidade média em m/s?",
     "alternativas": {
       "A": "16,67 m/s",
@@ -140,11 +140,11 @@
       "C": "100 m/s",
       "D": "36 m/s"
     },
-    "correta": "A",
+    "resposta": "A",
     "imagem": ""
   },
   {
-    "numero": 13,
+    "id": 13,
     "enunciado": "Resolva a equação: 5x - 10 = 0",
     "alternativas": {
       "A": "x = 0",
@@ -152,11 +152,11 @@
       "C": "x = -2",
       "D": "x = 10"
     },
-    "correta": "B",
+    "resposta": "B",
     "imagem": ""
   },
   {
-    "numero": 14,
+    "id": 14,
     "enunciado": "Qual é o valor de 2³ × 3²?",
     "alternativas": {
       "A": "36",
@@ -164,11 +164,11 @@
       "C": "18",
       "D": "64"
     },
-    "correta": "A",
+    "resposta": "A",
     "imagem": ""
   },
   {
-    "numero": 15,
+    "id": 15,
     "enunciado": "O que é um número primo?",
     "alternativas": {
       "A": "Número divisível por 1 e por ele mesmo apenas",
@@ -176,11 +176,11 @@
       "C": "Número ímpar",
       "D": "Número divisível por 2 e 3 apenas"
     },
-    "correta": "A",
+    "resposta": "A",
     "imagem": ""
   },
   {
-    "numero": 16,
+    "id": 16,
     "enunciado": "Qual é o valor de 15% de 200?",
     "alternativas": {
       "A": "20",
@@ -188,11 +188,11 @@
       "C": "30",
       "D": "35"
     },
-    "correta": "C",
+    "resposta": "C",
     "imagem": ""
   },
   {
-    "numero": 17,
+    "id": 17,
     "enunciado": "Resolva a expressão: (8 × 2) ÷ 4",
     "alternativas": {
       "A": "2",
@@ -200,11 +200,11 @@
       "C": "6",
       "D": "8"
     },
-    "correta": "B",
+    "resposta": "B",
     "imagem": ""
   },
   {
-    "numero": 18,
+    "id": 18,
     "enunciado": "Um prisma tem base quadrada de lado 5 cm e altura 10 cm. Qual é o seu volume?",
     "alternativas": {
       "A": "50 cm³",
@@ -212,11 +212,11 @@
       "C": "250 cm³",
       "D": "500 cm³"
     },
-    "correta": "C",
+    "resposta": "C",
     "imagem": ""
   },
   {
-    "numero": 19,
+    "id": 19,
     "enunciado": "Qual é o valor de 9² - 5²?",
     "alternativas": {
       "A": "16",
@@ -224,11 +224,11 @@
       "C": "81",
       "D": "20"
     },
-    "correta": "B",
+    "resposta": "B",
     "imagem": ""
   },
   {
-    "numero": 20,
+    "id": 20,
     "enunciado": "Se uma pizza é dividida em 8 fatias e você come 3, que fração representa o que você comeu?",
     "alternativas": {
       "A": "3/8",
@@ -236,7 +236,7 @@
       "C": "1/2",
       "D": "1/4"
     },
-    "correta": "A",
+    "resposta": "A",
     "imagem": ""
   }
 ]
