@@ -1,6 +1,5 @@
-{
-  "questoes": [
-    {
+[
+  {
       "id": 1,
       "pergunta": "Qual é o número atômico do oxigênio?",
       "alternativas": {
