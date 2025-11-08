@@ -1,242 +1,242 @@
 [
   {
-      "id": 1,
-      "pergunta": "Qual é o número atômico do oxigênio?",
-      "alternativas": {
-        "A": "6",
-        "B": "8",
-        "C": "10",
-        "D": "12"
-      },
-      "resposta": "B",
-      "imagem": ""
+    "id": 1,
+    "enunciado": "Qual é o número atômico do oxigênio?",
+    "alternativas": {
+      "A": "6",
+      "B": "8",
+      "C": "10",
+      "D": "12"
     },
-    {
-      "id": 2,
-      "pergunta": "A água é formada por quais elementos químicos?",
-      "alternativas": {
-        "A": "Hidrogênio e Oxigênio",
-        "B": "Hidrogênio e Nitrogênio",
-        "C": "Oxigênio e Carbono",
-        "D": "Carbono e Hidrogênio"
-      },
-      "resposta": "A",
-      "imagem": ""
+    "resposta": "B",
+    "imagem": ""
+  },
+  {
+    "id": 2,
+    "enunciado": "A água é formada por quais elementos químicos?",
+    "alternativas": {
+      "A": "Hidrogênio e Oxigênio",
+      "B": "Hidrogênio e Nitrogênio",
+      "C": "Oxigênio e Carbono",
+      "D": "Carbono e Hidrogênio"
     },
-    {
-      "id": 3,
-      "pergunta": "Qual é a fórmula molecular do gás carbônico?",
-      "alternativas": {
-        "A": "CO",
-        "B": "CO₂",
-        "C": "C₂O",
-        "D": "C₂O₂"
-      },
-      "resposta": "B",
-      "imagem": ""
+    "resposta": "A",
+    "imagem": ""
+  },
+  {
+    "id": 3,
+    "enunciado": "Qual é a fórmula molecular do gás carbônico?",
+    "alternativas": {
+      "A": "CO",
+      "B": "CO₂",
+      "C": "C₂O",
+      "D": "C₂O₂"
     },
-    {
-      "id": 4,
-      "pergunta": "O que indica o número de massa de um átomo?",
-      "alternativas": {
-        "A": "Número de elétrons",
-        "B": "Número de prótons",
-        "C": "Soma de prótons e nêutrons",
-        "D": "Diferença entre elétrons e prótons"
-      },
-      "resposta": "C",
-      "imagem": ""
+    "resposta": "B",
+    "imagem": ""
+  },
+  {
+    "id": 4,
+    "enunciado": "O que indica o número de massa de um átomo?",
+    "alternativas": {
+      "A": "Número de elétrons",
+      "B": "Número de prótons",
+      "C": "Soma de prótons e nêutrons",
+      "D": "Diferença entre elétrons e prótons"
     },
-    {
-      "id": 5,
-      "pergunta": "Qual das opções representa uma substância simples?",
-      "alternativas": {
-        "A": "H₂O",
-        "B": "NaCl",
-        "C": "O₂",
-        "D": "CO₂"
-      },
-      "resposta": "C",
-      "imagem": ""
+    "resposta": "C",
+    "imagem": ""
+  },
+  {
+    "id": 5,
+    "enunciado": "Qual das opções representa uma substância simples?",
+    "alternativas": {
+      "A": "H₂O",
+      "B": "NaCl",
+      "C": "O₂",
+      "D": "CO₂"
     },
-    {
-      "id": 6,
-      "pergunta": "Qual é o pH de uma solução neutra à temperatura ambiente?",
-      "alternativas": {
-        "A": "0",
-        "B": "7",
-        "C": "14",
-        "D": "10"
-      },
-      "resposta": "B",
-      "imagem": ""
+    "resposta": "C",
+    "imagem": ""
+  },
+  {
+    "id": 6,
+    "enunciado": "Qual é o pH de uma solução neutra à temperatura ambiente?",
+    "alternativas": {
+      "A": "0",
+      "B": "7",
+      "C": "14",
+      "D": "10"
     },
-    {
-      "id": 7,
-      "pergunta": "Qual elemento químico é representado pelo símbolo Na?",
-      "alternativas": {
-        "A": "Níquel",
-        "B": "Nitrogênio",
-        "C": "Sódio",
-        "D": "Prata"
-      },
-      "resposta": "C",
-      "imagem": ""
+    "resposta": "B",
+    "imagem": ""
+  },
+  {
+    "id": 7,
+    "enunciado": "Qual elemento químico é representado pelo símbolo Na?",
+    "alternativas": {
+      "A": "Níquel",
+      "B": "Nitrogênio",
+      "C": "Sódio",
+      "D": "Prata"
     },
-    {
-      "id": 8,
-      "pergunta": "O gás oxigênio é essencial para qual processo biológico?",
-      "alternativas": {
-        "A": "Fotossíntese",
-        "B": "Respiração celular",
-        "C": "Fermentação alcoólica",
-        "D": "Síntese proteica"
-      },
-      "resposta": "B",
-      "imagem": ""
+    "resposta": "C",
+    "imagem": ""
+  },
+  {
+    "id": 8,
+    "enunciado": "O gás oxigênio é essencial para qual processo biológico?",
+    "alternativas": {
+      "A": "Fotossíntese",
+      "B": "Respiração celular",
+      "C": "Fermentação alcoólica",
+      "D": "Síntese proteica"
     },
-    {
-      "id": 9,
-      "pergunta": "Qual é a unidade usada para medir a quantidade de matéria?",
-      "alternativas": {
-        "A": "Mol",
-        "B": "Litro",
-        "C": "Grama",
-        "D": "Joule"
-      },
-      "resposta": "A",
-      "imagem": ""
+    "resposta": "B",
+    "imagem": ""
+  },
+  {
+    "id": 9,
+    "enunciado": "Qual é a unidade usada para medir a quantidade de matéria?",
+    "alternativas": {
+      "A": "Mol",
+      "B": "Litro",
+      "C": "Grama",
+      "D": "Joule"
     },
-    {
-      "id": 10,
-      "pergunta": "Qual dos seguintes compostos é um ácido?",
-      "alternativas": {
-        "A": "HCl",
-        "B": "NaOH",
-        "C": "NH₃",
-        "D": "CH₄"
-      },
-      "resposta": "A",
-      "imagem": ""
+    "resposta": "A",
+    "imagem": ""
+  },
+  {
+    "id": 10,
+    "enunciado": "Qual dos seguintes compostos é um ácido?",
+    "alternativas": {
+      "A": "HCl",
+      "B": "NaOH",
+      "C": "NH₃",
+      "D": "CH₄"
     },
-    {
-      "id": 11,
-      "pergunta": "Qual é o nome do processo de separação de misturas usado para separar líquidos com diferentes pontos de ebulição?",
-      "alternativas": {
-        "A": "Filtração",
-        "B": "Decantação",
-        "C": "Destilação",
-        "D": "Centrifugação"
-      },
-      "resposta": "C",
-      "imagem": ""
+    "resposta": "A",
+    "imagem": ""
+  },
+  {
+    "id": 11,
+    "enunciado": "Qual é o nome do processo de separação de misturas usado para separar líquidos com diferentes pontos de ebulição?",
+    "alternativas": {
+      "A": "Filtração",
+      "B": "Decantação",
+      "C": "Destilação",
+      "D": "Centrifugação"
     },
-    {
-      "id": 12,
-      "pergunta": "Qual partícula subatômica possui carga negativa?",
-      "alternativas": {
-        "A": "Próton",
-        "B": "Nêutron",
-        "C": "Elétron",
-        "D": "Íon"
-      },
-      "resposta": "C",
-      "imagem": ""
+    "resposta": "C",
+    "imagem": ""
+  },
+  {
+    "id": 12,
+    "enunciado": "Qual partícula subatômica possui carga negativa?",
+    "alternativas": {
+      "A": "Próton",
+      "B": "Nêutron",
+      "C": "Elétron",
+      "D": "Íon"
     },
-    {
-      "id": 13,
-      "pergunta": "Qual é a fórmula da amônia?",
-      "alternativas": {
-        "A": "NH₃",
-        "B": "H₂O₂",
-        "C": "CH₄",
-        "D": "H₂S"
-      },
-      "resposta": "A",
-      "imagem": ""
+    "resposta": "C",
+    "imagem": ""
+  },
+  {
+    "id": 13,
+    "enunciado": "Qual é a fórmula da amônia?",
+    "alternativas": {
+      "A": "NH₃",
+      "B": "H₂O₂",
+      "C": "CH₄",
+      "D": "H₂S"
     },
-    {
-      "id": 14,
-      "pergunta": "Em uma reação de combustão completa, os produtos formados são:",
-      "alternativas": {
-        "A": "CO e H₂O",
-        "B": "CO₂ e H₂O",
-        "C": "C e H₂",
-        "D": "H₂ e O₂"
-      },
-      "resposta": "B",
-      "imagem": ""
+    "resposta": "A",
+    "imagem": ""
+  },
+  {
+    "id": 14,
+    "enunciado": "Em uma reação de combustão completa, os produtos formados são:",
+    "alternativas": {
+      "A": "CO e H₂O",
+      "B": "CO₂ e H₂O",
+      "C": "C e H₂",
+      "D": "H₂ e O₂"
     },
-    {
-      "id": 15,
-      "pergunta": "A ligação química que envolve o compartilhamento de elétrons é chamada de:",
-      "alternativas": {
-        "A": "Iônica",
-        "B": "Covalente",
-        "C": "Metálica",
-        "D": "Polar"
-      },
-      "resposta": "B",
-      "imagem": ""
+    "resposta": "B",
+    "imagem": ""
+  },
+  {
+    "id": 15,
+    "enunciado": "A ligação química que envolve o compartilhamento de elétrons é chamada de:",
+    "alternativas": {
+      "A": "Iônica",
+      "B": "Covalente",
+      "C": "Metálica",
+      "D": "Polar"
     },
-    {
-      "id": 16,
-      "pergunta": "O processo de passar do estado sólido diretamente para o gasoso é chamado de:",
-      "alternativas": {
-        "A": "Fusão",
-        "B": "Evaporação",
-        "C": "Sublimação",
-        "D": "Condensação"
-      },
-      "resposta": "C",
-      "imagem": ""
+    "resposta": "B",
+    "imagem": ""
+  },
+  {
+    "id": 16,
+    "enunciado": "O processo de passar do estado sólido diretamente para o gasoso é chamado de:",
+    "alternativas": {
+      "A": "Fusão",
+      "B": "Evaporação",
+      "C": "Sublimação",
+      "D": "Condensação"
     },
-    {
-      "id": 17,
-      "pergunta": "Qual é a fórmula da glicose?",
-      "alternativas": {
-        "A": "CO₂",
-        "B": "C₂H₆O",
-        "C": "C₆H₁₂O₆",
-        "D": "CH₄"
-      },
-      "resposta": "C",
-      "imagem": ""
+    "resposta": "C",
+    "imagem": ""
+  },
+  {
+    "id": 17,
+    "enunciado": "Qual é a fórmula da glicose?",
+    "alternativas": {
+      "A": "CO₂",
+      "B": "C₂H₆O",
+      "C": "C₆H₁₂O₆",
+      "D": "CH₄"
     },
-    {
-      "id": 18,
-      "pergunta": "Em qual grupo da Tabela Periódica estão os gases nobres?",
-      "alternativas": {
-        "A": "1A",
-        "B": "2A",
-        "C": "7A",
-        "D": "8A"
-      },
-      "resposta": "D",
-      "imagem": ""
+    "resposta": "C",
+    "imagem": ""
+  },
+  {
+    "id": 18,
+    "enunciado": "Em qual grupo da Tabela Periódica estão os gases nobres?",
+    "alternativas": {
+      "A": "1A",
+      "B": "2A",
+      "C": "7A",
+      "D": "8A"
     },
-    {
-      "id": 19,
-      "pergunta": "A oxidação é um processo em que ocorre:",
-      "alternativas": {
-        "A": "Ganho de elétrons",
-        "B": "Perda de elétrons",
-        "C": "Ganho de prótons",
-        "D": "Perda de nêutrons"
-      },
-      "resposta": "B",
-      "imagem": ""
+    "resposta": "D",
+    "imagem": ""
+  },
+  {
+    "id": 19,
+    "enunciado": "A oxidação é um processo em que ocorre:",
+    "alternativas": {
+      "A": "Ganho de elétrons",
+      "B": "Perda de elétrons",
+      "C": "Ganho de prótons",
+      "D": "Perda de nêutrons"
     },
-    {
-      "id": 20,
-      "pergunta": "O cloreto de sódio (NaCl) é o principal componente de:",
-      "alternativas": {
-        "A": "Açúcar",
-        "B": "Sal de cozinha",
-        "C": "Vinagre",
-        "D": "Álcool"
-      },
-      "resposta": "B",
-      "imagem": ""
-    }
-  ]
+    "resposta": "B",
+    "imagem": ""
+  },
+  {
+    "id": 20,
+    "enunciado": "O cloreto de sódio (NaCl) é o principal componente de:",
+    "alternativas": {
+      "A": "Açúcar",
+      "B": "Sal de cozinha",
+      "C": "Vinagre",
+      "D": "Álcool"
+    },
+    "resposta": "B",
+    "imagem": ""
+  }
+]
