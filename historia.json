@@ -1,6 +1,6 @@
 [
   {
-    "numero": 1,
+    "id": 1,
     "enunciado": "O período conhecido como 'Pré-História' é caracterizado por:",
     "alternativas": {
       "A": "O surgimento da escrita.",
@@ -8,11 +8,11 @@
       "C": "O desenvolvimento das cidades antigas.",
       "D": "A ausência de registros escritos."
     },
-    "correta": "D",
+    "resposta": "D",
     "imagem": ""
   },
   {
-    "numero": 2,
+    "id": 2,
     "enunciado": "A Revolução Francesa, iniciada em 1789, teve como lema:",
     "alternativas": {
       "A": "Trabalho, Ordem e Progresso.",
@@ -20,11 +20,11 @@
       "C": "União, Fé e Coragem.",
       "D": "Justiça, Honra e Pátria."
     },
-    "correta": "B",
+    "resposta": "B",
     "imagem": ""
   },
   {
-    "numero": 3,
+    "id": 3,
     "enunciado": "Cristóvão Colombo chegou à América em:",
     "alternativas": {
       "A": "1453",
@@ -32,11 +32,11 @@
       "C": "1500",
       "D": "1519"
     },
-    "correta": "B",
+    "resposta": "B",
     "imagem": ""
   },
   {
-    "numero": 4,
+    "id": 4,
     "enunciado": "A chegada dos portugueses ao Brasil ocorreu em:",
     "alternativas": {
       "A": "1498",
@@ -44,11 +44,11 @@
       "C": "1502",
       "D": "1520"
     },
-    "correta": "B",
+    "resposta": "B",
     "imagem": ""
   },
   {
-    "numero": 5,
+    "id": 5,
     "enunciado": "Durante o período colonial, o principal produto de exportação do Brasil foi:",
     "alternativas": {
       "A": "Café.",
@@ -56,11 +56,11 @@
       "C": "Ouro.",
       "D": "Algodão."
     },
-    "correta": "B",
+    "resposta": "B",
     "imagem": ""
   },
   {
-    "numero": 6,
+    "id": 6,
     "enunciado": "A Inconfidência Mineira, movimento de 1789, foi liderada por:",
     "alternativas": {
       "A": "Zumbi dos Palmares.",
@@ -68,11 +68,11 @@
       "C": "Dom Pedro I.",
       "D": "José Bonifácio."
     },
-    "correta": "B",
+    "resposta": "B",
     "imagem": ""
   },
   {
-    "numero": 7,
+    "id": 7,
     "enunciado": "A independência do Brasil foi proclamada em:",
     "alternativas": {
       "A": "7 de setembro de 1822.",
@@ -80,11 +80,11 @@
       "C": "15 de novembro de 1889.",
       "D": "25 de março de 1824."
     },
-    "correta": "A",
+    "resposta": "A",
     "imagem": ""
   },
   {
-    "numero": 8,
+    "id": 8,
     "enunciado": "O primeiro imperador do Brasil foi:",
     "alternativas": {
       "A": "Dom João VI.",
@@ -92,11 +92,11 @@
       "C": "Dom Pedro II.",
       "D": "Getúlio Vargas."
     },
-    "correta": "B",
+    "resposta": "B",
     "imagem": ""
   },
   {
-    "numero": 9,
+    "id": 9,
     "enunciado": "A escravidão no Brasil foi abolida oficialmente em:",
     "alternativas": {
       "A": "1822.",
@@ -104,11 +104,11 @@
       "C": "1888.",
       "D": "1891."
     },
-    "correta": "C",
+    "resposta": "C",
     "imagem": ""
   },
   {
-    "numero": 10,
+    "id": 10,
     "enunciado": "A República no Brasil foi proclamada em:",
     "alternativas": {
       "A": "1822.",
@@ -116,11 +116,11 @@
       "C": "1891.",
       "D": "1900."
     },
-    "correta": "B",
+    "resposta": "B",
     "imagem": ""
   },
   {
-    "numero": 11,
+    "id": 11,
     "enunciado": "Getúlio Vargas governou o Brasil em dois períodos e ficou conhecido por:",
     "alternativas": {
       "A": "Criar leis trabalhistas e o salário mínimo.",
@@ -128,11 +128,11 @@
       "C": "Proclamar a República.",
       "D": "Fundar a Petrobras e a Embrapa."
     },
-    "correta": "A",
+    "resposta": "A",
     "imagem": ""
   },
   {
-    "numero": 12,
+    "id": 12,
     "enunciado": "O golpe militar que instaurou a Ditadura no Brasil ocorreu em:",
     "alternativas": {
       "A": "1930.",
@@ -140,11 +140,11 @@
       "C": "1964.",
       "D": "1985."
     },
-    "correta": "C",
+    "resposta": "C",
     "imagem": ""
   },
   {
-    "numero": 13,
+    "id": 13,
     "enunciado": "O período da Ditadura Militar no Brasil terminou oficialmente com a eleição de:",
     "alternativas": {
       "A": "Tancredo Neves.",
@@ -152,11 +152,11 @@
       "C": "Getúlio Vargas.",
       "D": "João Goulart."
     },
-    "correta": "A",
+    "resposta": "A",
     "imagem": ""
   },
   {
-    "numero": 14,
+    "id": 14,
     "enunciado": "A Segunda Guerra Mundial ocorreu entre os anos de:",
     "alternativas": {
       "A": "1914 e 1918.",
@@ -164,11 +164,11 @@
       "C": "1950 e 1955.",
       "D": "1960 e 1970."
     },
-    "correta": "B",
+    "resposta": "B",
     "imagem": ""
   },
   {
-    "numero": 15,
+    "id": 15,
     "enunciado": "O regime nazista foi liderado por:",
     "alternativas": {
       "A": "Adolf Hitler.",
@@ -176,11 +176,11 @@
       "C": "Benito Mussolini.",
       "D": "Winston Churchill."
     },
-    "correta": "A",
+    "resposta": "A",
     "imagem": ""
   },
   {
-    "numero": 16,
+    "id": 16,
     "enunciado": "A Guerra Fria foi um conflito ideológico entre:",
     "alternativas": {
       "A": "Estados Unidos e Alemanha.",
@@ -188,11 +188,11 @@
       "C": "China e Japão.",
       "D": "Inglaterra e França."
     },
-    "correta": "B",
+    "resposta": "B",
     "imagem": ""
   },
   {
-    "numero": 17,
+    "id": 17,
     "enunciado": "A Revolução Industrial começou na:",
     "alternativas": {
       "A": "Alemanha.",
@@ -200,11 +200,11 @@
       "C": "França.",
       "D": "Itália."
     },
-    "correta": "B",
+    "resposta": "B",
     "imagem": ""
   },
   {
-    "numero": 18,
+    "id": 18,
     "enunciado": "O Iluminismo foi um movimento que defendia:",
     "alternativas": {
       "A": "O poder absoluto dos reis.",
@@ -212,11 +212,11 @@
       "C": "A razão, a ciência e a liberdade.",
       "D": "A escravidão e o mercantilismo."
     },
-    "correta": "C",
+    "resposta": "C",
     "imagem": ""
   },
   {
-    "numero": 19,
+    "id": 19,
     "enunciado": "O Muro de Berlim foi símbolo da divisão:",
     "alternativas": {
       "A": "Entre Alemanha e França.",
@@ -224,11 +224,11 @@
       "C": "Entre EUA e China.",
       "D": "Entre Europa e África."
     },
-    "correta": "B",
+    "resposta": "B",
     "imagem": ""
   },
   {
-    "numero": 20,
+    "id": 20,
     "enunciado": "O descobrimento oficial do Brasil é atribuído a:",
     "alternativas": {
       "A": "Pero Vaz de Caminha.",
@@ -236,7 +236,7 @@
       "C": "Tomé de Souza.",
       "D": "Dom João VI."
     },
-    "correta": "B",
+    "resposta": "B",
     "imagem": ""
   }
 ]
