@@ -1,243 +1,242 @@
-[   
+[
   {
-      "id": 1,
-      "pergunta": "Um carro parte do repouso e atinge a velocidade de 20 m/s em 5 segundos. Qual é a sua aceleração média?",
-      "alternativas": {
-        "A": "2 m/s²",
-        "B": "4 m/s²",
-        "C": "5 m/s²",
-        "D": "10 m/s²"
-      },
-      "resposta": "B",
-      "imagem": ""
+    "id": 1,
+    "enunciado": "Um carro parte do repouso e atinge a velocidade de 20 m/s em 5 segundos. Qual é a sua aceleração média?",
+    "alternativas": {
+      "A": "2 m/s²",
+      "B": "4 m/s²",
+      "C": "5 m/s²",
+      "D": "10 m/s²"
     },
-    {
-      "id": 2,
-      "pergunta": "Um corpo de massa 2 kg sofre uma força resultante de 10 N. Qual é a aceleração do corpo?",
-      "alternativas": {
-        "A": "2 m/s²",
-        "B": "5 m/s²",
-        "C": "10 m/s²",
-        "D": "20 m/s²"
-      },
-      "resposta": "B",
-      "imagem": ""
+    "resposta": "B",
+    "imagem": ""
+  },
+  {
+    "id": 2,
+    "enunciado": "Um corpo de massa 2 kg sofre uma força resultante de 10 N. Qual é a aceleração do corpo?",
+    "alternativas": {
+      "A": "2 m/s²",
+      "B": "5 m/s²",
+      "C": "10 m/s²",
+      "D": "20 m/s²"
     },
-    {
-      "id": 3,
-      "pergunta": "A velocidade da luz no vácuo é aproximadamente igual a:",
-      "alternativas": {
-        "A": "3 × 10⁸ m/s",
-        "B": "3 × 10⁶ m/s",
-        "C": "3 × 10⁵ km/s",
-        "D": "3 × 10⁴ m/s"
-      },
-      "resposta": "A",
-      "imagem": ""
+    "resposta": "B",
+    "imagem": ""
+  },
+  {
+    "id": 3,
+    "enunciado": "A velocidade da luz no vácuo é aproximadamente igual a:",
+    "alternativas": {
+      "A": "3 × 10⁸ m/s",
+      "B": "3 × 10⁶ m/s",
+      "C": "3 × 10⁵ km/s",
+      "D": "3 × 10⁴ m/s"
     },
-    {
-      "id": 4,
-      "pergunta": "Um corpo em queda livre é influenciado apenas por:",
-      "alternativas": {
-        "A": "Força peso",
-        "B": "Força normal",
-        "C": "Força de atrito",
-        "D": "Força magnética"
-      },
-      "resposta": "A",
-      "imagem": ""
+    "resposta": "A",
+    "imagem": ""
+  },
+  {
+    "id": 4,
+    "enunciado": "Um corpo em queda livre é influenciado apenas por:",
+    "alternativas": {
+      "A": "Força peso",
+      "B": "Força normal",
+      "C": "Força de atrito",
+      "D": "Força magnética"
     },
-    {
-      "id": 5,
-      "pergunta": "Se a resistência elétrica de um resistor é de 10 Ω e a corrente que passa por ele é de 2 A, qual é a tensão?",
-      "alternativas": {
-        "A": "5 V",
-        "B": "10 V",
-        "C": "20 V",
-        "D": "40 V"
-      },
-      "resposta": "C",
-      "imagem": ""
+    "resposta": "A",
+    "imagem": ""
+  },
+  {
+    "id": 5,
+    "enunciado": "Se a resistência elétrica de um resistor é de 10 Ω e a corrente que passa por ele é de 2 A, qual é a tensão?",
+    "alternativas": {
+      "A": "5 V",
+      "B": "10 V",
+      "C": "20 V",
+      "D": "40 V"
     },
-    {
-      "id": 6,
-      "pergunta": "Um corpo de 5 kg é elevado a 2 m de altura. Qual é sua energia potencial gravitacional (g = 10 m/s²)?",
-      "alternativas": {
-        "A": "50 J",
-        "B": "100 J",
-        "C": "200 J",
-        "D": "500 J"
-      },
-      "resposta": "B",
-      "imagem": ""
+    "resposta": "C",
+    "imagem": ""
+  },
+  {
+    "id": 6,
+    "enunciado": "Um corpo de 5 kg é elevado a 2 m de altura. Qual é sua energia potencial gravitacional (g = 10 m/s²)?",
+    "alternativas": {
+      "A": "50 J",
+      "B": "100 J",
+      "C": "200 J",
+      "D": "500 J"
     },
-    {
-      "id": 7,
-      "pergunta": "Qual é a unidade de medida da força no Sistema Internacional?",
-      "alternativas": {
-        "A": "Joule (J)",
-        "B": "Pascal (Pa)",
-        "C": "Newton (N)",
-        "D": "Watt (W)"
-      },
-      "resposta": "C",
-      "imagem": ""
+    "resposta": "B",
+    "imagem": ""
+  },
+  {
+    "id": 7,
+    "enunciado": "Qual é a unidade de medida da força no Sistema Internacional?",
+    "alternativas": {
+      "A": "Joule (J)",
+      "B": "Pascal (Pa)",
+      "C": "Newton (N)",
+      "D": "Watt (W)"
     },
-    {
-      "id": 8,
-      "pergunta": "Um objeto de 10 kg está sob aceleração de 3 m/s². Qual é a força resultante sobre ele?",
-      "alternativas": {
-        "A": "10 N",
-        "B": "13 N",
-        "C": "30 N",
-        "D": "33 N"
-      },
-      "resposta": "C",
-      "imagem": ""
+    "resposta": "C",
+    "imagem": ""
+  },
+  {
+    "id": 8,
+    "enunciado": "Um objeto de 10 kg está sob aceleração de 3 m/s². Qual é a força resultante sobre ele?",
+    "alternativas": {
+      "A": "10 N",
+      "B": "13 N",
+      "C": "30 N",
+      "D": "33 N"
     },
-    {
-      "id": 9,
-      "pergunta": "Quando a velocidade de um corpo é constante, podemos afirmar que:",
-      "alternativas": {
-        "A": "A força resultante é diferente de zero",
-        "B": "A força resultante é igual a zero",
-        "C": "A aceleração é diferente de zero",
-        "D": "A energia cinética é nula"
-      },
-      "resposta": "B",
-      "imagem": ""
+    "resposta": "C",
+    "imagem": ""
+  },
+  {
+    "id": 9,
+    "enunciado": "Quando a velocidade de um corpo é constante, podemos afirmar que:",
+    "alternativas": {
+      "A": "A força resultante é diferente de zero",
+      "B": "A força resultante é igual a zero",
+      "C": "A aceleração é diferente de zero",
+      "D": "A energia cinética é nula"
     },
-    {
-      "id": 10,
-      "pergunta": "Qual das grandezas abaixo é escalar?",
-      "alternativas": {
-        "A": "Força",
-        "B": "Velocidade",
-        "C": "Aceleração",
-        "D": "Temperatura"
-      },
-      "resposta": "D",
-      "imagem": ""
+    "resposta": "B",
+    "imagem": ""
+  },
+  {
+    "id": 10,
+    "enunciado": "Qual das grandezas abaixo é escalar?",
+    "alternativas": {
+      "A": "Força",
+      "B": "Velocidade",
+      "C": "Aceleração",
+      "D": "Temperatura"
     },
-    {
-      "id": 11,
-      "pergunta": "A terceira lei de Newton afirma que:",
-      "alternativas": {
-        "A": "Todo corpo em repouso tende a permanecer em repouso",
-        "B": "A força é igual ao produto da massa pela aceleração",
-        "C": "A toda ação corresponde uma reação de mesma intensidade e direção, mas de sentido oposto",
-        "D": "A energia total de um sistema isolado é constante"
-      },
-      "resposta": "C",
-      "imagem": ""
+    "resposta": "D",
+    "imagem": ""
+  },
+  {
+    "id": 11,
+    "enunciado": "A terceira lei de Newton afirma que:",
+    "alternativas": {
+      "A": "Todo corpo em repouso tende a permanecer em repouso",
+      "B": "A força é igual ao produto da massa pela aceleração",
+      "C": "A toda ação corresponde uma reação de mesma intensidade e direção, mas de sentido oposto",
+      "D": "A energia total de um sistema isolado é constante"
     },
-    {
-      "id": 12,
-      "pergunta": "A potência de um motor é 2000 W. Em 10 segundos, ele realiza um trabalho de:",
-      "alternativas": {
-        "A": "200 J",
-        "B": "2000 J",
-        "C": "20 000 J",
-        "D": "200 000 J"
-      },
-      "resposta": "C",
-      "imagem": ""
+    "resposta": "C",
+    "imagem": ""
+  },
+  {
+    "id": 12,
+    "enunciado": "A potência de um motor é 2000 W. Em 10 segundos, ele realiza um trabalho de:",
+    "alternativas": {
+      "A": "200 J",
+      "B": "2000 J",
+      "C": "20 000 J",
+      "D": "200 000 J"
     },
-    {
-      "id": 13,
-      "pergunta": "Um raio de luz passa do ar para a água. O que acontece com a sua velocidade?",
-      "alternativas": {
-        "A": "Aumenta",
-        "B": "Diminui",
-        "C": "Permanece igual",
-        "D": "Depende da cor da luz"
-      },
-      "resposta": "B",
-      "imagem": ""
+    "resposta": "C",
+    "imagem": ""
+  },
+  {
+    "id": 13,
+    "enunciado": "Um raio de luz passa do ar para a água. O que acontece com a sua velocidade?",
+    "alternativas": {
+      "A": "Aumenta",
+      "B": "Diminui",
+      "C": "Permanece igual",
+      "D": "Depende da cor da luz"
     },
-    {
-      "id": 14,
-      "pergunta": "Um transformador reduz a tensão de 220 V para 110 V. Isso significa que:",
-      "alternativas": {
-        "A": "O número de espiras no secundário é maior que no primário",
-        "B": "O número de espiras no secundário é menor que no primário",
-        "C": "A corrente diminui",
-        "D": "A potência aumenta"
-      },
-      "resposta": "B",
-      "imagem": ""
+    "resposta": "B",
+    "imagem": ""
+  },
+  {
+    "id": 14,
+    "enunciado": "Um transformador reduz a tensão de 220 V para 110 V. Isso significa que:",
+    "alternativas": {
+      "A": "O número de espiras no secundário é maior que no primário",
+      "B": "O número de espiras no secundário é menor que no primário",
+      "C": "A corrente diminui",
+      "D": "A potência aumenta"
     },
-    {
-      "id": 15,
-      "pergunta": "O trabalho é nulo quando:",
-      "alternativas": {
-        "A": "A força e o deslocamento são perpendiculares",
-        "B": "A força é paralela ao deslocamento",
-        "C": "O deslocamento é nulo",
-        "D": "A força é máxima"
-      },
-      "resposta": "A",
-      "imagem": ""
+    "resposta": "B",
+    "imagem": ""
+  },
+  {
+    "id": 15,
+    "enunciado": "O trabalho é nulo quando:",
+    "alternativas": {
+      "A": "A força e o deslocamento são perpendiculares",
+      "B": "A força é paralela ao deslocamento",
+      "C": "O deslocamento é nulo",
+      "D": "A força é máxima"
     },
-    {
-      "id": 16,
-      "pergunta": "O som se propaga mais rapidamente:",
-      "alternativas": {
-        "A": "No ar",
-        "B": "Na água",
-        "C": "No vácuo",
-        "D": "Nos metais"
-      },
-      "resposta": "D",
-      "imagem": ""
+    "resposta": "A",
+    "imagem": ""
+  },
+  {
+    "id": 16,
+    "enunciado": "O som se propaga mais rapidamente:",
+    "alternativas": {
+      "A": "No ar",
+      "B": "Na água",
+      "C": "No vácuo",
+      "D": "Nos metais"
     },
-    {
-      "id": 17,
-      "pergunta": "A quantidade de calor necessária para elevar a temperatura de 1 g de água em 1°C é chamada de:",
-      "alternativas": {
-        "A": "Joule",
-        "B": "Caloria",
-        "C": "Watt",
-        "D": "Newton"
-      },
-      "resposta": "B",
-      "imagem": ""
+    "resposta": "D",
+    "imagem": ""
+  },
+  {
+    "id": 17,
+    "enunciado": "A quantidade de calor necessária para elevar a temperatura de 1 g de água em 1°C é chamada de:",
+    "alternativas": {
+      "A": "Joule",
+      "B": "Caloria",
+      "C": "Watt",
+      "D": "Newton"
     },
-    {
-      "id": 18,
-      "pergunta": "O movimento circular uniforme é aquele em que:",
-      "alternativas": {
-        "A": "A velocidade é constante em módulo e direção",
-        "B": "A velocidade é constante em módulo, mas muda de direção",
-        "C": "A aceleração é nula",
-        "D": "A trajetória é retilínea"
-      },
-      "resposta": "B",
-      "imagem": ""
+    "resposta": "B",
+    "imagem": ""
+  },
+  {
+    "id": 18,
+    "enunciado": "O movimento circular uniforme é aquele em que:",
+    "alternativas": {
+      "A": "A velocidade é constante em módulo e direção",
+      "B": "A velocidade é constante em módulo, mas muda de direção",
+      "C": "A aceleração é nula",
+      "D": "A trajetória é retilínea"
     },
-    {
-      "id": 19,
-      "pergunta": "Qual o tipo de espelho que converge os raios de luz?",
-      "alternativas": {
-        "A": "Plano",
-        "B": "Convexo",
-        "C": "Côncavo",
-        "D": "Cilíndrico"
-      },
-      "resposta": "C",
-      "imagem": ""
+    "resposta": "B",
+    "imagem": ""
+  },
+  {
+    "id": 19,
+    "enunciado": "Qual o tipo de espelho que converge os raios de luz?",
+    "alternativas": {
+      "A": "Plano",
+      "B": "Convexo",
+      "C": "Côncavo",
+      "D": "Cilíndrico"
     },
-    {
-      "id": 20,
-      "pergunta": "Um capacitor é utilizado em circuitos elétricos para:",
-      "alternativas": {
-        "A": "Armazenar energia elétrica",
-        "B": "Transformar energia elétrica em térmica",
-        "C": "Medir resistência elétrica",
-        "D": "Conduzir corrente alternada"
-      },
-      "resposta": "A",
-      "imagem": ""
-    }
-  ]
-}
+    "resposta": "C",
+    "imagem": ""
+  },
+  {
+    "id": 20,
+    "enunciado": "Um capacitor é utilizado em circuitos elétricos para:",
+    "alternativas": {
+      "A": "Armazenar energia elétrica",
+      "B": "Transformar energia elétrica em térmica",
+      "C": "Medir resistência elétrica",
+      "D": "Conduzir corrente alternada"
+    },
+    "resposta": "A",
+    "imagem": ""
+  }
+]
