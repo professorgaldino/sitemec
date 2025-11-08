@@ -1,6 +1,6 @@
 [
   {
-    "numero": 1,
+    "id": 1,
     "enunciado": "Read the text:\n\n\"Anna studies English every day because she wants to travel abroad next year.\"\n\nThe word 'abroad' means:",
     "alternativas": {
       "A": "at home",
@@ -8,11 +8,11 @@
       "C": "in her city",
       "D": "at school"
     },
-    "correta": "B",
+    "resposta": "B",
     "imagem": ""
   },
   {
-    "numero": 2,
+    "id": 2,
     "enunciado": "Choose the correct option:\n\nHe ___ to school by bus every morning.",
     "alternativas": {
       "A": "go",
@@ -20,11 +20,11 @@
       "C": "is go",
       "D": "going"
     },
-    "correta": "B",
+    "resposta": "B",
     "imagem": ""
   },
   {
-    "numero": 3,
+    "id": 3,
     "enunciado": "Read the sentence:\n\n\"They didn't watch the movie last night.\"\n\nThe sentence is in the:",
     "alternativas": {
       "A": "Simple Present",
@@ -32,11 +32,11 @@
       "C": "Simple Past",
       "D": "Future"
     },
-    "correta": "C",
+    "resposta": "C",
     "imagem": ""
   },
   {
-    "numero": 4,
+    "id": 4,
     "enunciado": "Complete the sentence:\n\nShe ___ playing the guitar when I arrived.",
     "alternativas": {
       "A": "was",
@@ -44,11 +44,11 @@
       "C": "is",
       "D": "be"
     },
-    "correta": "A",
+    "resposta": "A",
     "imagem": ""
   },
   {
-    "numero": 5,
+    "id": 5,
     "enunciado": "Read the text:\n\n\"In the future, people will use more renewable energy sources.\"\n\nThe word 'renewable' means:",
     "alternativas": {
       "A": "that cannot be replaced",
@@ -56,11 +56,11 @@
       "C": "that is very expensive",
       "D": "that comes from fossils"
     },
-    "correta": "B",
+    "resposta": "B",
     "imagem": ""
   },
   {
-    "numero": 6,
+    "id": 6,
     "enunciado": "Choose the correct question:\n\n___ you like pizza?",
     "alternativas": {
       "A": "Do",
@@ -68,11 +68,11 @@
       "C": "Did",
       "D": "Is"
     },
-    "correta": "A",
+    "resposta": "A",
     "imagem": ""
   },
   {
-    "numero": 7,
+    "id": 7,
     "enunciado": "Read the sentence:\n\n\"My brother is taller than me.\"\n\nThe word 'taller' expresses:",
     "alternativas": {
       "A": "comparison",
@@ -80,11 +80,11 @@
       "C": "superiority of quantity",
       "D": "plural form"
     },
-    "correta": "A",
+    "resposta": "A",
     "imagem": ""
   },
   {
-    "numero": 8,
+    "id": 8,
     "enunciado": "Choose the correct option:\n\nThere ___ any milk in the fridge.",
     "alternativas": {
       "A": "isn't",
@@ -92,11 +92,11 @@
       "C": "don't",
       "D": "hasn't"
     },
-    "correta": "A",
+    "resposta": "A",
     "imagem": ""
   },
   {
-    "numero": 9,
+    "id": 9,
     "enunciado": "Read the sentence:\n\n\"I have studied English for three years.\"\n\nThe tense used is:",
     "alternativas": {
       "A": "Simple Past",
@@ -104,11 +104,11 @@
       "C": "Future Simple",
       "D": "Past Continuous"
     },
-    "correta": "B",
+    "resposta": "B",
     "imagem": ""
   },
   {
-    "numero": 10,
+    "id": 10,
     "enunciado": "Choose the correct preposition:\n\nWe are going ___ the park this afternoon.",
     "alternativas": {
       "A": "on",
@@ -116,11 +116,11 @@
       "C": "to",
       "D": "at"
     },
-    "correta": "C",
+    "resposta": "C",
     "imagem": ""
   },
   {
-    "numero": 11,
+    "id": 11,
     "enunciado": "Read the text:\n\n\"John can play the piano and sing very well.\"\n\nThe modal verb 'can' expresses:",
     "alternativas": {
       "A": "permission",
@@ -128,11 +128,11 @@
       "C": "obligation",
       "D": "necessity"
     },
-    "correta": "B",
+    "resposta": "B",
     "imagem": ""
   },
   {
-    "numero": 12,
+    "id": 12,
     "enunciado": "Choose the correct option:\n\nThere are ___ apples on the table.",
     "alternativas": {
       "A": "much",
@@ -140,11 +140,11 @@
       "C": "any",
       "D": "some"
     },
-    "correta": "D",
+    "resposta": "D",
     "imagem": ""
   },
   {
-    "numero": 13,
+    "id": 13,
     "enunciado": "Read the text:\n\n\"She usually gets up at 6 a.m., takes a shower, and goes to work.\"\n\nThe adverb 'usually' indicates:",
     "alternativas": {
       "A": "frequency",
@@ -152,11 +152,11 @@
       "C": "time",
       "D": "manner"
     },
-    "correta": "A",
+    "resposta": "A",
     "imagem": ""
   },
   {
-    "numero": 14,
+    "id": 14,
     "enunciado": "Complete the sentence:\n\nIf it rains, we ___ stay home.",
     "alternativas": {
       "A": "will",
@@ -164,11 +164,11 @@
       "C": "are",
       "D": "can"
     },
-    "correta": "A",
+    "resposta": "A",
     "imagem": ""
   },
   {
-    "numero": 15,
+    "id": 15,
     "enunciado": "Read the sentence:\n\n\"The book was written by a famous author.\"\n\nThe sentence is in the:",
     "alternativas": {
       "A": "Active voice",
@@ -176,11 +176,11 @@
       "C": "Imperative form",
       "D": "Present continuous"
     },
-    "correta": "B",
+    "resposta": "B",
     "imagem": ""
   },
   {
-    "numero": 16,
+    "id": 16,
     "enunciado": "Choose the correct option:\n\nI have two brothers. ___ names are Lucas and Tom.",
     "alternativas": {
       "A": "His",
@@ -188,11 +188,11 @@
       "C": "Their",
       "D": "Our"
     },
-    "correta": "C",
+    "resposta": "C",
     "imagem": ""
   },
   {
-    "numero": 17,
+    "id": 17,
     "enunciado": "Read the sentence:\n\n\"Let's go to the beach!\"\n\nThe word 'Let's' is a contraction of:",
     "alternativas": {
       "A": "Let is",
@@ -200,11 +200,11 @@
       "C": "Let are",
       "D": "Let have"
     },
-    "correta": "B",
+    "resposta": "B",
     "imagem": ""
   },
   {
-    "numero": 18,
+    "id": 18,
     "enunciado": "Read the text:\n\n\"Mary didn’t eat breakfast because she was late for school.\"\n\nWhy didn’t Mary eat breakfast?",
     "alternativas": {
       "A": "She wasn’t hungry.",
@@ -212,11 +212,11 @@
       "C": "She didn’t like breakfast.",
       "D": "She had no food."
     },
-    "correta": "B",
+    "resposta": "B",
     "imagem": ""
   },
   {
-    "numero": 19,
+    "id": 19,
     "enunciado": "Complete the sentence:\n\nMy house is ___ than yours.",
     "alternativas": {
       "A": "big",
@@ -224,11 +224,11 @@
       "C": "more big",
       "D": "the biggest"
     },
-    "correta": "B",
+    "resposta": "B",
     "imagem": ""
   },
   {
-    "numero": 20,
+    "id": 20,
     "enunciado": "Read the text:\n\n\"Reading books helps improve vocabulary and imagination.\"\n\nThe main idea of the sentence is that:",
     "alternativas": {
       "A": "Books are boring.",
@@ -236,7 +236,7 @@
       "C": "Only children like to read.",
       "D": "Imagination is not important."
     },
-    "correta": "B",
+    "resposta": "B",
     "imagem": ""
   }
 ]
