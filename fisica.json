@@ -1,6 +1,5 @@
-{
-  "questoes": [
-    {
+[   
+  {
       "id": 1,
       "pergunta": "Um carro parte do repouso e atinge a velocidade de 20 m/s em 5 segundos. Qual é a sua aceleração média?",
       "alternativas": {
