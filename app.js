@@ -127,7 +127,7 @@ onAuthStateChanged(auth, async user => {
 
 function setupUserUI() {
   const name = state.profile.name || state.profile.username;
-  $("#welcomeName").textContent = name.split(" ")[0];
+  if ($("#welcomeName")) $("#welcomeName").textContent = name.split(" ")[0];
   $("#sidebarUserName").textContent = name;
   $("#sidebarUserRole").textContent = isCoordinator() ? "Coordenação" : "Professor";
   $("#userInitials").textContent = initials(name); $("#profileButton").textContent = initials(name);
@@ -139,7 +139,7 @@ function setupUserUI() {
 }
 
 function setupPublicUI() {
-  $("#welcomeName").textContent = "estudante";
+  if ($("#welcomeName")) $("#welcomeName").textContent = "estudante";
   $("#welcomeMessage").textContent = "Seu ponto de acesso aos materiais, avaliações, avisos e oportunidades da Mecânica Industrial.";
   $("#sidebarUserName").textContent = "Área do aluno";
   $("#sidebarUserRole").textContent = "Acesso público";
@@ -210,6 +210,25 @@ function renderHome() {
   emptyOrHtml($("#homeNotices"), notices.map(p => `<article class="feed-item"><span class="feed-dot"></span><div><h4>${escapeHtml(p.title)}</h4><p>${escapeHtml(p.content).slice(0,110)}</p></div><time>${formatDate(p.createdAt)}</time></article>`).join(""), "Nenhum recado publicado.");
   emptyOrHtml($("#homeExams"), exams.map(e => { const d = new Date(`${e.date}T12:00`); return `<article class="timeline-item"><div class="timeline-date"><strong>${String(d.getDate()).padStart(2,"0")}</strong><small>${d.toLocaleDateString("pt-BR",{month:"short"})}</small></div><div><h4>${escapeHtml(e.subject)}</h4><p>${escapeHtml(e.className)} · ${escapeHtml(e.time || "Horário a definir")}</p></div></article>`; }).join(""), "Nenhuma prova agendada.");
   emptyOrHtml($("#homePartners"), state.data.partners.map(p => p.logoUrl ? `<img class="partner-logo" src="${p.logoUrl}" alt="${escapeHtml(p.name)}" title="${escapeHtml(p.name)}">` : `<strong>${escapeHtml(p.name)}</strong>`).join(""), "Os parceiros aparecerão aqui.");
+  renderLatestUpdates();
+}
+
+function itemTime(value) {
+  if (value?.toMillis) return value.toMillis();
+  if (value?.toDate) return value.toDate().getTime();
+  const parsed = value ? new Date(`${value}${String(value).length === 10 ? "T12:00:00" : ""}`).getTime() : 0;
+  return Number.isNaN(parsed) ? 0 : parsed;
+}
+
+function renderLatestUpdates() {
+  const updates = [
+    ...state.data.posts.filter(p => p.type === "recado").map(p => ({ type: "Recado", kind: "", page: "recados", title: p.title, description: p.content, date: p.createdAt })),
+    ...state.data.materials.map(m => ({ type: "Material", kind: "material", page: "materiais", title: m.title, description: m.description || m.fileName, date: m.createdAt })),
+    ...state.data.jobs.map(j => ({ type: "Vaga", kind: "job", page: "vagas", title: j.title, description: `${j.company} · ${j.location || "Local a combinar"}`, date: j.createdAt })),
+    ...state.data.exams.map(e => ({ type: "Prova", kind: "exam", page: "provas", title: e.subject, description: `${e.className} · ${formatDate(e.date)}`, date: e.createdAt || e.date }))
+  ].sort((a, b) => itemTime(b.date) - itemTime(a.date)).slice(0, 3);
+  const html = updates.map(update => `<article class="latest-card" data-latest-page="${update.page}" tabindex="0" role="button" aria-label="Abrir ${escapeHtml(update.type)}: ${escapeHtml(update.title)}"><div class="latest-card-top"><span class="update-type ${update.kind}">${escapeHtml(update.type)}</span><time>${formatDate(update.date)}</time></div><h3>${escapeHtml(update.title)}</h3><p>${escapeHtml(update.description || "").slice(0, 115)}</p><span class="update-link">Consultar atualização →</span></article>`).join("");
+  emptyOrHtml($("#latestUpdates"), html, "Ainda não há atualizações publicadas.");
 }
 function actionButtons(item, collectionName) {
   if (!canEdit(item)) return "";
@@ -359,6 +378,8 @@ function postToDrive(values, timeoutMs = 30000) {
 }
 
 document.addEventListener("click", async e => {
+  const latest = e.target.closest("[data-latest-page]");
+  if (latest) goPage(latest.dataset.latestPage);
   const del = e.target.closest("[data-delete]");
   if (del) {
     if (!confirm("Deseja excluir este registro?")) return;
@@ -369,5 +390,10 @@ document.addEventListener("click", async e => {
   }
   const status = e.target.closest("[data-job-status]");
   if (status) { await updateDoc(doc(db,"jobs",status.dataset.jobStatus),{status:status.dataset.status,updatedAt:serverTimestamp()}); await loadAll(); }
+});
+document.addEventListener("keydown", e => {
+  if ((e.key === "Enter" || e.key === " ") && e.target.matches("[data-latest-page]")) {
+    e.preventDefault(); goPage(e.target.dataset.latestPage);
+  }
 });
 $$("[data-job-filter]").forEach(btn => btn.addEventListener("click", () => { state.jobFilter = btn.dataset.jobFilter; $$("[data-job-filter]").forEach(b => b.classList.toggle("active",b===btn)); renderJobs(); }));

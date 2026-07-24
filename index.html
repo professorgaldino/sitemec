@@ -125,19 +125,33 @@
 
       <div id="pageContent" class="content">
         <section id="page-inicio" class="page active">
-          <div class="hero-card">
-            <div>
-              <span class="eyebrow">Painel acadêmico</span>
-              <h1>Olá, <span id="welcomeName">professor</span>.</h1>
-              <p id="welcomeMessage">Acompanhe as novidades do curso e mantenha a equipe atualizada.</p>
-              <button class="btn btn-light teacher-only" data-open-modal="post">Criar publicação</button>
+          <div class="hero-card institutional-hero">
+            <div class="hero-copy">
+              <span class="institutional-label"><i></i> Portal oficial do curso</span>
+              <h1>Formação técnica que<br><span>movimenta a indústria.</span></h1>
+              <p id="welcomeMessage">Informação, conhecimento e oportunidades para a comunidade da Mecânica Industrial.</p>
+              <div class="hero-actions">
+                <button class="btn btn-light public-only" data-go-page="materiais">Consultar materiais</button>
+                <button class="btn btn-outline-light public-only" data-go-page="recados">Ver atualizações</button>
+                <button class="btn btn-light teacher-only" data-open-modal="post">Criar publicação</button>
+              </div>
             </div>
-            <div class="gear-art" aria-hidden="true"><div class="gear-ring"></div><span>MI</span></div>
+            <div class="hero-identity">
+              <img src="logomecanica.png" alt="Mecânica Industrial">
+              <div><strong>Portal Acadêmico</strong><span>Ensino • Indústria • Futuro</span></div>
+            </div>
           </div>
+          <section class="latest-section public-only" aria-labelledby="latestTitle">
+            <div class="latest-heading">
+              <div><span class="live-dot"></span><span class="section-kicker">Novidades do curso</span><h2 id="latestTitle">Últimas atualizações</h2></div>
+              <p>As informações mais recentes publicadas pelos professores.</p>
+            </div>
+            <div id="latestUpdates" class="latest-grid empty-state">Ainda não há atualizações publicadas.</div>
+          </section>
           <section class="student-guide public-only" aria-labelledby="studentGuideTitle">
             <div class="student-guide-heading">
-              <div><span class="section-kicker">Explore o portal</span><h2 id="studentGuideTitle">Tudo o que você precisa, em um só lugar</h2></div>
-              <p>Escolha um espaço para acessar informações, conteúdos e oportunidades do curso.</p>
+              <div><span class="section-kicker">Serviços acadêmicos</span><h2 id="studentGuideTitle">Acesso rápido</h2></div>
+              <p>Encontre materiais, calendário de avaliações e oportunidades em poucos cliques.</p>
             </div>
             <div class="student-guide-grid">
               <button class="guide-card blue" data-go-page="recados"><span class="guide-icon">◉</span><span><strong>Recados</strong><small>Avisos importantes e novidades do curso.</small></span><b>→</b></button>
