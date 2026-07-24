@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#081127">
+  <meta name="description" content="Portal acadêmico do curso de Mecânica Industrial.">
+  <title>Portal Mecânica Industrial</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <section id="fileProtocolNotice" class="local-notice" hidden>
+    <img src="logomecanica.png" alt="Mecânica Industrial">
+    <span class="section-kicker">Teste local</span>
+    <h1>Abra o portal pelo iniciador</h1>
+    <p>O Firebase não funciona quando o arquivo HTML é aberto diretamente. Feche esta aba e dê dois cliques em <strong>INICIAR-PORTAL.bat</strong>.</p>
+    <code>O endereço correto começará com http://localhost:5500</code>
+  </section>
+
+  <main id="authScreen" class="auth-shell" hidden>
+    <section class="auth-brand">
+      <img src="logomecanica.png" alt="Mecânica Industrial" class="auth-logo">
+      <div>
+        <span class="eyebrow">Ambiente acadêmico</span>
+        <h1>Conhecimento que<br><em>movimenta o futuro.</em></h1>
+        <p>Materiais, provas, recados, atas e oportunidades em um único lugar.</p>
+      </div>
+      <div class="auth-metrics">
+        <div><strong>01</strong><span>Portal integrado</span></div>
+        <div><strong>24/7</strong><span>Acesso aos materiais</span></div>
+      </div>
+    </section>
+
+    <section class="auth-panel">
+      <div class="auth-card">
+        <div class="mobile-brand"><img src="logomecanica.png" alt="Mecânica Industrial"></div>
+        <div id="loginView">
+          <span class="section-kicker">Bem-vindo</span>
+          <h2>Acesse sua conta</h2>
+          <p class="muted">Use seu nome de usuário e sua senha.</p>
+          <form id="loginForm" class="form-stack">
+            <label>Usuário
+              <input id="loginUsername" autocomplete="username" required placeholder="ex.: carlos">
+            </label>
+            <label>Senha
+              <div class="password-wrap">
+                <input id="loginPassword" type="password" autocomplete="current-password" required placeholder="Sua senha">
+                <button class="show-password" type="button" data-toggle-password="loginPassword" aria-label="Mostrar senha">Ver</button>
+              </div>
+            </label>
+            <button class="btn btn-primary btn-block" type="submit">Entrar no portal</button>
+          </form>
+          <div class="access-divider"><span>ou</span></div>
+          <button id="studentAccessButton" class="btn btn-student btn-block" type="button"><span class="student-access-icon">⌂</span>Acessar área pública do aluno</button>
+          <p class="student-access-note">Alunos não precisam de usuário ou senha.</p>
+          <p class="auth-switch">Professor, primeiro acesso? <button type="button" class="link-button" data-auth-view="register">Crie sua conta</button></p>
+        </div>
+
+        <div id="registerView" hidden>
+          <span class="section-kicker">Cadastro de professor</span>
+          <h2>Crie sua conta</h2>
+          <p class="muted">Seu primeiro nome será usado como usuário.</p>
+          <form id="registerForm" class="form-stack">
+            <label>Nome completo
+              <input id="registerName" autocomplete="name" required placeholder="Ex.: Carlos Henrique">
+            </label>
+            <label>Nome de usuário
+              <div class="input-status-wrap">
+                <input id="registerUsername" autocomplete="username" required minlength="3" placeholder="carlos">
+                <span id="usernameStatus" class="input-status"></span>
+              </div>
+              <small>Use letras minúsculas e números, sem espaços.</small>
+            </label>
+            <label>Senha
+              <div class="password-wrap">
+                <input id="registerPassword" type="password" autocomplete="new-password" required minlength="8" placeholder="Mínimo de 8 caracteres">
+                <button class="show-password" type="button" data-toggle-password="registerPassword" aria-label="Mostrar senha">Ver</button>
+              </div>
+            </label>
+            <button id="registerButton" class="btn btn-primary btn-block" type="submit">Criar conta</button>
+          </form>
+          <p class="auth-switch">Já tem uma conta de professor? <button type="button" class="link-button" data-auth-view="login">Entrar</button></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="appScreen" class="app-shell" hidden>
+    <aside id="sidebar" class="sidebar">
+      <a class="brand" href="#inicio" aria-label="Início"><img src="logomecanica.png" alt="Mecânica Industrial"></a>
+      <nav class="main-nav" aria-label="Navegação principal">
+        <button class="nav-item active" data-page="inicio"><span>⌂</span>Início</button>
+        <button class="nav-item" data-page="recados"><span>◉</span>Recados</button>
+        <button class="nav-item" data-page="provas"><span>◇</span>Provas</button>
+        <button class="nav-item" data-page="materiais"><span>▤</span>Materiais</button>
+        <button class="nav-item teacher-only" data-page="atas"><span>▣</span>Atas</button>
+        <button class="nav-item" data-page="vagas"><span>□</span>Vagas</button>
+        <button class="nav-item public-only" data-page="parceiros-publico"><span>✦</span>Parceiros</button>
+        <button class="nav-item coordinator-only" data-page="usuarios"><span>♙</span>Professores</button>
+        <button class="nav-item coordinator-only" data-page="parceiros"><span>✦</span>Parceiros</button>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="user-mini">
+          <span id="userInitials" class="avatar">MI</span>
+          <div><strong id="sidebarUserName">Professor</strong><small id="sidebarUserRole">Professor</small></div>
+        </div>
+        <button id="logoutButton" class="icon-button" title="Sair" aria-label="Sair">↗</button>
+      </div>
+    </aside>
+
+    <section class="workspace">
+      <header class="topbar">
+        <button id="menuButton" class="menu-button" aria-label="Abrir menu">☰</button>
+        <div><span class="today-label">Portal acadêmico</span><h2 id="pageTitle">Visão geral</h2></div>
+        <div class="topbar-actions">
+          <button id="teacherLoginButton" class="btn btn-secondary public-only">Área do professor</button>
+          <button id="quickPostButton" class="btn btn-primary teacher-only">+ Nova publicação</button>
+          <button id="profileButton" class="avatar avatar-button" aria-label="Perfil">MI</button>
+        </div>
+      </header>
+
+      <div id="pageContent" class="content">
+        <section id="page-inicio" class="page active">
+          <div class="hero-card">
+            <div>
+              <span class="eyebrow">Painel acadêmico</span>
+              <h1>Olá, <span id="welcomeName">professor</span>.</h1>
+              <p id="welcomeMessage">Acompanhe as novidades do curso e mantenha a equipe atualizada.</p>
+              <button class="btn btn-light teacher-only" data-open-modal="post">Criar publicação</button>
+            </div>
+            <div class="gear-art" aria-hidden="true"><div class="gear-ring"></div><span>MI</span></div>
+          </div>
+          <section class="student-guide public-only" aria-labelledby="studentGuideTitle">
+            <div class="student-guide-heading">
+              <div><span class="section-kicker">Explore o portal</span><h2 id="studentGuideTitle">Tudo o que você precisa, em um só lugar</h2></div>
+              <p>Escolha um espaço para acessar informações, conteúdos e oportunidades do curso.</p>
+            </div>
+            <div class="student-guide-grid">
+              <button class="guide-card blue" data-go-page="recados"><span class="guide-icon">◉</span><span><strong>Recados</strong><small>Avisos importantes e novidades do curso.</small></span><b>→</b></button>
+              <button class="guide-card amber" data-go-page="provas"><span class="guide-icon">◇</span><span><strong>Provas</strong><small>Datas, horários, turmas e orientações.</small></span><b>→</b></button>
+              <button class="guide-card cyan" data-go-page="materiais"><span class="guide-icon">▤</span><span><strong>Materiais</strong><small>Apostilas, exercícios, PDFs e imagens.</small></span><b>→</b></button>
+              <button class="guide-card green" data-go-page="vagas"><span class="guide-icon">□</span><span><strong>Vagas</strong><small>Oportunidades de emprego disponíveis.</small></span><b>→</b></button>
+              <button class="guide-card violet" data-go-page="parceiros-publico"><span class="guide-icon">✦</span><span><strong>Parceiros</strong><small>Empresas conectadas à Mecânica Industrial.</small></span><b>→</b></button>
+            </div>
+          </section>
+          <div class="stats-grid">
+            <article class="stat-card"><span class="stat-icon blue">◉</span><div><small>Recados ativos</small><strong id="statRecados">0</strong></div></article>
+            <article class="stat-card"><span class="stat-icon amber">◇</span><div><small>Próximas provas</small><strong id="statProvas">0</strong></div></article>
+            <article class="stat-card"><span class="stat-icon cyan">▤</span><div><small>Materiais</small><strong id="statMateriais">0</strong></div></article>
+            <article class="stat-card"><span class="stat-icon green">□</span><div><small>Vagas disponíveis</small><strong id="statVagas">0</strong></div></article>
+          </div>
+          <div class="dashboard-grid">
+            <section class="panel">
+              <div class="panel-heading"><div><span class="section-kicker">Atualizações</span><h3>Recados recentes</h3></div><button class="link-button" data-go-page="recados">Ver todos</button></div>
+              <div id="homeNotices" class="feed-list empty-state">Nenhum recado publicado.</div>
+            </section>
+            <section class="panel">
+              <div class="panel-heading"><div><span class="section-kicker">Agenda</span><h3>Próximas provas</h3></div><button class="link-button" data-go-page="provas">Ver agenda</button></div>
+              <div id="homeExams" class="timeline-list empty-state">Nenhuma prova agendada.</div>
+            </section>
+          </div>
+          <section class="partners-strip">
+            <div class="panel-heading"><div><span class="section-kicker">Conexões</span><h3>Empresas parceiras</h3></div></div>
+            <div id="homePartners" class="partner-list empty-state">Os parceiros aparecerão aqui.</div>
+          </section>
+        </section>
+
+        <section id="page-recados" class="page" data-collection="posts" data-type="recado">
+          <div class="page-heading"><div><span class="section-kicker">Comunicação</span><h1>Recados gerais</h1><p>Informações importantes para toda a equipe.</p></div><button class="btn btn-primary" data-open-modal="post" data-post-type="recado">+ Novo recado</button></div>
+          <div id="recadosList" class="cards-list empty-state">Nenhum recado publicado.</div>
+        </section>
+
+        <section id="page-provas" class="page">
+          <div class="page-heading"><div><span class="section-kicker">Calendário</span><h1>Provas e avaliações</h1><p>Organize as avaliações do curso.</p></div><button class="btn btn-primary" data-open-modal="exam">+ Marcar prova</button></div>
+          <div id="examsList" class="cards-grid empty-state">Nenhuma prova agendada.</div>
+        </section>
+
+        <section id="page-materiais" class="page">
+          <div class="page-heading"><div><span class="section-kicker">Biblioteca</span><h1>Materiais de aula</h1><p>PDFs, documentos e imagens para apoiar as aulas.</p></div><button class="btn btn-primary" data-open-modal="material">+ Enviar material</button></div>
+          <div id="materialsList" class="cards-grid empty-state">Nenhum material enviado.</div>
+        </section>
+
+        <section id="page-atas" class="page teacher-only">
+          <div class="page-heading"><div><span class="section-kicker">Documentação</span><h1>Atas pedagógicas</h1><p>Registros das reuniões e decisões do curso.</p></div><button class="btn btn-primary coordinator-only" data-open-modal="minute">+ Nova ata</button></div>
+          <div id="minutesList" class="cards-list empty-state">Nenhuma ata cadastrada.</div>
+        </section>
+
+        <section id="page-vagas" class="page">
+          <div class="page-heading"><div><span class="section-kicker">Oportunidades</span><h1>Vagas de emprego</h1><p>Conectando profissionais e empresas da região.</p></div><button class="btn btn-primary" data-open-modal="job">+ Publicar vaga</button></div>
+          <div class="filter-row"><button class="filter-chip active" data-job-filter="all">Todas</button><button class="filter-chip" data-job-filter="disponivel">Disponíveis</button><button class="filter-chip" data-job-filter="preenchida">Preenchidas</button></div>
+          <div id="jobsList" class="cards-grid empty-state">Nenhuma vaga publicada.</div>
+        </section>
+
+        <section id="page-usuarios" class="page coordinator-only">
+          <div class="page-heading"><div><span class="section-kicker">Administração</span><h1>Professores</h1><p>Acompanhe as contas cadastradas no portal.</p></div></div>
+          <div id="usersList" class="table-wrap empty-state">Nenhum professor cadastrado.</div>
+        </section>
+
+        <section id="page-parceiros" class="page coordinator-only">
+          <div class="page-heading"><div><span class="section-kicker">Relacionamento</span><h1>Empresas parceiras</h1><p>Cadastre marcas que apoiam o curso de Mecânica.</p></div><button class="btn btn-primary" data-open-modal="partner">+ Nova empresa</button></div>
+          <div id="partnersList" class="cards-grid empty-state">Nenhuma empresa parceira.</div>
+        </section>
+
+        <section id="page-parceiros-publico" class="page public-only">
+          <div class="page-heading"><div><span class="section-kicker">Conexões</span><h1>Empresas parceiras</h1><p>Empresas que apoiam o curso de Mecânica Industrial.</p></div></div>
+          <div id="publicPartnersList" class="cards-grid empty-state">Nenhuma empresa parceira.</div>
+        </section>
+      </div>
+    </section>
+  </div>
+
+  <dialog id="formModal" class="modal">
+    <form id="dynamicForm" method="dialog">
+      <div class="modal-heading"><div><span id="modalKicker" class="section-kicker">Nova publicação</span><h2 id="modalTitle">Adicionar</h2></div><button class="modal-close" value="cancel" aria-label="Fechar">×</button></div>
+      <div id="modalFields" class="form-stack"></div>
+      <div class="modal-actions"><button class="btn btn-secondary" value="cancel">Cancelar</button><button id="modalSubmit" class="btn btn-primary" value="default">Salvar</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="passwordModal" class="modal">
+    <form id="passwordForm" method="dialog">
+      <div class="modal-heading"><div><span class="section-kicker">Segurança</span><h2>Crie sua nova senha</h2></div></div>
+      <p class="muted">Esta é uma senha provisória. Para continuar, escolha uma senha pessoal.</p>
+      <div class="form-stack">
+        <label>Nova senha<input id="newPassword" type="password" minlength="8" required autocomplete="new-password"></label>
+        <label>Confirmar senha<input id="confirmPassword" type="password" minlength="8" required autocomplete="new-password"></label>
+      </div>
+      <div class="modal-actions"><button id="changePasswordButton" class="btn btn-primary btn-block" value="default">Atualizar senha e entrar</button></div>
+    </form>
+  </dialog>
+
+  <script>
+    if (window.location.protocol === "file:") {
+      document.getElementById("fileProtocolNotice").hidden = false;
+    }
+  </script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

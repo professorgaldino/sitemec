@@ -1,0 +1,49 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function profile() { return get(/databases/$(database)/documents/users/$(request.auth.uid)).data; }
+    function coordinator() { return signedIn() && profile().role == "coordinator" && profile().active == true; }
+    function active() { return signedIn() && profile().active == true; }
+    function owner() { return active() && resource.data.authorId == request.auth.uid; }
+    function newOwner() { return active() && request.resource.data.authorId == request.auth.uid; }
+
+    match /usernames/{username} {
+      allow read: if true;
+      allow create: if signedIn() && request.resource.data.uid == request.auth.uid;
+      allow update, delete: if coordinator();
+    }
+    match /users/{uid} {
+      allow create: if signedIn() && request.auth.uid == uid
+        && request.resource.data.role == "teacher"
+        && request.resource.data.active == true;
+      allow read: if active() && (request.auth.uid == uid || coordinator());
+      allow update: if coordinator() || (request.auth.uid == uid
+        && request.resource.data.role == resource.data.role
+        && request.resource.data.active == resource.data.active);
+      allow delete: if false;
+    }
+    match /posts/{id} {
+      allow read: if true; allow create: if newOwner();
+      allow update, delete: if coordinator() || owner();
+    }
+    match /exams/{id} {
+      allow read: if true; allow create: if newOwner();
+      allow update, delete: if coordinator() || owner();
+    }
+    match /materials/{id} {
+      allow read: if true; allow create: if newOwner();
+      allow update, delete: if coordinator() || owner();
+    }
+    match /jobs/{id} {
+      allow read: if true; allow create: if newOwner();
+      allow update, delete: if coordinator() || owner();
+    }
+    match /minutes/{id} {
+      allow read: if active(); allow write: if coordinator();
+    }
+    match /partners/{id} {
+      allow read: if true; allow write: if coordinator();
+    }
+  }
+}
