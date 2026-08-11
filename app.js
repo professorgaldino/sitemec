@@ -1,7 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
 import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, deleteUser, sendPasswordResetEmail, signOut, updatePassword } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
 import { getFirestore, collection, doc, getDoc, getDocs, addDoc, setDoc, updateDoc, deleteDoc, query, orderBy, serverTimestamp, where, limit, writeBatch } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
-import { firebaseConfig, USER_EMAIL_DOMAIN, driveUploadConfig } from "./firebase-config.js?v=20260811-10";
+import { firebaseConfig, USER_EMAIL_DOMAIN, driveUploadConfig } from "./firebase-config.js?v=20260811-11";
 
 const fb = initializeApp(firebaseConfig);
 const auth = getAuth(fb);
@@ -485,8 +485,10 @@ function fileToBase64(file, onProgress) {
 
 async function uploadFileToDrive(file, category) {
   if (!driveUploadConfig.webAppUrl.startsWith("https://script.google.com/")) throw new Error("O envio ao Google Drive ainda não foi configurado.");
-  const maxBytes = driveUploadConfig.maxFileSizeMb * 1024 * 1024;
-  if (file.size > maxBytes) throw new Error(`O arquivo deve ter no máximo ${driveUploadConfig.maxFileSizeMb} MB.`);
+  if (driveUploadConfig.maxFileSizeMb) {
+    const maxBytes = driveUploadConfig.maxFileSizeMb * 1024 * 1024;
+    if (file.size > maxBytes) throw new Error(`O arquivo deve ter no máximo ${driveUploadConfig.maxFileSizeMb} MB.`);
+  }
   const extension = file.name.split(".").pop().toLowerCase();
   const mimeByExtension = { pdf: "application/pdf", doc: "application/msword", docx: "application/vnd.openxmlformats-officedocument.wordprocessingml.document", ppt: "application/vnd.ms-powerpoint", pptx: "application/vnd.openxmlformats-officedocument.presentationml.presentation", jpg: "image/jpeg", jpeg: "image/jpeg", png: "image/png", webp: "image/webp" };
   const mimeType = file.type || mimeByExtension[extension] || "";

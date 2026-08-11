@@ -9,7 +9,6 @@
  */
 const FOLDER_ID = "1vi-yP5b4izy87DdQ6kidCMmD4qcAmteD";
 const UPLOAD_TOKEN = "mec_2026_X9rT82pL_4kQ7zA_196579678";
-const MAX_FILE_SIZE = 10 * 1024 * 1024;
 const ALLOWED_MIME_TYPES = [
   "application/pdf",
   "application/msword",
@@ -41,7 +40,7 @@ function doPost(event) {
 function upload_(data) {
   if (!ALLOWED_MIME_TYPES.includes(data.mimeType)) throw new Error("Formato de arquivo não permitido.");
   const bytes = Utilities.base64Decode(data.fileData || "");
-  if (!bytes.length || bytes.length > MAX_FILE_SIZE) throw new Error("Arquivo vazio ou maior que 10 MB.");
+  if (!bytes.length) throw new Error("O arquivo está vazio.");
 
   const root = DriveApp.getFolderById(FOLDER_ID);
   const categoryFolder = getOrCreateFolder_(root, sanitize_(data.category || "materiais"));

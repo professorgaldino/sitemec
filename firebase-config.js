@@ -12,5 +12,5 @@ export const USER_EMAIL_DOMAIN = "sitemec.local";
 export const driveUploadConfig = {
   webAppUrl: "https://script.google.com/macros/s/AKfycbyepZ5ELeUXarql7S4qI4uosdR7OWycGKD0CEVhE9CrdLzCXDLh1FRKnyKa_cg7OKiS/exec",
   uploadToken: "mec_2026_X9rT82pL_4kQ7zA_196579678",
-  maxFileSizeMb: 10
+  maxFileSizeMb: null
 };
