@@ -14,6 +14,8 @@ const ALLOWED_MIME_TYPES = [
   "application/pdf",
   "application/msword",
   "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  "application/vnd.ms-powerpoint",
+  "application/vnd.openxmlformats-officedocument.presentationml.presentation",
   "image/jpeg",
   "image/png",
   "image/webp"
@@ -78,6 +80,6 @@ function sanitizeFileName_(value) {
 function respond_(payload, requestId) {
   const message = JSON.stringify({ source: "sitemec-drive", requestId, ...payload }).replace(/</g, "\\u003c");
   return HtmlService
-    .createHtmlOutput(`<script>window.parent.postMessage(${message}, "*");</script>`)
+    .createHtmlOutput(`<script>window.top.postMessage(${message}, "*");</script>`)
     .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
 }

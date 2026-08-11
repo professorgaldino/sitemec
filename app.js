@@ -1,7 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
 import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, deleteUser, sendPasswordResetEmail, signOut, updatePassword } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
 import { getFirestore, collection, doc, getDoc, getDocs, addDoc, setDoc, updateDoc, deleteDoc, query, orderBy, serverTimestamp, where, limit, writeBatch } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
-import { firebaseConfig, USER_EMAIL_DOMAIN, driveUploadConfig } from "./firebase-config.js?v=20260811-9";
+import { firebaseConfig, USER_EMAIL_DOMAIN, driveUploadConfig } from "./firebase-config.js?v=20260811-10";
 
 const fb = initializeApp(firebaseConfig);
 const auth = getAuth(fb);
@@ -337,9 +337,23 @@ function renderPosts() {
 function renderExams() {
   emptyOrHtml($("#examsList"), state.data.exams.map(e => `<article class="content-card"><span class="badge amber">${formatDate(e.date)}</span><h3>${escapeHtml(e.subject)}</h3><p>${escapeHtml(e.description || "Avaliação programada.")}</p><div class="card-meta"><span>Turma: ${escapeHtml(e.className)}</span><span>Horário: ${escapeHtml(e.time || "A definir")}</span><span>Professor: ${escapeHtml(e.authorName)}</span></div><div class="card-actions"><small>Postado em ${formatDate(e.createdAt)}</small>${actionButtons(e,"exams")}</div></article>`).join(""), "Nenhuma prova agendada.");
 }
+function materialPreview(material) {
+  const url = String(material.fileUrl || "").trim();
+  if (!url) return `<div class="material-preview preview-empty"><span>Sem prévia</span></div>`;
+  const safeUrl = escapeHtml(url);
+  const extension = String(material.extension || "").toLowerCase();
+  const driveMatch = url.match(/drive\.google\.com\/file\/d\/([^/]+)/);
+  if (driveMatch) return `<div class="material-preview"><iframe src="https://drive.google.com/file/d/${escapeHtml(driveMatch[1])}/preview" title="Prévia de ${escapeHtml(material.title)}" loading="lazy" allow="autoplay"></iframe></div>`;
+  if (["jpg", "jpeg", "png", "webp", "gif"].includes(extension) || /\.(jpe?g|png|webp|gif)(\?|$)/i.test(url)) return `<div class="material-preview"><img src="${safeUrl}" alt="Prévia de ${escapeHtml(material.title)}" loading="lazy"></div>`;
+  if (extension === "pdf" || /\.pdf(\?|$)/i.test(url)) return `<div class="material-preview"><iframe src="${safeUrl}" title="Prévia de ${escapeHtml(material.title)}" loading="lazy"></iframe></div>`;
+  if (["ppt", "pptx", "doc", "docx"].includes(extension)) return `<div class="material-preview"><iframe src="https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(url)}" title="Prévia de ${escapeHtml(material.title)}" loading="lazy"></iframe></div>`;
+  let domain = "Link externo";
+  try { domain = new URL(url).hostname.replace(/^www\./, ""); } catch {}
+  return `<a class="material-preview link-preview" href="${safeUrl}" target="_blank" rel="noopener"><span class="link-preview-icon">↗</span><strong>${escapeHtml(domain)}</strong><small>Clique para visualizar o conteúdo</small></a>`;
+}
 function renderMaterials() {
   const materials = state.data.materials.filter(m => curriculumMatches(m, state.materialModule, state.materialDiscipline));
-  const html = groupByModule(materials, m => { const d = curriculumInfo(m); return `<article class="content-card file-card"><div class="file-icon">${escapeHtml((m.extension || "ARQ").toUpperCase().slice(0,4))}</div><div class="card-badges"><span class="badge">${escapeHtml(m.category || "Material")}</span><span class="badge gray">${escapeHtml(d.code ? `${d.code} - ${d.name}` : d.name)}</span></div><h3>${escapeHtml(m.title)}</h3><p>${escapeHtml(m.description || m.fileName)}</p><div class="card-meta"><span>Professor: ${escapeHtml(m.authorName)}</span><span>${formatDate(m.createdAt)}</span></div><div class="card-actions"><a class="btn btn-secondary btn-small" href="${m.fileUrl}" target="_blank" rel="noopener">Abrir arquivo</a>${actionButtons(m,"materials")}</div></article>`; });
+  const html = groupByModule(materials, m => { const d = curriculumInfo(m); return `<article class="content-card file-card">${materialPreview(m)}<div class="card-badges"><span class="badge">${escapeHtml(m.category || "Material")}</span><span class="badge gray">${escapeHtml(d.code ? `${d.code} - ${d.name}` : d.name)}</span></div><h3>${escapeHtml(m.title)}</h3><p>${escapeHtml(m.description || m.fileName || "Material complementar")}</p><div class="card-meta"><span>Professor: ${escapeHtml(m.authorName)}</span><span>${formatDate(m.createdAt)}</span></div><div class="card-actions"><a class="btn btn-secondary btn-small" href="${escapeHtml(m.fileUrl)}" target="_blank" rel="noopener">Abrir material</a>${actionButtons(m,"materials")}</div></article>`; });
   emptyOrHtml($("#materialsList"), html, "Nenhum material encontrado para os filtros selecionados.");
 }
 function renderMinutes() {
@@ -367,7 +381,7 @@ const forms = {
     ["subject","Disciplina / avaliação","text",true],["className","Turma","text",true],["date","Data da prova","date",true],["time","Horário","time",false],["description","Orientações","textarea",false]
   ] },
   material: { title: "Enviar material", kicker: "Biblioteca", collection: "materials", file: true, fields: [
-    ["title","Título do material","text",true],["disciplineCode","Disciplina","select",true,disciplineOptions],["category","Tipo de material","select",true,["Aula","Exercícios","Apostila","Referência"]],["description","Descrição","textarea",false],["file","Arquivo (PDF, Word ou imagem)","file",true]
+    ["title","Título do material","text",true],["disciplineCode","Disciplina","select",true,disciplineOptions],["category","Tipo de material","select",true,["Aula","Exercícios","Apostila","Apresentação","Referência","Link"]],["description","Descrição","textarea",false],["materialLink","Link do material (opcional)","url",false],["file","Arquivo (PDF, Word, PowerPoint ou imagem)","file",false]
   ] },
   minute: { title: "Nova ata pedagógica", kicker: "Documentação", collection: "minutes", file: true, coordinator: true, fields: [
     ["title","Título da reunião","text",true],["meetingDate","Data da reunião","date",true],["summary","Resumo / decisões","textarea",true],["file","Arquivo da ata (opcional)","file",false]
@@ -396,7 +410,7 @@ function openModal(type) {
     const req = required ? "required" : "";
     if (type === "textarea") return `<label>${label}<textarea name="${name}" ${req}></textarea></label>`;
     if (type === "select") return `<label>${label}<select name="${name}" ${req}>${options.map(option => { const value = typeof option === "object" ? option.value : option; const text = typeof option === "object" ? option.label : option[0].toUpperCase() + option.slice(1); return `<option value="${escapeHtml(value)}">${escapeHtml(text)}</option>`; }).join("")}</select></label>`;
-    const accept = name === "file" ? 'accept=".pdf,.doc,.docx,image/*"' : "";
+    const accept = name === "file" ? 'accept=".pdf,.doc,.docx,.ppt,.pptx,image/*"' : "";
     return `<label>${label}<input name="${name}" type="${type}" ${req} ${accept}></label>`;
   }).join("");
   if (type === "user") $('[name="temporaryPassword"]', modal).value = generatePassword();
@@ -411,6 +425,7 @@ $("#dynamicForm").addEventListener("submit", async e => {
   const button = $("#modalSubmit"); button.disabled = true; button.textContent = "Salvando...";
   try {
     if (config.special === "user") throw new Error("No plano gratuito, o professor deve criar a própria conta na tela inicial.");
+    if (config.collection === "materials" && !formData.get("file")?.size && !String(data.materialLink || "").trim()) throw new Error("Envie um arquivo ou informe o link do material.");
     await saveRecord(config, data, formData.get("file"));
     modal.close(); form.reset(); toast("Salvo com sucesso."); await loadAll();
   } catch (err) { console.error(err); toast(err.message || "Não foi possível salvar.", true); }
@@ -419,6 +434,13 @@ $("#dynamicForm").addEventListener("submit", async e => {
 
 async function saveRecord(config, data, file) {
   delete data.file;
+  const materialLink = String(data.materialLink || "").trim();
+  delete data.materialLink;
+  if (materialLink) {
+    let parsedLink;
+    try { parsedLink = new URL(materialLink); } catch { throw new Error("Informe um link válido, começando com https://"); }
+    if (!["http:", "https:"].includes(parsedLink.protocol)) throw new Error("O link precisa começar com http:// ou https://");
+  }
   if (data.disciplineCode) {
     const discipline = CURRICULUM.find(item => item.code === data.disciplineCode);
     if (discipline) {
@@ -439,6 +461,10 @@ async function saveRecord(config, data, file) {
     }
     data.driveFileId = uploaded.fileId;
     data.fileName = file.name; data.extension = file.name.split(".").pop();
+  } else if (config.collection === "materials" && materialLink) {
+    data.fileUrl = materialLink;
+    data.fileName = materialLink;
+    try { data.extension = new URL(materialLink).pathname.split(".").pop().toLowerCase().slice(0, 8); } catch { data.extension = "link"; }
   }
   await withTimeout(
     addDoc(collection(db, config.collection), data),
@@ -461,8 +487,11 @@ async function uploadFileToDrive(file, category) {
   if (!driveUploadConfig.webAppUrl.startsWith("https://script.google.com/")) throw new Error("O envio ao Google Drive ainda não foi configurado.");
   const maxBytes = driveUploadConfig.maxFileSizeMb * 1024 * 1024;
   if (file.size > maxBytes) throw new Error(`O arquivo deve ter no máximo ${driveUploadConfig.maxFileSizeMb} MB.`);
-  const allowed = ["application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "image/jpeg", "image/png", "image/webp"];
-  if (!allowed.includes(file.type)) throw new Error("Formato não permitido. Envie PDF, Word, JPG, PNG ou WEBP.");
+  const extension = file.name.split(".").pop().toLowerCase();
+  const mimeByExtension = { pdf: "application/pdf", doc: "application/msword", docx: "application/vnd.openxmlformats-officedocument.wordprocessingml.document", ppt: "application/vnd.ms-powerpoint", pptx: "application/vnd.openxmlformats-officedocument.presentationml.presentation", jpg: "image/jpeg", jpeg: "image/jpeg", png: "image/png", webp: "image/webp" };
+  const mimeType = file.type || mimeByExtension[extension] || "";
+  const allowed = Object.values(mimeByExtension);
+  if (!allowed.includes(mimeType)) throw new Error("Formato não permitido. Envie PDF, Word, PowerPoint, JPG, PNG ou WEBP.");
 
   const progress = document.createElement("div");
   progress.className = "progress"; progress.innerHTML = "<span></span>"; $("#modalFields").append(progress);
@@ -471,7 +500,7 @@ async function uploadFileToDrive(file, category) {
   setProgress(55);
 
   const result = await postToDrive({
-    action: "upload", fileName: file.name, mimeType: file.type, category,
+    action: "upload", fileName: file.name, mimeType, category,
     authorName: state.profile.name, fileData: base64
   }, 120000);
   setProgress(100);
