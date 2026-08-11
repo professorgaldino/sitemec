@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
-import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, updatePassword } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
-import { getFirestore, collection, doc, getDoc, getDocs, addDoc, setDoc, updateDoc, deleteDoc, query, orderBy, serverTimestamp, where, limit } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, deleteUser, signOut, updatePassword } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
+import { getFirestore, collection, doc, getDoc, getDocs, addDoc, setDoc, updateDoc, deleteDoc, query, orderBy, serverTimestamp, where, limit, writeBatch } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
 import { firebaseConfig, USER_EMAIL_DOMAIN, driveUploadConfig } from "./firebase-config.js";
 
 const fb = initializeApp(firebaseConfig);
@@ -8,7 +8,7 @@ const auth = getAuth(fb);
 const db = getFirestore(fb);
 const $ = (s, root = document) => root.querySelector(s);
 const $$ = (s, root = document) => [...root.querySelectorAll(s)];
-const state = { user: null, profile: null, publicMode: false, data: { posts: [], exams: [], materials: [], minutes: [], jobs: [], partners: [], users: [] }, jobFilter: "all" };
+const state = { user: null, profile: null, publicMode: false, registrationInProgress: false, data: { posts: [], exams: [], materials: [], minutes: [], jobs: [], partners: [], users: [] }, jobFilter: "all" };
 const titles = { inicio: "Visão geral", recados: "Recados", provas: "Provas e avaliações", materiais: "Materiais", atas: "Atas pedagógicas", vagas: "Vagas de emprego", usuarios: "Professores", parceiros: "Empresas parceiras", "parceiros-publico": "Empresas parceiras" };
 const modal = $("#formModal");
 
@@ -94,19 +94,30 @@ $("#teacherLoginButton").addEventListener("click", showTeacherLogin);
 
 $("#registerForm").addEventListener("submit", async e => {
   e.preventDefault();
-  const name = $("#registerName").value.trim(), username = normalizeUsername($("#registerUsername").value), password = $("#registerPassword").value;
+  const name = $("#registerName").value.trim(), username = normalizeUsername($("#registerUsername").value), password = $("#registerPassword").value, passwordConfirmation = $("#registerPasswordConfirmation").value;
   const button = e.submitter; button.disabled = true; button.textContent = "Criando...";
+  let credential = null;
   try {
+    if (password !== passwordConfirmation) throw new Error("As senhas não coincidem.");
     if (await usernameExists(username)) throw new Error("Este usuário não está disponível.");
-    const credential = await createUserWithEmailAndPassword(auth, userEmail(username), password);
-    await setDoc(doc(db, "usernames", username), { uid: credential.user.uid, createdAt: serverTimestamp() });
-    await setDoc(doc(db, "users", credential.user.uid), { name, username, role: "teacher", active: true, mustChangePassword: false, createdAt: serverTimestamp() });
+    state.registrationInProgress = true;
+    credential = await createUserWithEmailAndPassword(auth, userEmail(username), password);
+    const batch = writeBatch(db);
+    batch.set(doc(db, "usernames", username), { uid: credential.user.uid, createdAt: serverTimestamp() });
+    batch.set(doc(db, "users", credential.user.uid), { name, username, role: "teacher", active: true, mustChangePassword: false, createdAt: serverTimestamp() });
+    await batch.commit();
+    state.registrationInProgress = false;
     toast("Conta criada com sucesso!");
-  } catch (err) { toast(err.message.includes("password") ? "A senha precisa ter pelo menos 8 caracteres." : err.message, true); }
+    await loadAuthenticatedUser(credential.user);
+  } catch (err) {
+    state.registrationInProgress = false;
+    if (credential?.user) await deleteUser(credential.user).catch(() => {});
+    toast(err.message.includes("password") ? "A senha precisa ter pelo menos 8 caracteres." : err.message, true);
+  }
   finally { button.disabled = false; button.textContent = "Criar conta"; }
 });
 
-onAuthStateChanged(auth, async user => {
+async function loadAuthenticatedUser(user) {
   state.user = user;
   if (!user) {
     if (!state.publicMode) await enterPublicArea();
@@ -123,6 +134,11 @@ onAuthStateChanged(auth, async user => {
     if (state.profile.mustChangePassword) $("#passwordModal").showModal();
     await loadAll();
   } catch (err) { toast(err.message, true); await signOut(auth); }
+}
+
+onAuthStateChanged(auth, async user => {
+  if (state.registrationInProgress) return;
+  await loadAuthenticatedUser(user);
 });
 
 function setupUserUI() {

@@ -75,13 +75,19 @@
               </div>
               <small>Use letras minúsculas e números, sem espaços.</small>
             </label>
-            <label>Senha
-              <div class="password-wrap">
-                <input id="registerPassword" type="password" autocomplete="new-password" required minlength="8" placeholder="Mínimo de 8 caracteres">
-                <button class="show-password" type="button" data-toggle-password="registerPassword" aria-label="Mostrar senha">Ver</button>
-              </div>
-            </label>
-            <button id="registerButton" class="btn btn-primary btn-block" type="submit">Criar conta</button>
+              <label>Senha
+                <div class="password-wrap">
+                  <input id="registerPassword" type="password" autocomplete="new-password" required minlength="8" placeholder="Mínimo de 8 caracteres">
+                  <button class="show-password" type="button" data-toggle-password="registerPassword" aria-label="Mostrar senha">Ver</button>
+                </div>
+              </label>
+              <label>Confirme a senha
+                <div class="password-wrap">
+                  <input id="registerPasswordConfirmation" type="password" autocomplete="new-password" required minlength="8" placeholder="Digite a mesma senha novamente">
+                  <button class="show-password" type="button" data-toggle-password="registerPasswordConfirmation" aria-label="Mostrar confirmação da senha">Ver</button>
+                </div>
+              </label>
+             <button id="registerButton" class="btn btn-primary btn-block" type="submit">Criar conta</button>
           </form>
           <p class="auth-switch">Já tem uma conta de professor? <button type="button" class="link-button" data-auth-view="login">Entrar</button></p>
         </div>
