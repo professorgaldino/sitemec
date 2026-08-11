@@ -1,7 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
 import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, deleteUser, sendPasswordResetEmail, signOut, updatePassword } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
 import { getFirestore, collection, doc, getDoc, getDocs, addDoc, setDoc, updateDoc, deleteDoc, query, orderBy, serverTimestamp, where, limit, writeBatch } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
-import { firebaseConfig, USER_EMAIL_DOMAIN, driveUploadConfig } from "./firebase-config.js?v=20260811-15";
+import { firebaseConfig, USER_EMAIL_DOMAIN, driveUploadConfig } from "./firebase-config.js?v=20260811-16";
 
 const fb = initializeApp(firebaseConfig);
 const auth = getAuth(fb);
@@ -291,7 +291,10 @@ function renderHome() {
   $("#statVagas").textContent = state.data.jobs.filter(j => j.status === "disponivel").length;
   emptyOrHtml($("#homeNotices"), notices.map(p => `<article class="feed-item"><span class="feed-dot"></span><div><h4>${escapeHtml(p.title)}</h4><p>${escapeHtml(p.content).slice(0,110)}</p></div><time>${formatDate(p.createdAt)}</time></article>`).join(""), "Nenhum recado publicado.");
   emptyOrHtml($("#homeExams"), exams.map(e => { const d = new Date(`${e.date}T12:00`); return `<article class="timeline-item"><div class="timeline-date"><strong>${String(d.getDate()).padStart(2,"0")}</strong><small>${d.toLocaleDateString("pt-BR",{month:"short"})}</small></div><div><h4>${escapeHtml(e.subject)}</h4><p>${escapeHtml(e.className)} · ${escapeHtml(e.time || "Horário a definir")}</p></div></article>`; }).join(""), "Nenhuma prova agendada.");
-  emptyOrHtml($("#homePartners"), state.data.partners.map(p => p.logoUrl ? `<img class="partner-logo" src="${p.logoUrl}" alt="${escapeHtml(p.name)}" title="${escapeHtml(p.name)}">` : `<strong>${escapeHtml(p.name)}</strong>`).join(""), "Os parceiros aparecerão aqui.");
+  emptyOrHtml($("#homePartners"), state.data.partners.map(p => {
+    const logo = driveImageUrl(p.logoUrl, p.driveFileId);
+    return logo ? `<img class="partner-logo" src="${escapeHtml(logo)}" alt="${escapeHtml(p.name)}" title="${escapeHtml(p.name)}" loading="lazy">` : `<strong>${escapeHtml(p.name)}</strong>`;
+  }).join(""), "Os parceiros aparecerão aqui.");
   renderLatestUpdates();
 }
 
@@ -351,6 +354,15 @@ function materialPreview(material) {
   try { domain = new URL(url).hostname.replace(/^www\./, ""); } catch {}
   return `<a class="material-preview link-preview" href="${safeUrl}" target="_blank" rel="noopener"><span class="link-preview-icon">↗</span><strong>${escapeHtml(domain)}</strong><small>Clique para visualizar o conteúdo</small></a>`;
 }
+
+function driveImageUrl(url, knownFileId = "") {
+  if (knownFileId) return `https://drive.google.com/thumbnail?id=${encodeURIComponent(knownFileId)}&sz=w1200`;
+  const value = String(url || "");
+  const pathMatch = value.match(/drive\.google\.com\/file\/d\/([^/?#]+)/i);
+  const queryMatch = value.match(/[?&]id=([^&#]+)/i);
+  const fileId = pathMatch?.[1] || queryMatch?.[1] || "";
+  return fileId ? `https://drive.google.com/thumbnail?id=${encodeURIComponent(fileId)}&sz=w1200` : value;
+}
 function renderMaterials() {
   const materials = state.data.materials.filter(m => curriculumMatches(m, state.materialModule, state.materialDiscipline));
   const html = groupByModule(materials, m => { const d = curriculumInfo(m); return `<article class="content-card file-card">${materialPreview(m)}<div class="card-badges"><span class="badge">${escapeHtml(m.category || "Material")}</span><span class="badge gray">${escapeHtml(d.code ? `${d.code} - ${d.name}` : d.name)}</span></div><h3>${escapeHtml(m.title)}</h3><p>${escapeHtml(m.description || m.fileName || "Material complementar")}</p><div class="card-meta"><span>Professor: ${escapeHtml(m.authorName)}</span><span>${formatDate(m.createdAt)}</span></div><div class="card-actions"><a class="btn btn-secondary btn-small" href="${escapeHtml(m.fileUrl)}" target="_blank" rel="noopener">Abrir material</a>${actionButtons(m,"materials")}</div></article>`; });
@@ -365,12 +377,15 @@ function renderJobs() {
     const text = j.content || j.description || "";
     const title = j.title || text.split(/\r?\n/).find(line => line.trim())?.trim().slice(0, 90) || "Vaga de emprego";
     const legacyMeta = [j.company, j.location].filter(Boolean).map(value => `<span>${escapeHtml(value)}</span>`).join("");
-    const imageUrl = j.driveFileId ? `https://drive.google.com/thumbnail?id=${encodeURIComponent(j.driveFileId)}&sz=w1200` : j.fileUrl;
+    const imageUrl = driveImageUrl(j.fileUrl, j.driveFileId);
     return `<article class="content-card job-card">${imageUrl ? `<a class="job-image-link" href="${escapeHtml(j.fileUrl || imageUrl)}" target="_blank" rel="noopener"><img class="job-image" src="${escapeHtml(imageUrl)}" alt="Imagem da vaga ${escapeHtml(title)}" loading="lazy"></a>` : ""}<div class="job-card-body"><span class="badge ${j.status === "disponivel" ? "green" : "gray"}">${j.status === "disponivel" ? "Disponível" : "Preenchida"}</span><h3>${escapeHtml(title)}</h3>${text ? `<p>${escapeHtml(text)}</p>` : ""}<div class="card-meta">${legacyMeta}<span>Publicado por ${escapeHtml(j.authorName || "Professor")}</span></div><div class="card-actions">${j.contact ? `<a class="link-button" href="mailto:${escapeHtml(j.contact)}">Entrar em contato</a>` : "<span></span>"}<div>${canEdit(j) ? `<button class="btn btn-secondary btn-small" data-job-status="${j.id}" data-status="${j.status === "disponivel" ? "preenchida" : "disponivel"}">${j.status === "disponivel" ? "Marcar preenchida" : "Reabrir vaga"}</button> ${actionButtons(j,"jobs")}` : ""}</div></div></div></article>`;
   }).join(""), "Nenhuma vaga encontrada.");
 }
 function renderPartners() {
-  const cards = state.data.partners.map(p => `<article class="content-card partner-card">${p.logoUrl ? `<img src="${p.logoUrl}" alt="Logo ${escapeHtml(p.name)}">` : `<div class="logo-placeholder">${initials(p.name)}</div>`}<h3>${escapeHtml(p.name)}</h3><div class="card-actions"><small>Empresa parceira</small>${actionButtons(p,"partners")}</div></article>`).join("");
+  const cards = state.data.partners.map(p => {
+    const logo = driveImageUrl(p.logoUrl, p.driveFileId);
+    return `<article class="content-card partner-card">${logo ? `<img src="${escapeHtml(logo)}" alt="Logo ${escapeHtml(p.name)}" loading="lazy">` : `<div class="logo-placeholder">${initials(p.name)}</div>`}<h3>${escapeHtml(p.name)}</h3><div class="card-actions"><small>Empresa parceira</small>${actionButtons(p,"partners")}</div></article>`;
+  }).join("");
   emptyOrHtml($("#partnersList"), cards, "Nenhuma empresa parceira.");
   emptyOrHtml($("#publicPartnersList"), cards, "Nenhuma empresa parceira.");
 }
