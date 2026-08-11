@@ -1,7 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
 import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, deleteUser, signOut, updatePassword } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
 import { getFirestore, collection, doc, getDoc, getDocs, addDoc, setDoc, updateDoc, deleteDoc, query, orderBy, serverTimestamp, where, limit, writeBatch } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
-import { firebaseConfig, USER_EMAIL_DOMAIN, driveUploadConfig } from "./firebase-config.js?v=20260811-3";
+import { firebaseConfig, USER_EMAIL_DOMAIN, driveUploadConfig } from "./firebase-config.js?v=20260811-5";
 
 const fb = initializeApp(firebaseConfig);
 const auth = getAuth(fb);
@@ -30,6 +30,14 @@ function toast(message, error = false) {
 function isCoordinator() { return state.profile?.role === "coordinator"; }
 function canEdit(item) { return isCoordinator() || item.authorId === state.user?.uid; }
 function emptyOrHtml(el, html, emptyText) { el.classList.toggle("empty-state", !html); el.innerHTML = html || emptyText; }
+
+function withTimeout(promise, timeoutMs, message) {
+  let timer;
+  const timeout = new Promise((_, reject) => {
+    timer = setTimeout(() => reject(new Error(message)), timeoutMs);
+  });
+  return Promise.race([promise, timeout]).finally(() => clearTimeout(timer));
+}
 
 async function usernameExists(username) {
   const clean = normalizeUsername(username);
@@ -341,7 +349,11 @@ async function saveRecord(config, data, file) {
     data.driveFileId = uploaded.fileId;
     data.fileName = file.name; data.extension = file.name.split(".").pop();
   }
-  await addDoc(collection(db, config.collection), data);
+  await withTimeout(
+    addDoc(collection(db, config.collection), data),
+    20000,
+    "O Firebase não respondeu em 20 segundos. Verifique sua internet e as regras do Firestore. Antes de tentar novamente, confira se o registro já apareceu na lista."
+  );
 }
 
 function fileToBase64(file, onProgress) {
