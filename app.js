@@ -1,7 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
 import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, deleteUser, signOut, updatePassword } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
 import { getFirestore, collection, doc, getDoc, getDocs, addDoc, setDoc, updateDoc, deleteDoc, query, orderBy, serverTimestamp, where, limit, writeBatch } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
-import { firebaseConfig, USER_EMAIL_DOMAIN, driveUploadConfig } from "./firebase-config.js?v=20260811-6";
+import { firebaseConfig, USER_EMAIL_DOMAIN, driveUploadConfig } from "./firebase-config.js?v=20260811-7";
 
 const fb = initializeApp(firebaseConfig);
 const auth = getAuth(fb);
@@ -311,6 +311,10 @@ const forms = {
 
 $$("[data-open-modal]").forEach(btn => btn.addEventListener("click", () => openModal(btn.dataset.openModal)));
 $("#quickPostButton").addEventListener("click", () => openModal("post"));
+$$("[data-close-form-modal]").forEach(btn => btn.addEventListener("click", () => {
+  $("#dynamicForm").reset();
+  modal.close();
+}));
 function openModal(type) {
   const config = forms[type]; if (!config || (config.coordinator && !isCoordinator())) return;
   modal.dataset.type = type; $("#modalTitle").textContent = config.title; $("#modalKicker").textContent = config.kicker;

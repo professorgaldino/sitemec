@@ -235,9 +235,9 @@
 
   <dialog id="formModal" class="modal">
     <form id="dynamicForm" method="dialog">
-      <div class="modal-heading"><div><span id="modalKicker" class="section-kicker">Nova publicação</span><h2 id="modalTitle">Adicionar</h2></div><button class="modal-close" value="cancel" aria-label="Fechar">×</button></div>
+      <div class="modal-heading"><div><span id="modalKicker" class="section-kicker">Nova publicação</span><h2 id="modalTitle">Adicionar</h2></div><button class="modal-close" type="button" data-close-form-modal aria-label="Fechar">×</button></div>
       <div id="modalFields" class="form-stack"></div>
-      <div class="modal-actions"><button class="btn btn-secondary" value="cancel">Cancelar</button><button id="modalSubmit" class="btn btn-primary" value="default">Salvar</button></div>
+      <div class="modal-actions"><button class="btn btn-secondary" type="button" data-close-form-modal>Cancelar</button><button id="modalSubmit" class="btn btn-primary" type="submit" value="default">Salvar</button></div>
     </form>
   </dialog>
 
@@ -258,6 +258,6 @@
       document.getElementById("fileProtocolNotice").hidden = false;
     }
   </script>
-  <script type="module" src="app.js?v=20260811-6"></script>
+  <script type="module" src="app.js?v=20260811-7"></script>
 </body>
 </html>
