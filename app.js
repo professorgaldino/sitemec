@@ -1,7 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
 import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, deleteUser, signOut, updatePassword } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
 import { getFirestore, collection, doc, getDoc, getDocs, addDoc, setDoc, updateDoc, deleteDoc, query, orderBy, serverTimestamp, where, limit, writeBatch } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
-import { firebaseConfig, USER_EMAIL_DOMAIN, driveUploadConfig } from "./firebase-config.js?v=20260811-5";
+import { firebaseConfig, USER_EMAIL_DOMAIN, driveUploadConfig } from "./firebase-config.js?v=20260811-6";
 
 const fb = initializeApp(firebaseConfig);
 const auth = getAuth(fb);
@@ -344,8 +344,11 @@ async function saveRecord(config, data, file) {
   Object.assign(data, config.extra || {}, { authorId: state.user.uid, authorName: state.profile.name, authorRole: state.profile.role, createdAt: serverTimestamp() });
   if (file?.size) {
     const uploaded = await uploadFileToDrive(file, config.collection);
-    data.fileUrl = config.collection === "partners" ? undefined : uploaded.url;
-    data.logoUrl = config.collection === "partners" ? uploaded.url : undefined;
+    if (config.collection === "partners") {
+      data.logoUrl = uploaded.url;
+    } else {
+      data.fileUrl = uploaded.url;
+    }
     data.driveFileId = uploaded.fileId;
     data.fileName = file.name; data.extension = file.name.split(".").pop();
   }
