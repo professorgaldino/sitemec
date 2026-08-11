@@ -43,8 +43,8 @@
           <h2>Acesse sua conta</h2>
           <p class="muted">Use seu nome de usuário e sua senha.</p>
           <form id="loginForm" class="form-stack">
-            <label>Usuário
-              <input id="loginUsername" autocomplete="username" required placeholder="ex.: carlos">
+            <label>E-mail ou usuário antigo
+              <input id="loginUsername" autocomplete="username" required placeholder="ex.: professor@escola.com">
             </label>
             <label>Senha
               <div class="password-wrap">
@@ -54,6 +54,7 @@
             </label>
             <button class="btn btn-primary btn-block" type="submit">Entrar no portal</button>
           </form>
+          <button id="forgotPasswordButton" class="forgot-password-button" type="button">Esqueci minha senha</button>
           <div class="access-divider"><span>ou</span></div>
           <button id="studentAccessButton" class="btn btn-student btn-block" type="button"><span class="student-access-icon">⌂</span>Acessar área pública do aluno</button>
           <p class="student-access-note">Alunos não precisam de usuário ou senha.</p>
@@ -74,6 +75,10 @@
                 <span id="usernameStatus" class="input-status"></span>
               </div>
               <small>Use letras minúsculas e números, sem espaços.</small>
+            </label>
+            <label>E-mail para recuperação da senha
+              <input id="registerEmail" type="email" autocomplete="email" required placeholder="professor@escola.com">
+              <small>Use um e-mail válido ao qual você tenha acesso.</small>
             </label>
               <label>Senha
                 <div class="password-wrap">
@@ -114,7 +119,7 @@
           <span id="userInitials" class="avatar">MI</span>
           <div><strong id="sidebarUserName">Professor</strong><small id="sidebarUserRole">Professor</small></div>
         </div>
-        <button id="logoutButton" class="icon-button" title="Sair" aria-label="Sair">↗</button>
+        <button id="logoutButton" class="logout-button" title="Sair do portal" aria-label="Sair do portal"><span>↗</span> Sair</button>
       </div>
     </aside>
 
@@ -191,7 +196,8 @@
 
         <section id="page-recados" class="page" data-collection="posts" data-type="recado">
           <div class="page-heading"><div><span class="section-kicker">Comunicação</span><h1>Recados gerais</h1><p>Informações importantes para toda a equipe.</p></div><button class="btn btn-primary" data-open-modal="post" data-post-type="recado">+ Novo recado</button></div>
-          <div id="recadosList" class="cards-list empty-state">Nenhum recado publicado.</div>
+          <div class="curriculum-filters"><label>Módulo<select id="postModuleFilter"><option value="all">Todos os módulos</option><option value="I">Módulo I</option><option value="II">Módulo II</option><option value="III">Módulo III</option><option value="Geral">Geral do curso</option></select></label><label>Disciplina<select id="postDisciplineFilter"><option value="all">Todas as disciplinas</option></select></label></div>
+          <div id="recadosList" class="discipline-groups empty-state">Nenhum recado publicado.</div>
         </section>
 
         <section id="page-provas" class="page">
@@ -201,7 +207,8 @@
 
         <section id="page-materiais" class="page">
           <div class="page-heading"><div><span class="section-kicker">Biblioteca</span><h1>Materiais de aula</h1><p>PDFs, documentos e imagens para apoiar as aulas.</p></div><button class="btn btn-primary" data-open-modal="material">+ Enviar material</button></div>
-          <div id="materialsList" class="cards-grid empty-state">Nenhum material enviado.</div>
+          <div class="curriculum-filters"><label>Módulo<select id="materialModuleFilter"><option value="all">Todos os módulos</option><option value="I">Módulo I</option><option value="II">Módulo II</option><option value="III">Módulo III</option></select></label><label>Disciplina<select id="materialDisciplineFilter"><option value="all">Todas as disciplinas</option></select></label></div>
+          <div id="materialsList" class="discipline-groups empty-state">Nenhum material enviado.</div>
         </section>
 
         <section id="page-atas" class="page teacher-only">
@@ -258,6 +265,6 @@
       document.getElementById("fileProtocolNotice").hidden = false;
     }
   </script>
-  <script type="module" src="app.js?v=20260811-7"></script>
+  <script type="module" src="app.js?v=20260811-9"></script>
 </body>
 </html>

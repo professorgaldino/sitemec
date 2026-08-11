@@ -1,16 +1,45 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
-import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, deleteUser, signOut, updatePassword } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, deleteUser, sendPasswordResetEmail, signOut, updatePassword } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
 import { getFirestore, collection, doc, getDoc, getDocs, addDoc, setDoc, updateDoc, deleteDoc, query, orderBy, serverTimestamp, where, limit, writeBatch } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
-import { firebaseConfig, USER_EMAIL_DOMAIN, driveUploadConfig } from "./firebase-config.js?v=20260811-7";
+import { firebaseConfig, USER_EMAIL_DOMAIN, driveUploadConfig } from "./firebase-config.js?v=20260811-9";
 
 const fb = initializeApp(firebaseConfig);
 const auth = getAuth(fb);
 const db = getFirestore(fb);
 const $ = (s, root = document) => root.querySelector(s);
 const $$ = (s, root = document) => [...root.querySelectorAll(s)];
-const state = { user: null, profile: null, publicMode: false, registrationInProgress: false, data: { posts: [], exams: [], materials: [], minutes: [], jobs: [], partners: [], users: [] }, jobFilter: "all" };
+const state = { user: null, profile: null, publicMode: false, registrationInProgress: false, materialModule: "all", materialDiscipline: "all", postModule: "all", postDiscipline: "all", data: { posts: [], exams: [], materials: [], minutes: [], jobs: [], partners: [], users: [] }, jobFilter: "all" };
 const titles = { inicio: "Visão geral", recados: "Recados", provas: "Provas e avaliações", materiais: "Materiais", atas: "Atas pedagógicas", vagas: "Vagas de emprego", usuarios: "Professores", parceiros: "Empresas parceiras", "parceiros-publico": "Empresas parceiras" };
 const modal = $("#formModal");
+
+const CURRICULUM = [
+  { module: "I", code: "I.1", name: "Desenho Técnico Mecânico" },
+  { module: "I", code: "I.2", name: "Processos de Fabricação I" },
+  { module: "I", code: "I.3", name: "Metrologia" },
+  { module: "I", code: "I.4", name: "Tecnologia Mecânica" },
+  { module: "I", code: "I.5", name: "Estudos de Matemática e Física Aplicados à Mecânica" },
+  { module: "I", code: "I.6", name: "Elementos de Máquina" },
+  { module: "I", code: "I.7", name: "Automação Industrial I" },
+  { module: "I", code: "I.8", name: "Projetos de Tecnologia de Informação e Comunicação" },
+  { module: "I", code: "I.9", name: "Segurança do Trabalho e Meio Ambiente" },
+  { module: "II", code: "II.1", name: "Resistência dos Materiais e Ensaios Tecnológicos" },
+  { module: "II", code: "II.2", name: "Eletricidade" },
+  { module: "II", code: "II.3", name: "Desenho Auxiliado por Computador" },
+  { module: "II", code: "II.4", name: "Automação Industrial II" },
+  { module: "II", code: "II.5", name: "Processos de Fabricação II" },
+  { module: "II", code: "II.6", name: "Inglês Instrumental" },
+  { module: "II", code: "II.7", name: "Linguagem, Trabalho e Tecnologia" },
+  { module: "II", code: "II.8", name: "Planejamento do Trabalho de Conclusão de Curso (TCC) em Mecânica" },
+  { module: "III", code: "III.1", name: "Gestão Industrial e da Qualidade" },
+  { module: "III", code: "III.2", name: "Automação Industrial III" },
+  { module: "III", code: "III.3", name: "Tecnologia em CNC" },
+  { module: "III", code: "III.4", name: "Processos de Fabricação III" },
+  { module: "III", code: "III.5", name: "Conduta Profissional e Relações de Trabalho" },
+  { module: "III", code: "III.6", name: "Tecnologia em Manutenção" },
+  { module: "III", code: "III.7", name: "Tecnologia em Soldagem" },
+  { module: "III", code: "III.8", name: "Desenvolvimento do Trabalho de Conclusão de Curso (TCC) em Mecânica" }
+];
+const disciplineOptions = CURRICULUM.map(d => ({ value: d.code, label: `${d.code} - ${d.name}` }));
 
 function normalizeUsername(value = "") {
   return value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
@@ -38,6 +67,17 @@ function withTimeout(promise, timeoutMs, message) {
   });
   return Promise.race([promise, timeout]).finally(() => clearTimeout(timer));
 }
+
+function setupCurriculumFilters() {
+  const disciplineHtml = `<option value="all">Todas as disciplinas</option>${disciplineOptions.map(option => `<option value="${escapeHtml(option.value)}">${escapeHtml(option.label)}</option>`).join("")}`;
+  ["postDisciplineFilter", "materialDisciplineFilter"].forEach(id => { const select = document.getElementById(id); if (select) select.innerHTML = disciplineHtml; });
+  const bindings = [
+    ["postModuleFilter", "postModule", renderPosts], ["postDisciplineFilter", "postDiscipline", renderPosts],
+    ["materialModuleFilter", "materialModule", renderMaterials], ["materialDisciplineFilter", "materialDiscipline", renderMaterials]
+  ];
+  bindings.forEach(([id, key, render]) => document.getElementById(id)?.addEventListener("change", event => { state[key] = event.target.value; render(); }));
+}
+setupCurriculumFilters();
 
 async function usernameExists(username) {
   const clean = normalizeUsername(username);
@@ -72,9 +112,24 @@ $$("[data-toggle-password]").forEach(btn => btn.addEventListener("click", () => 
 $("#loginForm").addEventListener("submit", async e => {
   e.preventDefault();
   const button = e.submitter; button.disabled = true; button.textContent = "Entrando...";
-  try { await signInWithEmailAndPassword(auth, userEmail($("#loginUsername").value), $("#loginPassword").value); }
+  const identifier = $("#loginUsername").value.trim().toLowerCase();
+  const email = identifier.includes("@") ? identifier : userEmail(identifier);
+  try { await signInWithEmailAndPassword(auth, email, $("#loginPassword").value); }
   catch { toast("Usuário ou senha inválidos.", true); }
   finally { button.disabled = false; button.textContent = "Entrar no portal"; }
+});
+
+$("#forgotPasswordButton").addEventListener("click", async () => {
+  const email = prompt("Digite o e-mail válido cadastrado na sua conta:")?.trim().toLowerCase();
+  if (!email) return;
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return toast("Digite um e-mail válido.", true);
+  try {
+    await sendPasswordResetEmail(auth, email);
+    toast("Enviamos as instruções para redefinir sua senha. Confira também o spam.");
+  } catch (error) {
+    console.error(error);
+    toast("Não foi possível enviar a recuperação. Confira o e-mail informado.", true);
+  }
 });
 
 async function enterPublicArea() {
@@ -102,17 +157,18 @@ $("#teacherLoginButton").addEventListener("click", showTeacherLogin);
 
 $("#registerForm").addEventListener("submit", async e => {
   e.preventDefault();
-  const name = $("#registerName").value.trim(), username = normalizeUsername($("#registerUsername").value), password = $("#registerPassword").value, passwordConfirmation = $("#registerPasswordConfirmation").value;
+  const name = $("#registerName").value.trim(), username = normalizeUsername($("#registerUsername").value), email = $("#registerEmail").value.trim().toLowerCase(), password = $("#registerPassword").value, passwordConfirmation = $("#registerPasswordConfirmation").value;
   const button = e.submitter; button.disabled = true; button.textContent = "Criando...";
   let credential = null;
   try {
     if (password !== passwordConfirmation) throw new Error("As senhas não coincidem.");
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) throw new Error("Informe um e-mail válido.");
     if (await usernameExists(username)) throw new Error("Este usuário não está disponível.");
     state.registrationInProgress = true;
-    credential = await createUserWithEmailAndPassword(auth, userEmail(username), password);
+    credential = await createUserWithEmailAndPassword(auth, email, password);
     const batch = writeBatch(db);
     batch.set(doc(db, "usernames", username), { uid: credential.user.uid, createdAt: serverTimestamp() });
-    batch.set(doc(db, "users", credential.user.uid), { name, username, role: "teacher", active: true, mustChangePassword: false, createdAt: serverTimestamp() });
+    batch.set(doc(db, "users", credential.user.uid), { name, username, email, role: "teacher", active: true, mustChangePassword: false, createdAt: serverTimestamp() });
     await batch.commit();
     state.registrationInProgress = false;
     toast("Conta criada com sucesso!");
@@ -155,6 +211,7 @@ function setupUserUI() {
   $("#sidebarUserName").textContent = name;
   $("#sidebarUserRole").textContent = isCoordinator() ? "Coordenação" : "Professor";
   $("#userInitials").textContent = initials(name); $("#profileButton").textContent = initials(name);
+  $("#logoutButton").hidden = false;
   $$(".coordinator-only").forEach(el => el.hidden = !isCoordinator());
   $$(".public-only").forEach(el => el.hidden = true);
   $$(".teacher-only").forEach(el => el.hidden = false);
@@ -167,6 +224,7 @@ function setupPublicUI() {
   $("#welcomeMessage").textContent = "Seu ponto de acesso aos materiais, avaliações, avisos e oportunidades da Mecânica Industrial.";
   $("#sidebarUserName").textContent = "Área do aluno";
   $("#sidebarUserRole").textContent = "Acesso público";
+  $("#logoutButton").hidden = true;
   $("#userInitials").textContent = "AL";
   $("#profileButton").textContent = "AL";
   $("#logoutButton").title = "Entrar como professor";
@@ -258,15 +316,31 @@ function actionButtons(item, collectionName) {
   if (!canEdit(item)) return "";
   return `<button class="btn btn-danger btn-small" data-delete="${collectionName}" data-id="${item.id}" data-drive-file="${item.driveFileId || ""}">Excluir</button>`;
 }
+function curriculumInfo(item) {
+  const discipline = CURRICULUM.find(d => d.code === item.disciplineCode);
+  return discipline || { module: item.module || "Geral", code: item.disciplineCode || "", name: item.disciplineName || item.discipline || "Geral do curso" };
+}
+function curriculumMatches(item, moduleFilter, disciplineFilter) {
+  const info = curriculumInfo(item);
+  return (moduleFilter === "all" || info.module === moduleFilter)
+    && (disciplineFilter === "all" || info.code === disciplineFilter);
+}
+function groupByModule(items, cardRenderer) {
+  const groups = ["I", "II", "III", "Geral"].map(module => ({ module, items: items.filter(item => curriculumInfo(item).module === module) })).filter(group => group.items.length);
+  return groups.map(group => `<section class="curriculum-group"><div class="curriculum-group-heading"><span>${group.module === "Geral" ? "Geral do curso" : `Módulo ${group.module}`}</span><strong>${group.items.length} ${group.items.length === 1 ? "publicação" : "publicações"}</strong></div><div class="cards-grid">${group.items.map(cardRenderer).join("")}</div></section>`).join("");
+}
 function renderPosts() {
-  const posts = state.data.posts.filter(p => p.type === "recado");
-  emptyOrHtml($("#recadosList"), posts.map(p => `<article class="content-card"><span class="badge">${p.authorRole === "coordinator" ? "Coordenação" : "Professor"}</span><h3>${escapeHtml(p.title)}</h3><p>${escapeHtml(p.content)}</p><div class="card-actions"><div class="card-meta"><span>Por ${escapeHtml(p.authorName)}</span><span>Publicado em ${formatDate(p.createdAt, true)}</span>${p.noticeDate ? `<span>Data do recado: ${formatDate(p.noticeDate)}</span>` : ""}</div>${actionButtons(p,"posts")}</div></article>`).join(""), "Nenhum recado publicado.");
+  const posts = state.data.posts.filter(p => p.type === "recado" && curriculumMatches(p, state.postModule, state.postDiscipline));
+  const html = groupByModule(posts, p => { const d = curriculumInfo(p); return `<article class="content-card"><div class="card-badges"><span class="badge">${p.authorRole === "coordinator" ? "Coordenação" : "Professor"}</span><span class="badge gray">${escapeHtml(d.code ? `${d.code} - ${d.name}` : d.name)}</span></div><h3>${escapeHtml(p.title)}</h3><p>${escapeHtml(p.content)}</p><div class="card-actions"><div class="card-meta"><span>Por ${escapeHtml(p.authorName)}</span><span>Publicado em ${formatDate(p.createdAt, true)}</span>${p.noticeDate ? `<span>Data do recado: ${formatDate(p.noticeDate)}</span>` : ""}</div>${actionButtons(p,"posts")}</div></article>`; });
+  emptyOrHtml($("#recadosList"), html, "Nenhum recado encontrado para os filtros selecionados.");
 }
 function renderExams() {
   emptyOrHtml($("#examsList"), state.data.exams.map(e => `<article class="content-card"><span class="badge amber">${formatDate(e.date)}</span><h3>${escapeHtml(e.subject)}</h3><p>${escapeHtml(e.description || "Avaliação programada.")}</p><div class="card-meta"><span>Turma: ${escapeHtml(e.className)}</span><span>Horário: ${escapeHtml(e.time || "A definir")}</span><span>Professor: ${escapeHtml(e.authorName)}</span></div><div class="card-actions"><small>Postado em ${formatDate(e.createdAt)}</small>${actionButtons(e,"exams")}</div></article>`).join(""), "Nenhuma prova agendada.");
 }
 function renderMaterials() {
-  emptyOrHtml($("#materialsList"), state.data.materials.map(m => `<article class="content-card file-card"><div class="file-icon">${escapeHtml((m.extension || "ARQ").toUpperCase().slice(0,4))}</div><span class="badge">${escapeHtml(m.category || "Material")}</span><h3>${escapeHtml(m.title)}</h3><p>${escapeHtml(m.description || m.fileName)}</p><div class="card-meta"><span>${escapeHtml(m.authorName)}</span><span>${formatDate(m.createdAt)}</span></div><div class="card-actions"><a class="btn btn-secondary btn-small" href="${m.fileUrl}" target="_blank" rel="noopener">Abrir arquivo</a>${actionButtons(m,"materials")}</div></article>`).join(""), "Nenhum material enviado.");
+  const materials = state.data.materials.filter(m => curriculumMatches(m, state.materialModule, state.materialDiscipline));
+  const html = groupByModule(materials, m => { const d = curriculumInfo(m); return `<article class="content-card file-card"><div class="file-icon">${escapeHtml((m.extension || "ARQ").toUpperCase().slice(0,4))}</div><div class="card-badges"><span class="badge">${escapeHtml(m.category || "Material")}</span><span class="badge gray">${escapeHtml(d.code ? `${d.code} - ${d.name}` : d.name)}</span></div><h3>${escapeHtml(m.title)}</h3><p>${escapeHtml(m.description || m.fileName)}</p><div class="card-meta"><span>Professor: ${escapeHtml(m.authorName)}</span><span>${formatDate(m.createdAt)}</span></div><div class="card-actions"><a class="btn btn-secondary btn-small" href="${m.fileUrl}" target="_blank" rel="noopener">Abrir arquivo</a>${actionButtons(m,"materials")}</div></article>`; });
+  emptyOrHtml($("#materialsList"), html, "Nenhum material encontrado para os filtros selecionados.");
 }
 function renderMinutes() {
   emptyOrHtml($("#minutesList"), state.data.minutes.map(m => `<article class="content-card"><span class="badge gray">Reunião · ${formatDate(m.meetingDate)}</span><h3>${escapeHtml(m.title)}</h3><p>${escapeHtml(m.summary || "Ata pedagógica")}</p><div class="card-actions"><div class="card-meta"><span>Registrada por ${escapeHtml(m.authorName)}</span></div><div>${m.fileUrl ? `<a class="btn btn-secondary btn-small" href="${m.fileUrl}" target="_blank" rel="noopener">Abrir ata</a>` : ""} ${actionButtons(m,"minutes")}</div></div></article>`).join(""), "Nenhuma ata cadastrada.");
@@ -287,13 +361,13 @@ function renderUsers() {
 
 const forms = {
   post: { title: "Novo recado", kicker: "Comunicação", collection: "posts", fields: [
-    ["title","Título","text",true],["noticeDate","Data do recado","date",true],["content","Mensagem","textarea",true]
+    ["title","Título","text",true],["disciplineCode","Disciplina","select",true,[{ value: "general", label: "Geral do curso" }, ...disciplineOptions]],["noticeDate","Data do recado","date",true],["content","Mensagem","textarea",true]
   ], extra: { type: "recado" } },
   exam: { title: "Marcar prova", kicker: "Calendário", collection: "exams", fields: [
     ["subject","Disciplina / avaliação","text",true],["className","Turma","text",true],["date","Data da prova","date",true],["time","Horário","time",false],["description","Orientações","textarea",false]
   ] },
   material: { title: "Enviar material", kicker: "Biblioteca", collection: "materials", file: true, fields: [
-    ["title","Título do material","text",true],["category","Categoria","select",true,["Aula","Exercícios","Apostila","Referência"]],["description","Descrição","textarea",false],["file","Arquivo (PDF, Word ou imagem)","file",true]
+    ["title","Título do material","text",true],["disciplineCode","Disciplina","select",true,disciplineOptions],["category","Tipo de material","select",true,["Aula","Exercícios","Apostila","Referência"]],["description","Descrição","textarea",false],["file","Arquivo (PDF, Word ou imagem)","file",true]
   ] },
   minute: { title: "Nova ata pedagógica", kicker: "Documentação", collection: "minutes", file: true, coordinator: true, fields: [
     ["title","Título da reunião","text",true],["meetingDate","Data da reunião","date",true],["summary","Resumo / decisões","textarea",true],["file","Arquivo da ata (opcional)","file",false]
@@ -321,7 +395,7 @@ function openModal(type) {
   $("#modalFields").innerHTML = config.fields.map(([name,label,type,required,options]) => {
     const req = required ? "required" : "";
     if (type === "textarea") return `<label>${label}<textarea name="${name}" ${req}></textarea></label>`;
-    if (type === "select") return `<label>${label}<select name="${name}" ${req}>${options.map(o => `<option value="${o}">${o[0].toUpperCase()+o.slice(1)}</option>`).join("")}</select></label>`;
+    if (type === "select") return `<label>${label}<select name="${name}" ${req}>${options.map(option => { const value = typeof option === "object" ? option.value : option; const text = typeof option === "object" ? option.label : option[0].toUpperCase() + option.slice(1); return `<option value="${escapeHtml(value)}">${escapeHtml(text)}</option>`; }).join("")}</select></label>`;
     const accept = name === "file" ? 'accept=".pdf,.doc,.docx,image/*"' : "";
     return `<label>${label}<input name="${name}" type="${type}" ${req} ${accept}></label>`;
   }).join("");
@@ -345,6 +419,16 @@ $("#dynamicForm").addEventListener("submit", async e => {
 
 async function saveRecord(config, data, file) {
   delete data.file;
+  if (data.disciplineCode) {
+    const discipline = CURRICULUM.find(item => item.code === data.disciplineCode);
+    if (discipline) {
+      data.disciplineName = discipline.name;
+      data.module = discipline.module;
+    } else if (data.disciplineCode === "general") {
+      data.disciplineName = "Geral do curso";
+      data.module = "Geral";
+    }
+  }
   Object.assign(data, config.extra || {}, { authorId: state.user.uid, authorName: state.profile.name, authorRole: state.profile.role, createdAt: serverTimestamp() });
   if (file?.size) {
     const uploaded = await uploadFileToDrive(file, config.collection);
