@@ -319,12 +319,14 @@ function openModal(type) {
 $("#dynamicForm").addEventListener("submit", async e => {
   e.preventDefault();
   if (e.submitter?.value === "cancel") return modal.close();
-  const config = forms[modal.dataset.type], data = Object.fromEntries(new FormData(e.currentTarget));
+  const form = e.currentTarget;
+  const formData = new FormData(form);
+  const config = forms[modal.dataset.type], data = Object.fromEntries(formData);
   const button = $("#modalSubmit"); button.disabled = true; button.textContent = "Salvando...";
   try {
     if (config.special === "user") throw new Error("No plano gratuito, o professor deve criar a própria conta na tela inicial.");
-    await saveRecord(config, data, new FormData(e.currentTarget).get("file"));
-    modal.close(); e.currentTarget.reset(); toast("Salvo com sucesso."); await loadAll();
+    await saveRecord(config, data, formData.get("file"));
+    modal.close(); form.reset(); toast("Salvo com sucesso."); await loadAll();
   } catch (err) { console.error(err); toast(err.message || "Não foi possível salvar.", true); }
   finally { button.disabled = false; button.textContent = "Salvar"; }
 });
