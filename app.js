@@ -1,7 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
 import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, deleteUser, sendPasswordResetEmail, signOut, updatePassword } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
 import { getFirestore, collection, doc, getDoc, getDocs, addDoc, setDoc, updateDoc, deleteDoc, query, orderBy, serverTimestamp, where, limit, writeBatch } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
-import { firebaseConfig, USER_EMAIL_DOMAIN, driveUploadConfig } from "./firebase-config.js?v=20260811-13";
+import { firebaseConfig, USER_EMAIL_DOMAIN, driveUploadConfig } from "./firebase-config.js?v=20260811-14";
 
 const fb = initializeApp(firebaseConfig);
 const auth = getAuth(fb);
@@ -400,6 +400,7 @@ const forms = {
 $$("[data-open-modal]").forEach(btn => btn.addEventListener("click", () => openModal(btn.dataset.openModal)));
 $("#quickPostButton").addEventListener("click", () => openModal("post"));
 $$("[data-close-form-modal]").forEach(btn => btn.addEventListener("click", () => {
+  if (modal.dataset.uploading === "true") return;
   $("#dynamicForm").reset();
   modal.close();
 }));
@@ -422,14 +423,23 @@ $("#dynamicForm").addEventListener("submit", async e => {
   const form = e.currentTarget;
   const formData = new FormData(form);
   const config = forms[modal.dataset.type], data = Object.fromEntries(formData);
-  const button = $("#modalSubmit"); button.disabled = true; button.textContent = "Salvando...";
+  const button = $("#modalSubmit");
+  const closeButtons = $$("[data-close-form-modal]", modal);
+  button.disabled = true; button.textContent = "Salvando...";
+  closeButtons.forEach(item => item.disabled = true);
+  modal.dataset.uploading = "true";
   try {
     if (config.special === "user") throw new Error("No plano gratuito, o professor deve criar a própria conta na tela inicial.");
     if (config.collection === "materials" && !formData.get("file")?.size && !String(data.materialLink || "").trim()) throw new Error("Envie um arquivo ou informe o link do material.");
     await saveRecord(config, data, formData.get("file"));
     modal.close(); form.reset(); toast("Salvo com sucesso."); await loadAll();
   } catch (err) { console.error(err); toast(err.message || "Não foi possível salvar.", true); }
-  finally { button.disabled = false; button.textContent = "Salvar"; }
+  finally {
+    button.disabled = false; button.textContent = "Salvar";
+    closeButtons.forEach(item => item.disabled = false);
+    delete modal.dataset.uploading;
+    $("#uploadFeedback")?.remove();
+  }
 });
 
 async function saveRecord(config, data, file) {
@@ -494,18 +504,46 @@ async function uploadFileToDrive(file, category) {
   const mimeType = mimeByExtension[extension] || file.type || "";
   if (!mimeByExtension[extension]) throw new Error("Formato não permitido. Envie PDF, Word, PowerPoint, JPG, PNG ou WEBP.");
 
-  const progress = document.createElement("div");
-  progress.className = "progress"; progress.innerHTML = "<span></span>"; $("#modalFields").append(progress);
-  const setProgress = value => progress.firstElementChild.style.width = `${value}%`;
-  const base64 = await fileToBase64(file, setProgress);
-  setProgress(55);
+  const feedback = document.createElement("section");
+  feedback.id = "uploadFeedback";
+  feedback.className = "upload-feedback";
+  feedback.setAttribute("aria-live", "polite");
+  feedback.innerHTML = `<div class="upload-feedback-heading"><span class="upload-spinner"></span><div><strong id="uploadStatusTitle">Preparando o arquivo…</strong><small id="uploadStatusDetail">${escapeHtml(file.name)} · ${(file.size / 1024 / 1024).toFixed(2).replace(".", ",")} MB</small></div></div><div class="progress"><span></span></div><p>Não feche esta janela enquanto o material estiver sendo enviado.</p>`;
+  $("#modalFields").append(feedback);
+  const bar = $(".progress", feedback);
+  const barFill = $(".progress span", feedback);
+  const title = $("#uploadStatusTitle", feedback);
+  const detail = $("#uploadStatusDetail", feedback);
+  const setProgress = value => barFill.style.width = `${value}%`;
 
-  const result = await postToDrive({
-    action: "upload", fileName: file.name, mimeType, category,
-    authorName: state.profile.name, fileData: base64
-  }, 300000);
-  setProgress(100);
-  return result;
+  const base64 = await fileToBase64(file, value => {
+    setProgress(value);
+    title.textContent = "Lendo o arquivo no computador…";
+  });
+  setProgress(48);
+  title.textContent = "Enviando ao Google Drive…";
+  detail.textContent = "Aguarde, arquivos maiores levam um pouco mais de tempo.";
+  bar.classList.add("indeterminate");
+
+  const startedAt = Date.now();
+  const elapsedTimer = setInterval(() => {
+    const seconds = Math.floor((Date.now() - startedAt) / 1000);
+    detail.textContent = `Envio em andamento há ${seconds} segundo${seconds === 1 ? "" : "s"}. O portal continua funcionando.`;
+  }, 1000);
+
+  try {
+    const result = await postToDrive({
+      action: "upload", fileName: file.name, mimeType, category,
+      authorName: state.profile.name, fileData: base64
+    }, 300000);
+    bar.classList.remove("indeterminate");
+    setProgress(100);
+    title.textContent = "Arquivo recebido pelo Drive!";
+    detail.textContent = "Finalizando a publicação do material…";
+    return result;
+  } finally {
+    clearInterval(elapsedTimer);
+  }
 }
 
 function postToDrive(values, timeoutMs = 30000) {
