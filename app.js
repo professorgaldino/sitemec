@@ -1,7 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
 import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, deleteUser, sendPasswordResetEmail, signOut, updatePassword } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
 import { getFirestore, collection, doc, getDoc, getDocs, addDoc, setDoc, updateDoc, deleteDoc, query, orderBy, serverTimestamp, where, limit, writeBatch } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
-import { firebaseConfig, USER_EMAIL_DOMAIN, driveUploadConfig } from "./firebase-config.js?v=20260811-14";
+import { firebaseConfig, USER_EMAIL_DOMAIN, driveUploadConfig } from "./firebase-config.js?v=20260811-15";
 
 const fb = initializeApp(firebaseConfig);
 const auth = getAuth(fb);
@@ -306,7 +306,7 @@ function renderLatestUpdates() {
   const updates = [
     ...state.data.posts.filter(p => p.type === "recado").map(p => ({ type: "Recado", kind: "", page: "recados", title: p.title, description: p.content, date: p.createdAt })),
     ...state.data.materials.map(m => ({ type: "Material", kind: "material", page: "materiais", title: m.title, description: m.description || m.fileName, date: m.createdAt })),
-    ...state.data.jobs.map(j => ({ type: "Vaga", kind: "job", page: "vagas", title: j.title, description: `${j.company} · ${j.location || "Local a combinar"}`, date: j.createdAt })),
+    ...state.data.jobs.map(j => ({ type: "Vaga", kind: "job", page: "vagas", title: j.title || "Nova oportunidade", description: j.content || j.description || j.company || "Confira a vaga publicada.", date: j.createdAt })),
     ...state.data.exams.map(e => ({ type: "Prova", kind: "exam", page: "provas", title: e.subject, description: `${e.className} · ${formatDate(e.date)}`, date: e.createdAt || e.date }))
   ].sort((a, b) => itemTime(b.date) - itemTime(a.date)).slice(0, 3);
   const html = updates.map(update => `<article class="latest-card" data-latest-page="${update.page}" tabindex="0" role="button" aria-label="Abrir ${escapeHtml(update.type)}: ${escapeHtml(update.title)}"><div class="latest-card-top"><span class="update-type ${update.kind}">${escapeHtml(update.type)}</span><time>${formatDate(update.date)}</time></div><h3>${escapeHtml(update.title)}</h3><p>${escapeHtml(update.description || "").slice(0, 115)}</p><span class="update-link">Consultar atualização →</span></article>`).join("");
@@ -361,7 +361,13 @@ function renderMinutes() {
 }
 function renderJobs() {
   const jobs = state.data.jobs.filter(j => state.jobFilter === "all" || j.status === state.jobFilter);
-  emptyOrHtml($("#jobsList"), jobs.map(j => `<article class="content-card"><span class="badge ${j.status === "disponivel" ? "green" : "gray"}">${j.status}</span><h3>${escapeHtml(j.title)}</h3><p>${escapeHtml(j.description)}</p><div class="card-meta"><span>${escapeHtml(j.company)}</span><span>${escapeHtml(j.location || "Local a combinar")}</span><span>Por ${escapeHtml(j.authorName)}</span></div><div class="card-actions">${j.contact ? `<a class="link-button" href="mailto:${escapeHtml(j.contact)}">Entrar em contato</a>` : "<span></span>"}<div>${canEdit(j) ? `<button class="btn btn-secondary btn-small" data-job-status="${j.id}" data-status="${j.status === "disponivel" ? "preenchida" : "disponivel"}">${j.status === "disponivel" ? "Marcar preenchida" : "Reabrir vaga"}</button> ${actionButtons(j,"jobs")}` : ""}</div></div></article>`).join(""), "Nenhuma vaga encontrada.");
+  emptyOrHtml($("#jobsList"), jobs.map(j => {
+    const text = j.content || j.description || "";
+    const title = j.title || text.split(/\r?\n/).find(line => line.trim())?.trim().slice(0, 90) || "Vaga de emprego";
+    const legacyMeta = [j.company, j.location].filter(Boolean).map(value => `<span>${escapeHtml(value)}</span>`).join("");
+    const imageUrl = j.driveFileId ? `https://drive.google.com/thumbnail?id=${encodeURIComponent(j.driveFileId)}&sz=w1200` : j.fileUrl;
+    return `<article class="content-card job-card">${imageUrl ? `<a class="job-image-link" href="${escapeHtml(j.fileUrl || imageUrl)}" target="_blank" rel="noopener"><img class="job-image" src="${escapeHtml(imageUrl)}" alt="Imagem da vaga ${escapeHtml(title)}" loading="lazy"></a>` : ""}<div class="job-card-body"><span class="badge ${j.status === "disponivel" ? "green" : "gray"}">${j.status === "disponivel" ? "Disponível" : "Preenchida"}</span><h3>${escapeHtml(title)}</h3>${text ? `<p>${escapeHtml(text)}</p>` : ""}<div class="card-meta">${legacyMeta}<span>Publicado por ${escapeHtml(j.authorName || "Professor")}</span></div><div class="card-actions">${j.contact ? `<a class="link-button" href="mailto:${escapeHtml(j.contact)}">Entrar em contato</a>` : "<span></span>"}<div>${canEdit(j) ? `<button class="btn btn-secondary btn-small" data-job-status="${j.id}" data-status="${j.status === "disponivel" ? "preenchida" : "disponivel"}">${j.status === "disponivel" ? "Marcar preenchida" : "Reabrir vaga"}</button> ${actionButtons(j,"jobs")}` : ""}</div></div></div></article>`;
+  }).join(""), "Nenhuma vaga encontrada.");
 }
 function renderPartners() {
   const cards = state.data.partners.map(p => `<article class="content-card partner-card">${p.logoUrl ? `<img src="${p.logoUrl}" alt="Logo ${escapeHtml(p.name)}">` : `<div class="logo-placeholder">${initials(p.name)}</div>`}<h3>${escapeHtml(p.name)}</h3><div class="card-actions"><small>Empresa parceira</small>${actionButtons(p,"partners")}</div></article>`).join("");
@@ -386,8 +392,8 @@ const forms = {
   minute: { title: "Nova ata pedagógica", kicker: "Documentação", collection: "minutes", file: true, coordinator: true, fields: [
     ["title","Título da reunião","text",true],["meetingDate","Data da reunião","date",true],["summary","Resumo / decisões","textarea",true],["file","Arquivo da ata (opcional)","file",false]
   ] },
-  job: { title: "Publicar vaga", kicker: "Oportunidade", collection: "jobs", fields: [
-    ["title","Cargo / função","text",true],["company","Empresa","text",true],["location","Local","text",false],["contact","E-mail de contato","email",false],["description","Descrição da vaga","textarea",true],["status","Status","select",true,["disponivel","preenchida"]]
+  job: { title: "Publicar vaga", kicker: "Oportunidade", collection: "jobs", file: true, fields: [
+    ["content","Texto completo da vaga (opcional se enviar uma imagem)","textarea",false],["file","Imagem da vaga (opcional se preencher o texto)","file",false],["status","Status","select",true,["disponivel","preenchida"]]
   ] },
   partner: { title: "Nova empresa parceira", kicker: "Relacionamento", collection: "partners", file: true, coordinator: true, fields: [
     ["name","Nome da empresa","text",true],["file","Logo da empresa","file",true]
@@ -411,7 +417,7 @@ function openModal(type) {
     const req = required ? "required" : "";
     if (type === "textarea") return `<label>${label}<textarea name="${name}" ${req}></textarea></label>`;
     if (type === "select") return `<label>${label}<select name="${name}" ${req}>${options.map(option => { const value = typeof option === "object" ? option.value : option; const text = typeof option === "object" ? option.label : option[0].toUpperCase() + option.slice(1); return `<option value="${escapeHtml(value)}">${escapeHtml(text)}</option>`; }).join("")}</select></label>`;
-    const accept = name === "file" ? 'accept=".pdf,.doc,.docx,.ppt,.pptx,image/*"' : "";
+    const accept = name === "file" ? (modal.dataset.type === "job" ? 'accept="image/*"' : 'accept=".pdf,.doc,.docx,.ppt,.pptx,image/*"') : "";
     return `<label>${label}<input name="${name}" type="${type}" ${req} ${accept}></label>`;
   }).join("");
   if (type === "user") $('[name="temporaryPassword"]', modal).value = generatePassword();
@@ -431,6 +437,11 @@ $("#dynamicForm").addEventListener("submit", async e => {
   try {
     if (config.special === "user") throw new Error("No plano gratuito, o professor deve criar a própria conta na tela inicial.");
     if (config.collection === "materials" && !formData.get("file")?.size && !String(data.materialLink || "").trim()) throw new Error("Envie um arquivo ou informe o link do material.");
+    if (config.collection === "jobs") {
+      const jobFile = formData.get("file");
+      if (!String(data.content || "").trim() && !jobFile?.size) throw new Error("Escreva o texto da vaga ou envie uma imagem.");
+      if (jobFile?.size && !["jpg","jpeg","png","webp"].includes(jobFile.name.split(".").pop().toLowerCase())) throw new Error("A imagem da vaga deve ser JPG, PNG ou WEBP.");
+    }
     await saveRecord(config, data, formData.get("file"));
     modal.close(); form.reset(); toast("Salvo com sucesso."); await loadAll();
   } catch (err) { console.error(err); toast(err.message || "Não foi possível salvar.", true); }
