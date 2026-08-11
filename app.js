@@ -1,7 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
 import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, deleteUser, sendPasswordResetEmail, signOut, updatePassword } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
 import { getFirestore, collection, doc, getDoc, getDocs, addDoc, setDoc, updateDoc, deleteDoc, query, orderBy, serverTimestamp, where, limit, writeBatch } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
-import { firebaseConfig, USER_EMAIL_DOMAIN, driveUploadConfig } from "./firebase-config.js?v=20260811-11";
+import { firebaseConfig, USER_EMAIL_DOMAIN, driveUploadConfig } from "./firebase-config.js?v=20260811-13";
 
 const fb = initializeApp(firebaseConfig);
 const auth = getAuth(fb);
@@ -491,9 +491,8 @@ async function uploadFileToDrive(file, category) {
   }
   const extension = file.name.split(".").pop().toLowerCase();
   const mimeByExtension = { pdf: "application/pdf", doc: "application/msword", docx: "application/vnd.openxmlformats-officedocument.wordprocessingml.document", ppt: "application/vnd.ms-powerpoint", pptx: "application/vnd.openxmlformats-officedocument.presentationml.presentation", jpg: "image/jpeg", jpeg: "image/jpeg", png: "image/png", webp: "image/webp" };
-  const mimeType = file.type || mimeByExtension[extension] || "";
-  const allowed = Object.values(mimeByExtension);
-  if (!allowed.includes(mimeType)) throw new Error("Formato não permitido. Envie PDF, Word, PowerPoint, JPG, PNG ou WEBP.");
+  const mimeType = mimeByExtension[extension] || file.type || "";
+  if (!mimeByExtension[extension]) throw new Error("Formato não permitido. Envie PDF, Word, PowerPoint, JPG, PNG ou WEBP.");
 
   const progress = document.createElement("div");
   progress.className = "progress"; progress.innerHTML = "<span></span>"; $("#modalFields").append(progress);
@@ -504,7 +503,7 @@ async function uploadFileToDrive(file, category) {
   const result = await postToDrive({
     action: "upload", fileName: file.name, mimeType, category,
     authorName: state.profile.name, fileData: base64
-  }, 120000);
+  }, 300000);
   setProgress(100);
   return result;
 }
