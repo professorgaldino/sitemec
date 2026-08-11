@@ -10,7 +10,7 @@ export const firebaseConfig = {
 export const USER_EMAIL_DOMAIN = "sitemec.local";
 
 export const driveUploadConfig = {
-  webAppUrl: "https://script.google.com/macros/s/AKfycbyfxIgabpnp-TdaNJssEfM84PxJiWVJ71WJ0gAbrx6Wm6usC4aYuYJrRbahr_4c9xNf/exec",
+  webAppUrl: "https://script.google.com/macros/s/AKfycbzb7Awivxned3gCfI_TQtR-TvTnkxIPZR-fE5wP9kNI4KAC-3X8i-yQA-8iAH29Y03o/exec",
   uploadToken: "mec_2026_X9rT82pL_4kQ7zA_196579678",
   maxFileSizeMb: 10
 };
